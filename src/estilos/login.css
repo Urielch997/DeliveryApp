@@ -39,6 +39,13 @@
     outline: none;
     padding: 0px 15px;
 }
+
+.button-con{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .form-group{
     width: 100%;
     display: flex;

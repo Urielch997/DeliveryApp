@@ -108,7 +108,8 @@ ul li{
     margin-top: 5px;
     justify-content: center;
     position: sticky;
-    top:0;
+    top:-10px;
+    z-index:2000;
 }
 
 .love{

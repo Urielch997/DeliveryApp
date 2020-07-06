@@ -80,7 +80,9 @@ class Login extends Component{
                             <input type="password" className="input-login" value={pass} onChange={this.writePass} />
                         </div>
                     </div>
+                    <div className='button-con'>
                         <button onClick={this.action}>Iniciar</button>
+                    </div>
                     </div>
 
                     <div id="register">
@@ -106,7 +108,9 @@ class Login extends Component{
                             <input type="password" className="input-login"/>
                         </div>
                     </div>
-                        <button onClick={this.action}>Iniciar</button>
+                        <div className='button-con'>
+                            <button onClick={this.action}>Iniciar</button>
+                        </div>
                     </div>
 
                 </div>
