@@ -1,3 +1,14 @@
+body{
+    background:#f7f7f7f7;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
 .container-login{
     box-sizing: border-box;
     width: 100%;

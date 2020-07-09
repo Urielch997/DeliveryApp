@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 
 firebase.initializeApp({
@@ -8,6 +8,7 @@ firebase.initializeApp({
 })
 
 let db = firebase.firestore();
+
 
 
 export default db;

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import '../estilos/login.css';
 import db from '../fireConfig';
-import {Link, Route,Switch} from 'react-router-dom';
 
 class Login extends Component{
     constructor(){
@@ -11,6 +10,7 @@ class Login extends Component{
             pass:'',
         }
     }
+
 
 
     changeValue = (e) => {
