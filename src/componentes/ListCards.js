@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import {Link} from 'react-router-dom';
 import db from '../fireConfig';
 
@@ -7,6 +8,8 @@ class ListCards extends Component{
 
     state = {
         img:[],
+        items:[],
+        loading:false,
     }
     
     componentDidMount(){
@@ -17,19 +20,25 @@ class ListCards extends Component{
         db.collection('imagenes').get().then(snapshot =>{
             this.setState({
                 img:snapshot.docs.map(data =>{
-                    return{nombre:data.data().nombre,url:data.data().url,restaurante:data.data().restaurante}
+                    return{id:data.id,nombre:data.data().nombre,url:data.data().url,restaurante:data.data().restaurante}
                 })
+            })
+        }).then(()=>{
+            this.setState({
+                loading:true
             })
         })
     }
 
 
-
-    listtarget = ({img}) => (
-        img.map((datos,key) =>{
+    listtarget = () => (
+        this.state.img.map((datos) =>{
             return(
-            <div className="cards-list" key={key}>
-            <Link to='/detalles'>
+            <div className="cards-list" key={datos.id}>
+            <Link to={{     
+         pathname: '/detalles',
+         state:datos
+        }}>
                 <div className="card-img">
                         <img src={datos.url} alt='Imagen' className='card-image'/>
                     <div className="love"><FavoriteIcon/></div>
@@ -40,13 +49,14 @@ class ListCards extends Component{
             )  
         })
     )
-        
+    
+    
     
     render(){ 
-        const img = this.state; 
+        const {loading} = this.state;
     return(
         <div className='ListCard-container'>
-            {img ? this.listtarget(img) : 'Cargando'}
+                {loading ? this.listtarget():<div className="box"><CircularProgress classes={{svg:'red'}}/></div>}
         </div>
     )
 }   

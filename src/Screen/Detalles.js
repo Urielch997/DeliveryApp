@@ -1,19 +1,23 @@
 import React from 'react';
-import logo from '../img/cesar.jpg';
 import '../estilos/detalles.css';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import StarIcon from '@material-ui/icons/Star';
 import CardsDetail from '../componentes/CardsDetail';
+import {useLocation} from 'react-router-dom';
 
 const Detalles = () =>{
+
+    const {url,restaurante,id} = useLocation().state
+
     return(
+        
         <div className="container-detalles">
             <div className="img-box">
-                <img src={logo} alt='logo'/>
+                <img src={url} alt='logo'/>
             </div>
             <div className="title-detail">
                 <div className="title-detail-text-container">
-                    <label className="title-detail-text">Little Caesars - Zacatecoluca</label><FavoriteIcon/>
+                    <label className="title-detail-text">{restaurante}</label><FavoriteIcon/>
                 </div>
                 <span>Pizza</span>
                 <div className="seccion-detail">
@@ -35,15 +39,11 @@ const Detalles = () =>{
                     <li>Bebidas</li>
                     <li>Acompañamientos</li>
                 </ul>
-                <CardsDetail/>
-                <CardsDetail/>
-                <CardsDetail/>
-                <CardsDetail/>
-                <CardsDetail/>
+                <CardsDetail item={id}/>
             </div>
             
         </div>
-    );
+    )
 } 
 
 export default Detalles;
