@@ -30,7 +30,7 @@ const Detalles = () =>{
                         <StarIcon/>
                     </div>
                 </div>
-                <span>10:30am/ 8:00pm</span>
+                <span>10:00</span>
             </div>
             <div className="options-detail">
                 <ul className="list-detail">

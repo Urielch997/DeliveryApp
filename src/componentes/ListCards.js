@@ -20,7 +20,7 @@ class ListCards extends Component{
         db.collection('imagenes').get().then(snapshot =>{
             this.setState({
                 img:snapshot.docs.map(data =>{
-                    return{id:data.id,nombre:data.data().nombre,url:data.data().url,restaurante:data.data().restaurante}
+                    return{id:data.id,nombre:data.data().nombre,url:data.data().url,restaurante:data.data().restaurante,horario:data.data().horario}
                 })
             })
         }).then(()=>{
@@ -54,8 +54,9 @@ class ListCards extends Component{
     
     render(){ 
         const {loading} = this.state;
+        console.log(this.state.img)
     return(
-        <div className='ListCard-container'>
+        <div className='ListCard-container center'>
                 {loading ? this.listtarget():<div className="box"><CircularProgress classes={{svg:'red'}}/></div>}
         </div>
     )

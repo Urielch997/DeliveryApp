@@ -22,7 +22,7 @@ class Home extends Component{
               </div>
               <Navmidle/>
               <div className="ListCard-container">
-              <ListCards/>   
+                <ListCards/>   
               </div>  
             </div>
     );
