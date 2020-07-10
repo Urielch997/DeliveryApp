@@ -2,13 +2,31 @@ import React, { Component } from 'react';
 import Cards from '../componentes/Cards';
 import Navmidle from '../componentes/Navmidle';
 import ListCards from '../componentes/ListCards';
+import db from '../fireConfig';
 
 
 class Home extends Component{
   
+  state = {
+    banner:[],
+  }
 
+  componentDidMount(){
+    this.getData()
+  }
+
+  getData(){
+    db.collection('banner').get().then(snapshot =>{
+      this.setState({
+        banner:snapshot.docs.map(data=>{
+          return{url:data.data().url}
+        })
+      })
+    })
+  }
 
   render(){
+    const {banner} = this.state
     return(
             <div>
               <div className="title-tex">
@@ -17,8 +35,7 @@ class Home extends Component{
               </div>
 
             <div className="cards-container">
-                <Cards/>
-                <Cards/>
+                <Cards url={banner}/>
               </div>
               <Navmidle/>
               <div className="ListCard-container">

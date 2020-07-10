@@ -54,7 +54,6 @@ class ListCards extends Component{
     
     render(){ 
         const {loading} = this.state;
-        console.log(this.state.img)
     return(
         <div className='ListCard-container center'>
                 {loading ? this.listtarget():<div className="box"><CircularProgress classes={{svg:'red'}}/></div>}

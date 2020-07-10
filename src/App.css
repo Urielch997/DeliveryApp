@@ -76,10 +76,15 @@ html {
 .card{
     background: #ececec;
     padding: 5px;
-    width: 50%;
+    width: 100%;
     border-radius: 10px;
-    height: 200px;
+    height: auto;
     margin: 5px;
+    overflow: hidden;
+}
+
+.card img{
+    width: 100%;
 }
 
 .cards-container{
@@ -136,8 +141,18 @@ ul li{
     font-weight: 600;
 }
 
+.title-text{
+    justify-content: center;
+    align-items: center;
+}
+
+.title-tex, .middle-text, .title{
+    text-align: center;
+}
+
 .title-tex label{
     display: flex;
+    justify-content: center;
     width: 100%;
 }
 
@@ -173,6 +188,13 @@ a{
       height: 100%;
       object-fit: cover;
       object-position: center center;
+    }
+
+    .card img{
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
     }
 }
 
@@ -211,6 +233,7 @@ a{
 
 .center{
     width: 80% !important;
+    margin: 5px auto;
 }
 
 .box{
