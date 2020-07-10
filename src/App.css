@@ -78,13 +78,14 @@ html {
     padding: 5px;
     width: 100%;
     border-radius: 10px;
-    height: auto;
+    height: 200px;
     margin: 5px;
     overflow: hidden;
 }
 
 .card img{
     width: 100%;
+    height: 100%;
 }
 
 .cards-container{
@@ -190,12 +191,12 @@ a{
       object-position: center center;
     }
 
-    .card img{
+    /*.card img{
         width: 100%;
         object-fit: cover;
         object-position: center center;
         width: 100%;
-    }
+    }*/
 }
 
 .text-card-footer{
@@ -254,6 +255,10 @@ a{
     .cards-list{
         width:45%;
         margin: 14px;
+    }
+
+    .card{
+        width: 80%;
     }
 
     .footer ul{
