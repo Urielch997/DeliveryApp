@@ -13,7 +13,9 @@ class App extends Component {
             <Routes/>
             <Footer/>
           </div>
+          
       </div>
+      
     )
   }
 }
