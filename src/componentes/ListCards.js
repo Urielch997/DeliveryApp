@@ -45,7 +45,7 @@ class ListCards extends Component{
                         <img src={datos.url} alt='Imagen' className='card-image'/>
                     <div className="love"><FavoriteIcon/></div>
                 </div>
-    <div className="text-card-footer"><span>{datos.restaurante}</span><span className="active">{parseInt(hora) < apertura? 'Cerrado' : 'Abierto'}</span></div>
+    <div className="text-card-footer"><span>{datos.restaurante}</span><span className="active">{parseInt(hora) >= apertura? 'Abierto' : 'Cerrado'}</span></div>
             </Link>
         </div>
             )  
