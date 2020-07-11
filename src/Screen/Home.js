@@ -28,7 +28,7 @@ class Home extends Component{
   render(){
     const {banner} = this.state
     return(
-            <div>
+            <>
               <div className="title-tex">
                   <label  className='title'>Hola,Roberto </label>
                   <label className="middle-text">¿Que vas a comer hoy?</label>
@@ -41,7 +41,7 @@ class Home extends Component{
               <div className="ListCard-container">
                 <ListCards/>   
               </div>  
-            </div>
+            </>
     );
   }
 }

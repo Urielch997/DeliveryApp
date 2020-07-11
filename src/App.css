@@ -225,6 +225,7 @@ a{
     height: 40px;
     left:0;
     align-self: flex-end;
+    z-index: 3000;
 }
 
 .footer ul{
@@ -250,6 +251,10 @@ a{
     justify-content: center;
     align-items: center;
     margin-top:50px;
+}
+
+.ListCard-container{
+    width: 100%;
 }
 
 @media screen and (min-width:1024px){
