@@ -16,7 +16,8 @@ html {
 
 .container-detalles{
     left: 0;
-    margin-top: -5px;
+    margin: -5px auto 0;
+    width: 100%;
 }
 
 .img-box{

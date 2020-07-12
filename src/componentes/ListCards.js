@@ -30,9 +30,24 @@ class ListCards extends Component{
         })
     }
 
+    getHoras(hora){
+        var h;
+        if(hora>=12){
+           h  = hora-12;
+        }
+        if(hora == 0){
+            h = 12;
+        }
+        return(h)
+    }
+
 
     listtarget = () => (
         this.state.img.map((datos) =>{
+            const hora = (new Date()).getHours();
+            const apertura = datos.horario[0].substr(0,2);
+            const cierre = datos.horario[1].substr(0,2);
+            console.log(this.getHoras(datos.horario[1].substr(0,2)))
             return(
             <div className="cards-list" key={datos.id}>
             <Link to={{     
@@ -40,10 +55,11 @@ class ListCards extends Component{
          state:datos
         }}>
                 <div className="card-img">
+                {parseInt(hora) >= apertura && parseInt(hora) <= cierre ? '' : <div className='close'><label>CERRADO</label></div>}
                         <img src={datos.url} alt='Imagen' className='card-image'/>
                     <div className="love"><FavoriteIcon/></div>
                 </div>
-            <div className="text-card-footer"><span>{datos.restaurante}</span><span className="active">Abierto</span></div>
+    <div className="text-card-footer"><span>{datos.restaurante}</span><span className="active">{parseInt(hora) >= apertura && parseInt(hora) <= cierre? 'Abierto' : 'Cerrado'}</span></div>
             </Link>
         </div>
             )  

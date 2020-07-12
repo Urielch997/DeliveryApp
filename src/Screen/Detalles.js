@@ -7,8 +7,7 @@ import {useLocation} from 'react-router-dom';
 
 const Detalles = () =>{
 
-    const {url,restaurante,id} = useLocation().state
-
+    const {url,restaurante,id,horario} = useLocation().state
     return(
         
         <div className="container-detalles">
@@ -30,7 +29,7 @@ const Detalles = () =>{
                         <StarIcon/>
                     </div>
                 </div>
-                <span>10:00</span>
+    <span>{`${horario[0]} ${horario[1]}`}</span>
             </div>
             <div className="options-detail">
                 <ul className="list-detail">
