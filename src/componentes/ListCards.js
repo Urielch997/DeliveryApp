@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {Link} from 'react-router-dom';
 import db from '../fireConfig';
@@ -57,7 +56,7 @@ class ListCards extends Component{
                 <div className="card-img">
                 {parseInt(hora) >= apertura && parseInt(hora) <= cierre ? '' : <div className='close'><label>CERRADO</label></div>}
                         <img src={datos.url} alt='Imagen' className='card-image'/>
-                    <div className="love"><FavoriteIcon/></div>
+                    
                 </div>
     <div className="text-card-footer"><span>{datos.restaurante}</span><span className="active">{parseInt(hora) >= apertura && parseInt(hora) <= cierre? 'Abierto' : 'Cerrado'}</span></div>
             </Link>
