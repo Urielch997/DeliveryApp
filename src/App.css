@@ -99,9 +99,12 @@ html {
     justify-content: center;
 }
 
+.container-navmidle ul{
+    opacity: 0.94;
+}
+
 ul{
     background: #ececec;
-    opacity: 0.94;
     padding: 5px;
     border-radius: 10px;
 }
