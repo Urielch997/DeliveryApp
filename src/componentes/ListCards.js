@@ -47,7 +47,7 @@ class ListCards extends Component{
             const hora = (new Date()).getHours();
             const apertura = datos.horario[0].substr(0,2);
             const cierre = datos.horario[1].substr(0,2);
-            console.log(this.getHoras(datos.horario[1].substr(0,2)))
+            console.log(parseInt(hora) >= apertura && parseInt(hora) <= cierre)
             return(
             <div className="cards-list" key={datos.id}>
             <Link to={{     
