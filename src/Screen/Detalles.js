@@ -7,6 +7,18 @@ import {useLocation} from 'react-router-dom';
 
 const Detalles = () =>{
 
+    function hora(hora){
+        var time = parseInt(hora.substr(0,2));
+        var h;
+        if(time>12){
+            h = '0' + (time - 12) + ':00 PM';
+        }else{
+            h ='0' + time + ':00 AM';
+        }
+
+        return h;
+    }
+
     const {url,restaurante,id,horario} = useLocation().state
     return(
         
@@ -29,7 +41,7 @@ const Detalles = () =>{
                         <StarIcon/>
                     </div>
                 </div>
-    <span>{`${horario[0]} ${horario[1]}`}</span>
+    <span>{`${hora(horario[0])} ${hora(horario[1])}`}</span>
             </div>
             <div className="options-detail">
                 <ul className="list-detail">

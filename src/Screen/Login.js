@@ -17,11 +17,9 @@ class Login extends Component{
             apellido:'',
             fechaNacimiento:'',
             telefono:'',
-            sexo:'',
+            sexo:'Masculino',
         }
     }
-
-
 
     registerUser = () =>{
         const {nombre,apellido,fechaNacimiento,telefono,sexo,correoR,passR} = this.state;
@@ -31,6 +29,7 @@ class Login extends Component{
             if(user != null){
                 uid = user.uid;
             };
+            const history = this.props.history;
             const datosUser = {
                 nombre:nombre,
                 apellido:apellido,
@@ -41,10 +40,24 @@ class Login extends Component{
                 password:passR
             }
             db.collection('users').doc(uid).set(datosUser).then((snapshot)=>{
-                
+                history.push('/')
             })
         }).catch((error)=>{
             console.log(error.message)
+        })
+    }
+
+    login = () =>{
+       return new Promise((resolve, reject) => {
+            const history = this.props.history;
+            const {correo,pass} = this.state;
+            firebase.auth().signInWithEmailAndPassword(correo,pass).then((success)=>{
+                db.collection('users').doc(success.user.uid).get().then((snapshot)=>{
+                    history.push('/');
+                    resolve(success)
+                })
+                
+            })
         })
     }
 
@@ -111,7 +124,7 @@ class Login extends Component{
         var res = document.getElementById('resgitro');
         var cont = document.getElementById('container-login');
 
-        if(l.style.display === 'none' && cont.style.minHeight == '100vh'){
+        if(l.style.display === 'none' && cont.style.minHeight === '100vh'){
             l.style.display = 'block';
             ini.classList.add('yellow');
             res.classList.remove('yellow');
@@ -128,7 +141,7 @@ class Login extends Component{
     }
 
     render(){
-        const {correo,pass,passR,correoR,nombre,apellido,telefono,sexo,fechaNacimiento} = this.state;
+        const {correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento} = this.state;
         return(
             <div className="container-login" id='container-login'>
                 <div className="title-login">
@@ -152,7 +165,7 @@ class Login extends Component{
                         </div>
                     </div>
                     <div className='button-con'>
-                        <button onClick={this.action}>Iniciar</button>
+                        <button onClick={this.login}>Iniciar</button>
                     </div>
                     </div>
 

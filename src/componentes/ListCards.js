@@ -34,7 +34,7 @@ class ListCards extends Component{
         if(hora>=12){
            h  = hora-12;
         }
-        if(hora == 0){
+        if(parseInt(hora) === 0){
             h = 12;
         }
         return(h)
@@ -46,7 +46,6 @@ class ListCards extends Component{
             const hora = (new Date()).getHours();
             const apertura = datos.horario[0].substr(0,2);
             const cierre = datos.horario[1].substr(0,2);
-            console.log(parseInt(hora) >= apertura && parseInt(hora) <= cierre)
             return(
             <div className="cards-list" key={datos.id}>
             <Link to={{     
@@ -54,7 +53,7 @@ class ListCards extends Component{
          state:datos
         }}>
                 <div className="card-img">
-                {parseInt(hora) >= apertura && parseInt(hora) <= cierre ? '' : <div className='close'><label>CERRADO</label></div>}
+                {parseInt(hora) >= apertura && parseInt(hora) < cierre ? '' : <div className='close'><label>CERRADO</label></div>}
                         <img src={datos.url} alt='Imagen' className='card-image'/>
                     
                 </div>
