@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../estilos/login.css';
 import db from '../fireConfig';
+import firebase from 'firebase';
 
 class Login extends Component{
     constructor(){
@@ -8,7 +9,43 @@ class Login extends Component{
         this.state ={
             correo:'',
             pass:'',
+            passR:'',
+            confirmPass:'',
+            correoR:'',
+            usuario:'',
+            nombre:'',
+            apellido:'',
+            fechaNacimiento:'',
+            telefono:'',
+            sexo:'',
         }
+    }
+
+
+
+    registerUser = () =>{
+        const {nombre,apellido,fechaNacimiento,telefono,sexo,correoR,passR} = this.state;
+        firebase.auth().createUserWithEmailAndPassword(correoR,passR).then((success)=>{
+            let user = firebase.auth().currentUser;
+            var uid;
+            if(user != null){
+                uid = user.uid;
+            };
+            const datosUser = {
+                nombre:nombre,
+                apellido:apellido,
+                fechaNacimiento:fechaNacimiento,
+                telefono:telefono,
+                genero:sexo,
+                correo:correoR,
+                password:passR
+            }
+            db.collection('users').doc(uid).set(datosUser).then((snapshot)=>{
+                
+            })
+        }).catch((error)=>{
+            console.log(error.message)
+        })
     }
 
 
@@ -25,15 +62,45 @@ class Login extends Component{
         })
     }
 
-    action = () =>{
-        const {correo,pass} = this.state;
-        db.collection('users').add({
-            correo:correo,
-            pass:pass,
-        }).then(()=>{
-            console.log('Agregado')
-        }).catch(()=>{
-            console.log('error')
+    writePassR = (e) =>{
+        this.setState({
+            passR: e.target.value
+        })
+    }
+
+    writeCorreoR = (e) =>{
+        this.setState({
+            correoR:e.target.value
+        })
+    }
+
+    writeName = (e) =>{
+        this.setState({
+            nombre:e.target.value,
+        })
+    }
+
+    writeApellido = (e) =>{
+        this.setState({
+            apellido:e.target.value,
+        })
+    }
+
+    writeFecha = (e) =>{
+        this.setState({
+            fechaNacimiento:e.target.value,
+        })
+    }
+
+    writeGender = (e) =>{
+        this.setState({
+            sexo:e.target.value,
+        })
+    }
+
+    writeTelefono = (e) =>{
+        this.setState({
+            telefono:e.target.value,
         })
     }
 
@@ -42,24 +109,28 @@ class Login extends Component{
         var l = document.getElementById('log');
         var ini = document.getElementById('iniciar');
         var res = document.getElementById('resgitro');
+        var cont = document.getElementById('container-login');
 
-        if(l.style.display === 'none'){
+        if(l.style.display === 'none' && cont.style.minHeight == '100vh'){
             l.style.display = 'block';
             ini.classList.add('yellow');
             res.classList.remove('yellow');
             r.style.display = 'none';
+            cont.style.minHeight = '';
+
         }else{
             r.style.display = 'block';
             res.classList.add('yellow');
             ini.classList.remove('yellow');
             l.style.display = 'none';
+            cont.style.minHeight = '100vh';
         }
     }
 
     render(){
-        const {correo,pass} = this.state;
+        const {correo,pass,passR,correoR,nombre,apellido,telefono,sexo,fechaNacimiento} = this.state;
         return(
-            <div className="container-login">
+            <div className="container-login" id='container-login'>
                 <div className="title-login">
                         <label className="h1">¿No tienes cuenta?</label>
                         <label className="middle-text-log">Crea una y empieza a ordenar</label>
@@ -89,27 +160,46 @@ class Login extends Component{
                     <div className="form-group">
                         <div className="input-group">
                             <label>Nombre</label>
-                            <input type="email" className="input-login"/>
+                            <input type="text" className="input-login" spellCheck='false' value={nombre} onChange={this.writeName}/>
                         </div>
                         <div className="input-group">
                             <label>Apellido</label>
-                            <input type="password" className="input-login"/>
+                            <input type="text" className="input-login" spellCheck='false' value={apellido} onChange={this.writeApellido}/>
+                        </div>
+                        <div className="input-group">
+                            <label>Email</label>
+                            <input type="email" className="input-login" id='email' value={correoR} onChange={this.writeCorreoR}/>
+                        </div>
+                        <div className="input-group">
+                            <label>Pasword</label>
+                            <input type="password" className="input-login" value={passR} onChange={this.writePassR} id="pass"/>
                         </div>
                         <div className="input-group">
                             <label>Telefono</label>
-                            <input type="password" className="input-login"/>
+                            <input type="text" className="input-login" vallue={telefono} onChange={this.writeTelefono}/>
                         </div>
                         <div className="input-group">
                             <label>Fecha de nacimiento</label>
-                            <input type="password" className="input-login"/>
+                            <input type="date" className="input-login" value={fechaNacimiento} onChange={this.writeFecha}/>
                         </div>
                         <div className="input-group">
                             <label>Sexo</label>
-                            <input type="password" className="input-login"/>
+                                <div className="container-gender">
+                                        <div>
+                                            <input type="radio" className="gender" name='genero' value='Masculino' defaultChecked id='masculino' onChange={this.writeGender}/>
+                                            <label htmlFor='masculino' className="radio"></label>
+                                            <span htmlFor='masculino'>Masculino</span>
+                                        </div>
+                                        <div>
+                                            <input type="radio" className="gender" name='genero' value='Femenino' id="femenino" onChange={this.writeGender}/>
+                                            <label htmlFor='femenino' className="radio"></label>
+                                            <span htmlFor='femenino'>Femenino</span>
+                                        </div>
+                                </div>
                         </div>
                     </div>
                         <div className='button-con'>
-                            <button onClick={this.action}>Iniciar</button>
+                            <button onClick={this.registerUser}>Registrar</button>
                         </div>
                     </div>
 

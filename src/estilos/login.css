@@ -20,6 +20,17 @@ html {
     flex: 1 1 auto;
 }
 
+.container-gender{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-around;
+}
+
+.gender{
+    display: none;
+}
+
+
 *{
     box-sizing: border-box;
 }
@@ -76,6 +87,30 @@ html {
     width: 80%;
     color:#bdbdbd;
     margin-bottom: 10px;
+}
+
+.container-gender .radio{
+    display: inline-block;
+    position: relative;
+    top:14px;
+    border: 2px solid #fec405;
+    width: 18px;
+    padding: 5px;
+    height: 18px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 50px;
+    right: 5px;
+}
+
+input[type='date']{
+    color:#bdbdbd;
+}
+
+.gender:checked ~ .radio{
+    background-color: #fec405;
+    padding: 5px;
+
 }
 
 .h1{
