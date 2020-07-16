@@ -49,6 +49,17 @@ button{
     margin-bottom: 0;
 }
 
+
+ .form-group {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    flex-wrap: wrap;
+ }   
+
+
 .view-addres{
     background: #ececec;
     color:#000 !important;
@@ -105,6 +116,10 @@ button{
 @media screen and (min-width:1024px){
     .container-profile{
         width: 45%;
+
+    }
+    .form-group{
+        width:60%;
     }
 
     .view-addres{
