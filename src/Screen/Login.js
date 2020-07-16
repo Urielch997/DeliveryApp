@@ -154,7 +154,7 @@ class Login extends Component{
                         <label onClick={this.viewChange} id="resgitro">REGISTRARME</label>
                     </div>
                     <div id="log">
-                    <div className="form-group">
+                    <div className="form-group-login">
                         <div className="input-group">
                             <label>Correo</label>
                             <input type="email" className="input-login" value={correo} onChange={this.changeValue}/>
@@ -170,7 +170,7 @@ class Login extends Component{
                     </div>
 
                     <div id="register">
-                    <div className="form-group">
+                    <div className="form-group-login">
                         <div className="input-group">
                             <label>Nombre</label>
                             <input type="text" className="input-login" spellCheck='false' value={nombre} onChange={this.writeName}/>
