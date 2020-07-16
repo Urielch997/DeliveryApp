@@ -4,6 +4,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import {Link} from 'react-router-dom';
 import firebase from 'firebase';
+import userIcon from '../img/userprofile.png';
 
 
 class Footer extends Component{
@@ -38,7 +39,7 @@ class Footer extends Component{
                 <Link to='/'><li><HomeIcon/></li></Link>
                 <li><SearchIcon/></li>
                 <li>Ordenes</li>
-                {this.state.loged ? <Link to='/perfil'><li><PermIdentityIcon/></li></Link> : <Link to='/login'><li><PermIdentityIcon/></li></Link>}
+                {this.state.loged ? <Link to='/perfil'><li><div className='footer-icon-user'><img src={userIcon} alt='icon' className='iconuser'/></div></li></Link> : <Link to='/login'><li><PermIdentityIcon/></li></Link>}
             </ul>
         </div>
     )

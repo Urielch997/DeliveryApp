@@ -109,6 +109,18 @@ ul{
     border-radius: 10px;
 }
 
+.footer-icon-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 30px;
+}
+
+.footer-icon-user .iconuser{
+    height: 100%;
+}
+
 
 ul li{
     display: inline-flex;
