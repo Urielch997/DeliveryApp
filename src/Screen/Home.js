@@ -7,31 +7,44 @@ import db from '../fireConfig';
 
 
 class Home extends Component{
-  
+  _isMounted = false;
+
   state = {
     banner:[],
     datosUsuario:[],
     login:false,
   }
 
-  async componentDidMount(){
+  componentDidMount(){
+    this._isMounted = true;
     this.getData()
       firebase.auth().onAuthStateChanged((user) =>{
-          user ? 
+         if(user){  
           db.collection('users').doc(user.uid).get().then((snapshot) =>{
+            if(this._isMounted){
                   this.setState({
                       datosUsuario:{ ...snapshot.data()},
                       login:true
                   })
+                }
               })
-          :
+            }else{
+              if(this._isMounted){
           this.setState({
               login:false,
           })
+        }
+        
+      }
       })
   }
 
-  getData(){
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  getData = () =>{
     db.collection('banner').get().then(snapshot =>{
       this.setState({
         banner:snapshot.docs.map(data=>{
@@ -46,7 +59,7 @@ class Home extends Component{
     return(
             <>
               <div className="title-tex">
-    <label  className='title'>{ datosUsuario.nombre ? <>Hola{`, ${datosUsuario.nombre}`}</> : <>Hola</>}</label>
+                    <label  className='title'>{ datosUsuario.nombre ? <>Hola{`, ${datosUsuario.nombre}`}</> : <>Hola</>}</label>
                   <label className="middle-text">¿Que vas a comer hoy?</label>
               </div>
 
