@@ -68,7 +68,7 @@ html {
     align-items: center;
     justify-content: center;
 }
-.form-group{
+.form-group-login{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
