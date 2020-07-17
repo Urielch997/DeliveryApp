@@ -22,14 +22,15 @@ class Login extends Component{
     }
 
     registerUser = () =>{
+        const history = this.props.history;
         const {nombre,apellido,fechaNacimiento,telefono,sexo,correoR,passR} = this.state;
         firebase.auth().createUserWithEmailAndPassword(correoR,passR).then((success)=>{
+            firebase.auth().signInWithEmailAndPassword(correoR,passR).then(()=>{
             let user = firebase.auth().currentUser;
             var uid;
             if(user != null){
                 uid = user.uid;
             };
-            const history = this.props.history;
             const datosUser = {
                 nombre:nombre,
                 apellido:apellido,
@@ -42,6 +43,8 @@ class Login extends Component{
             db.collection('users').doc(uid).set(datosUser).then((snapshot)=>{
                 history.push('/')
             })
+        })
+            /** */
         }).catch((error)=>{
             console.log(error.message)
         })
