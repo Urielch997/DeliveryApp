@@ -4,12 +4,14 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import db from "../fireConfig";
 import useSearch from "../hooks/useSearch";
-const ListCards = () => {
+import { getAllByDisplayValue } from "@testing-library/react";
+const ListCards = (props) => {
   const [filteredData, setSearch, setSourceData] = useSearch();
   const [img, setImg] = useState([]);
   const [items, setItems] = useState([]);
   const [loading, setLoadig] = useState();
   const addData = () => {
+    setSearch(props.searchValue);
     setSourceData(img);
   };
   const getData = () => {
@@ -52,23 +54,11 @@ const ListCards = () => {
 
   useEffect(() => {
     addData();
-    console.log(filteredData);
   }, [filteredData]);
 
   return (
     <div className="center">
-      <div className="cards-container">
-        <input
-          type="text"
-          id="search"
-          onChange={(e) => setSearch(e.target.value)}
-          className="search-input"
-          placeholder="Buscar un comercio"
-        />
-        <div className="circle-icon">
-          <SearchIcon />
-        </div>
-      </div>
+      
       <div className="ListCard-container ">
         {loading ? (
           filteredData.map((datos) => {

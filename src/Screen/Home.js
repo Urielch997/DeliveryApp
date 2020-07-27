@@ -10,12 +10,14 @@ class Home extends Component{
   _isMounted = false;
 
   state = {
+
     banner:[],
     datosUsuario:[],
     login:false,
   }
 
   componentDidMount(){
+    console.log(this.props.searchValue);
     this._isMounted = true;
     this.getData()
       firebase.auth().onAuthStateChanged((user) =>{
@@ -68,7 +70,7 @@ class Home extends Component{
               </div>
               <Navmidle/>
               <div className="ListCard-container">
-                <ListCards/>   
+                <ListCards searchValue={this.props.searchValue === undefined ? " ": this.props.searchValue}/>   
               </div>  
             </>
     );

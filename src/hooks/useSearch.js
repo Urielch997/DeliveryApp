@@ -7,8 +7,6 @@ const useSearch = () => {
 
   const filter = () => {
     const value = searchValue.toLowerCase().trim().split(" ");
-    console.log(value);
-    console.log(sourceData);
     const filteredData = sourceData.filter((item, i) => {
       let res = false;
       for (const prop in item) {
