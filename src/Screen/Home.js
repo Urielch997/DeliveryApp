@@ -61,8 +61,8 @@ class Home extends Component{
     return(
             <>
               <div className="title-tex">
-                    <label  className='title'>{ datosUsuario.nombre ? <>Hola{`, ${datosUsuario.nombre}`}</> : <>Hola</>}</label>
-                  <label className="middle-text">¿Que vas a comer hoy?</label>
+                    <label>{ datosUsuario.nombre ? <>Hola{`, ${datosUsuario.nombre}`}</> : <>Hola</>}</label>
+                  <label>¿Que vas a comer hoy?</label>
               </div>
 
             <div className="cards-container">

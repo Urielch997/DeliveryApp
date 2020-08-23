@@ -1,6 +1,7 @@
 import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
-import RoomIcon from "@material-ui/icons/Room";
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+
 
 const Header = (props) => {
   const { handleSearch } = props;
@@ -8,9 +9,9 @@ const Header = (props) => {
     <div className="search">
       <div className="container-head">
         <div className="seccion-head">
-          <label className="white">Final ex administracion de renta</label>
+          <label>Final ex administracion de renta</label>
           <div className="circle-icon">
-            <RoomIcon />
+            <LocationOnOutlinedIcon />
           </div>
         </div>
         <div className="seccion-head">
@@ -21,7 +22,7 @@ const Header = (props) => {
             className="search-input"
             placeholder="Buscar un comercio"
           />
-          <div className="circle-icon">
+          <div className="search-icon">
             <SearchIcon />
           </div>
         </div>
