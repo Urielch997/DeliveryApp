@@ -4,11 +4,10 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import {Link} from 'react-router-dom';
 import firebase from 'firebase';
 import userIcon from '../img/userprofile.png';
-import {ReactComponent as ReactLogo} from '../img/icons/footer/home.svg';
-import home from '../img/icons/footer/home.svg';
-import favorite from '../img/icons/footer/favorite.svg';
-import persona from '../img/icons/footer/persona.svg';
-import tienda from '../img/icons/footer/tienda.svg';
+import {ReactComponent as Home} from '../img/icons/footer/home.svg';
+import {ReactComponent as Favorite} from '../img/icons/footer/favorite.svg';
+import {ReactComponent as Persona} from '../img/icons/footer/persona.svg';
+import {ReactComponent as Tienda} from '../img/icons/footer/tienda.svg';
 
 class Footer extends Component{
     state = {
@@ -39,10 +38,10 @@ class Footer extends Component{
     return(
         <div className="footer">
             <ul>
-                <li><Link to='/'><ReactLogo/></Link></li>
-                <li><img src={favorite}/></li>
-                <li><img src={tienda}/></li>
-                {this.state.loged ? <li><><Link to='/perfil'><img src={userIcon} alt='icon' className='iconuser'/></Link></></li> : <li><Link to='/login'><img src={persona}/></Link></li>}
+                <li><Link to='/'><Home className='yellow'/></Link></li>
+                <li><Favorite/></li>
+                <li><Tienda/></li>
+                {this.state.loged ? <li><><Link to='/perfil'><img src={userIcon} alt='icon' className='iconuser'/></Link></></li> : <li><Link to='/login'><Persona/></Link></li>}
             </ul>
         </div>
     )

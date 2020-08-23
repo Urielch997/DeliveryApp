@@ -3,6 +3,11 @@
     src:url('fonts/Scanno-Medium.otf');
 }
 
+@font-face{
+    font-family:'Scanno bold';
+    src:url('fonts/Scanno-SemiBold.ttf');
+}
+
 body{
     background:#f7f7f7f7;
     margin: 0;
@@ -124,12 +129,21 @@ html {
     display: inline-flex;
 }
 
+.yellow path{
+    fill:#fec405;
+}
+
 .ul-card > li{
     display: inline;
 }
 
 .container-navmidle ul{
     opacity: 0.94;
+    width: 85%;
+    box-shadow: 0.5px 0.5px 0px rgba(0,0,0, 0.2);
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
 }
 
 ul{
@@ -164,7 +178,7 @@ ul li{
     margin-top: 5px;
     justify-content: center;
     position: sticky;
-    top:90px;
+    top:100px;
     z-index:2000;
 }
 
@@ -198,10 +212,14 @@ ul li{
     margin-top:20px;
     display: flex;
     flex-wrap: wrap;
+    margin-left:15px;
 }
 
 .title-tex label{
     width: 100%;
+    font-family:'Scanno bold';
+    font-weight: 900;
+    font-size:20px;
 }
 
 .cards-list{
