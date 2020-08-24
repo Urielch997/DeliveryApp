@@ -367,7 +367,9 @@ a{
     }
 
     .title-tex{
-        width: 100%;
+        width: 30%;
+        margin:20px auto 0;
+        text-align:center;
     }
 
     .ListCard-container{
@@ -413,5 +415,39 @@ a{
         display: inline;
         margin:0px;
         padding: 0px;
+    }
+
+    .container-navmidle > ul{
+        width: 30%;
+        background:#fff;
+    }
+
+    .container-navmidle{
+        top:45px;
+    }
+
+    .container-head{
+        width: 60%;
+        display: inline-flex;
+        flex-wrap: nowrap;
+        flex-direction: row-reverse;
+        justify-content: left;
+        align-items: left;
+    }
+
+    .search{
+        justify-content: left;
+    }
+
+    .seccion-head{
+        width: 50%;
+    }
+
+    .seccion-head:nth-child(1){
+        padding:0;
+    }
+
+    .seccion-head:nth-child(2){
+        margin:0;
     }
 }
