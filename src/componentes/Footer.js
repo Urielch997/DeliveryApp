@@ -38,10 +38,10 @@ class Footer extends Component{
     return(
         <div className="footer">
             <ul>
-                <li><Link to='/'><Home className='yellow'/></Link></li>
-                <li><Favorite/></li>
-                <li><Tienda/></li>
-                {this.state.loged ? <li><><Link to='/perfil'><img src={userIcon} alt='icon' className='iconuser'/></Link></></li> : <li><Link to='/login'><Persona/></Link></li>}
+                <li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
+                <li><Favorite/><span className='text-info'>FAVORITOS</span></li>
+                <li><Tienda/><span className='text-info'>ORDENES</span></li>
+                {this.state.loged ? <li><><Link to='/perfil' className='line-link'><img src={userIcon} alt='icon' className='iconuser'/></Link></></li> : <li><Link to='/login' className='line-link'><Persona/><span className='text-info'>PERFIL</span></Link></li>}
             </ul>
         </div>
     )

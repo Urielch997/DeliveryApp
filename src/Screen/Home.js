@@ -64,14 +64,14 @@ class Home extends Component{
                     <label>{ datosUsuario.nombre ? <>Hola{`, ${datosUsuario.nombre}`}</> : <>Hola</>}</label>
                   <label>¿Que vas a comer hoy?</label>
               </div>
-
-            <div className="cards-container">
+              <Navmidle/>
+              <div className='container-content'>
+              <div className="cards-container">
+                <span className='text-info'>PROMOS DE HOY</span>
                 <Cards url={banner}/>
               </div>
-              <Navmidle/>
-              <div className="ListCard-container">
-                <ListCards searchValue={this.props.searchValue === undefined ? " ": this.props.searchValue}/>   
-              </div>  
+                <ListCards searchValue={this.props.searchValue === undefined ? " ": this.props.searchValue}/>    
+              </div>
             </>
     );
   }

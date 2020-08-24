@@ -14,6 +14,14 @@ body{
     font-family: 'Scanno';
 }
 
+.container-content{
+    width: 100%;
+}
+
+.text-info{
+    display: none;
+}
+
 html {
     min-height: 100%;
     position: relative;
@@ -236,6 +244,11 @@ a{
     text-decoration: none;
 }
 
+.line-link{
+    display: inline-flex;
+    justify-content: center;
+}
+
 .card-img{
     height: 130px;
     background: rgb(26, 22, 22);
@@ -329,12 +342,7 @@ a{
 }
 
 @media screen and (min-width:1024px){
-    .ListCard-container{
-        width: 100%;
-        display: inline-flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+   
     .cards-list{
         width:45%;
         margin: 14px;
@@ -342,9 +350,68 @@ a{
 
     .card{
         width: 80%;
+        margin-top:20px;
     }
 
     .footer ul{
-        width: 50%;
+        width: 100%;
+    }
+
+    .cards-container{
+        width: 30%;
+        text-align: center;
+    }
+    .cards-container ul{
+        display: block;
+
+    }
+
+    .title-tex{
+        width: 100%;
+    }
+
+    .ListCard-container{
+        width: 100%;
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        float:left;
+    }
+
+    .container-content{
+        width:90%;
+        display: inline-flex;
+        flex-direction: row-reverse;
+        margin:0 auto;
+    }
+
+    .ul-card > .card:nth-child(1) > img{
+        margin-top:0;
+    }
+
+    .ul-card > .card > img{
+        margin-top:40px;
+    }
+
+
+    .center{
+        width: 80% !important;
+        margin:0;
+    }
+
+    .text-info{
+        display: block;
+        color:#222;
+    }
+
+    .footer > ul > li, .text-info{
+        display: flex;
+        vertical-align: middle;
+    }
+
+    .ul-card > li {
+        display: inline;
+        margin:0px;
+        padding: 0px;
     }
 }
