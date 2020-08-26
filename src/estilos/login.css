@@ -41,7 +41,6 @@ html {
     margin-top: 20px;
     width: 100%;
     border-radius:20px;
-    background: #ececec;
     padding: 10px;
     box-sizing: border-box;
 
@@ -53,27 +52,48 @@ html {
 }
 
 .input-login{
-    width: 80%;
+    width: 100%;
     border:0;
-    background: #fff;
+    background: #ececec;
     height: 35px;
-    border-radius: 50px;
+    border-radius: 10px;
     outline: none;
     padding: 0px 15px;
+    margin-top:5px;
 }
 
-.button-con{
-    width: 100%;
+.button-con-login, .button-con-login > button {
+    margin:0 auto;
+    width: 100% !important;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+    color:#fff;
 }
 .form-group-login{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 5px;
+}
+
+.button-con-login-fb, .button-con-login-fb > button{
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px auto;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.button-con-login-fb > button{
+    background: #3f51b5;
+}
+
+.button-con-login-fb > button > img{
+    width: 20px;
 }
 
 .input-group{

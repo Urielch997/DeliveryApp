@@ -170,6 +170,7 @@ class Login extends Component{
                     <div className='button-con'>
                         <button onClick={this.login}>Iniciar</button>
                     </div>
+                    
                     </div>
 
                     <div id="register">

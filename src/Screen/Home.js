@@ -6,6 +6,8 @@ import firebase from 'firebase';
 import db from '../fireConfig';
 
 
+
+
 class Home extends Component{
   _isMounted = false;
 
@@ -14,7 +16,9 @@ class Home extends Component{
     banner:[],
     datosUsuario:[],
     login:false,
+    open:false,
   }
+
 
   componentDidMount(){
     console.log(this.props.searchValue);

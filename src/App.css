@@ -31,10 +31,22 @@ html {
     background: #f7f7f7f7;
 }
 
+.react-responsive-modal-closeButton{
+    background:#fec405;
+    border-radius: 50px;
+    height: 30px;
+    width: 30px;
+    fill:#fff;
+}
+
+.react-responsive-modal-modalCenter{
+    border-radius:15px;
+}
+
 .search{
     position: sticky; 
     top:0;
-    z-index: 3000;
+    z-index: 1000;
     background: #f7f7f7f7;
     padding: 10px;
     box-sizing: border-box;
@@ -93,7 +105,7 @@ html {
 
 .seccion-head:nth-child(1){
     background:#fec405;
-    width:auto;
+    width:82%;
     padding:5px 10px;
     border-radius:10px;
     margin: 0 auto;
@@ -112,7 +124,6 @@ html {
 }
 
 .card{
-    background: #ececec;
     width: 270px;
     border-radius: 10px;
     height: 150px;
@@ -143,6 +154,7 @@ html {
 
 .ul-card > li{
     display: inline;
+    border-radius: 10px;
 }
 
 .container-navmidle ul{
@@ -186,8 +198,8 @@ ul li{
     margin-top: 5px;
     justify-content: center;
     position: sticky;
-    top:100px;
-    z-index:2000;
+    top:110px;
+    z-index:1000;
 }
 
 
@@ -341,6 +353,10 @@ a{
     background: rgba(0,0,0, 0.6);
 }
 
+.ul-card > .card > img{
+    border-radius: 15px;
+}
+
 @media screen and (min-width:1024px){
    
     .cards-list{
@@ -360,6 +376,7 @@ a{
     .cards-container{
         width: 30%;
         text-align: center;
+        min-height: 100vh;
     }
     .cards-container ul{
         display: block;
@@ -446,6 +463,11 @@ a{
 
     .seccion-head:nth-child(1){
         padding:0;
+    }
+
+    .text-info,.line-link{
+        vertical-align: middle;
+        margin-left: 5px;
     }
 
     .seccion-head:nth-child(2){
