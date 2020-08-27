@@ -133,6 +133,23 @@ input[type='date']{
 
 }
 
+.text-midle-button{
+    display:flex;
+    text-align: center;
+}
+
+.text-midle-text{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+hr{
+    width: 50%;
+    height: 1px;
+}
+
 .h1{
     font-size: 20px;
     font-weight: 700;

@@ -55,6 +55,10 @@ class Footer extends Component{
                     <div className="title-card">
                         <label id="iniciar">INICIAR SESION</label>
                     </div>
+                    <div className="input-group recor-group">
+                        <span>No tienes una cuenta?</span>
+                        <span className='yellow'>Registrate</span>
+                    </div>
                     <div id="log">
                     <div className="form-group-login">
                         <div className="input-group"> 
@@ -63,16 +67,16 @@ class Footer extends Component{
                         <div className="input-group">
                             <input type="password" className="input-login" placeholder='Contraseña'/>
                         </div>
-                        <div className="input-group">
-                            <label className='gender'></label>
-                            <input type="checkbox"/>
-                            <span>Recordarme</span>
-                            
+                        <div className="input-group recor-group">
+                            <label className='check-recor' for='chek'></label>
+                            <input type="checkbox" id='chek'/>
+                            <span>Recordarme</span>   
                         </div>
                     </div>
                     <div className='button-con-login'>
                         <button onClick={this.login}>Iniciar</button>
                     </div>
+                        <div className="text-midle-button recor-group"><hr></hr><span className='text-midle-text'>o si prefieres</span><hr></hr></div>
                     <div className='button-con-login-fb'>
                         <button onClick={this.login}><img src={Face}/></button>
                     </div>
