@@ -127,7 +127,7 @@ class Login extends Component{
         var res = document.getElementById('resgitro');
         var cont = document.getElementById('container-login');
 
-        if(l.style.display === 'none' && cont.style.minHeight === '100vh'){
+        if(l.style.display === 'none'){
             l.style.display = 'block';
             ini.classList.add('yellow');
             res.classList.remove('yellow');
@@ -139,7 +139,6 @@ class Login extends Component{
             res.classList.add('yellow');
             ini.classList.remove('yellow');
             l.style.display = 'none';
-            cont.style.minHeight = '100vh';
         }
     }
 

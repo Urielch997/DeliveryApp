@@ -9,6 +9,19 @@ html {
     position: relative;
 }
 
+.wrap{
+    width: 100%;
+    display: flex;
+}
+.wrap > .input-group{
+    width: 50%;
+}
+
+.wrap > .input-group:nth-child(1){
+    width: 50%;
+    margin-right:2px;
+}
+
 .container-login{
     box-sizing: border-box;
     width: 100%;
@@ -38,7 +51,6 @@ html {
     display: flex;
     justify-content: center;
     flex-wrap:wrap;
-    margin-top: 20px;
     width: 100%;
     border-radius:20px;
     padding: 10px;
