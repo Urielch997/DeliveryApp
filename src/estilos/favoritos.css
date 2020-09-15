@@ -1,0 +1,62 @@
+.container{
+    display: block !important;
+}
+
+.card-fav{
+    display: flex;
+    width: 45%;
+    background:#fff;
+    height: 200px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px rgba(0,0,0, 0.1);
+    margin:8px 8px;
+}
+
+.text-orange{
+    color:#fec405;
+}
+
+.titulo-fav{
+    height: 100px;
+    width: 80%;
+    margin:0 auto;
+}
+
+.cards-fav-container{
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.img-fav{
+    width: 50%;
+    overflow: hidden;
+    height: 100%;
+    padding: 10px;
+}
+
+.img-fav img{
+    border-radius:15px;
+    width: auto;
+    height: 100%;
+}
+
+.text-fav-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.text-fav-container:last-child{
+    margin-top:20px;
+}
+
+.text-fav-container > button {
+    margin-top: 50px;
+}
+
+.orange{
+    background:#fec405 !important;
+}

@@ -231,7 +231,7 @@ class Footer extends Component{
             </Modal>
             <ul>
                 <li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
-                <li><Favorite/><span className='text-info'>FAVORITOS</span></li>
+                <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
                 <li><Tienda/><span className='text-info'>ORDENES</span></li>
                 {this.state.loged ? <li><><img src={userIcon} alt='icon' className='iconuser' onClick={this.onOpenModal}/></></li> : <li onClick={this.onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
             </ul>

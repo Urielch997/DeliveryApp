@@ -7,6 +7,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Detalles from "../Screen/Detalles";
 import Perfil from "../Screen/Perfil";
+import Favorito from "../Screen/Favoritos";
 
 const History = createBrowserHistory();
 
@@ -25,6 +26,7 @@ const Routes = (props) => {
       <Switch history={History}>
         <Route exact path="/"  component={() => <Home searchValue={searchValue} />} />
         <Route path="/login" component={Login} />
+        <Route path='/favorito' component={Favorito}/>
         <Route path="/detalles" component={Detalles} />
         <Route path="/Perfil" component={Perfil} />
       </Switch>
