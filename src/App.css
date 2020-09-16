@@ -298,6 +298,10 @@ a{
     height: 100%;
 }
 
+.skeleton{
+    overflow: hidden !important;
+}
+
 @supports(object-fit: cover){
     .card-img .card-image{
       height: 100%;

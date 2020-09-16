@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Skeleton from 'react-loading-skeleton';
 import { Link } from "react-router-dom";
 import db from "../fireConfig";
 import useSearch from "../hooks/useSearch";
@@ -98,9 +99,18 @@ const ListCards = (props) => {
             );
           })
         ) : (
-          <div className="box">
-            <CircularProgress classes={{ svg: "red" }} />
+        <>
+        <div className="cards-list">
+          <div className="skeleton">
+            <Skeleton height={155}/>
           </div>
+    </div>
+          <div className="cards-list">
+          <div className="skeleton">
+            <Skeleton height={155}/>
+          </div>
+    </div>
+    </>
         )}
       </div>
     </div>
