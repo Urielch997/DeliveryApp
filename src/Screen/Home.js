@@ -12,8 +12,6 @@ class Home extends Component{
   _isMounted = false;
 
   state = {
-
-    banner:[],
     datosUsuario:[],
     login:false,
     open:false,
@@ -21,9 +19,7 @@ class Home extends Component{
 
 
   componentDidMount(){
-    console.log(this.props.searchValue);
     this._isMounted = true;
-    this.getData()
       firebase.auth().onAuthStateChanged((user) =>{
          if(user){  
           db.collection('users').doc(user.uid).get().then((snapshot) =>{
@@ -50,18 +46,8 @@ class Home extends Component{
     this._isMounted = false;
   }
 
-  getData = () =>{
-    db.collection('banner').get().then(snapshot =>{
-      this.setState({
-        banner:snapshot.docs.map(data=>{
-          return{url:data.data().url}
-        })
-      })
-    })
-  }
-
   render(){
-    const {banner,datosUsuario} = this.state
+    const {datosUsuario} = this.state
     return(
             <>
               <div className="title-tex">
@@ -72,7 +58,7 @@ class Home extends Component{
               <div className='container-content'>
               <div className="cards-container">
                 <span className='text-info'>PROMOS DE HOY</span>
-                <Cards url={banner}/>
+                <Cards/>
               </div>
                 <ListCards searchValue={this.props.searchValue === undefined ? " ": this.props.searchValue}/>    
               </div>

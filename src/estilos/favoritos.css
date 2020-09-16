@@ -55,6 +55,7 @@
 
 .text-fav-container > button {
     margin-top: 10px;
+    cursor:pointer;
 }
 
 
@@ -76,4 +77,10 @@
 
 .orange{
     background:#fec405 !important;
+}
+
+@media screen and (max-width:1024px){
+    .card-fav,.cards-fav-container{
+        width: 100%;
+    }
 }

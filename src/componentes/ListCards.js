@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import db from "../fireConfig";
 import useSearch from "../hooks/useSearch";
 import { getAllByDisplayValue } from "@testing-library/react";
+
+
 const ListCards = (props) => {
   const [filteredData, setSearch, setSourceData] = useSearch();
   const [img, setImg] = useState([]);
   const [items, setItems] = useState([]);
   const [loading, setLoadig] = useState();
+
   const addData = () => {
     setSearch(props.searchValue);
     setSourceData(img);
   };
-  const getData = () => {
+  const getRestaurantes = () => {
     db.collection("imagenes")
       .get()
       .then((snapshot) => {
@@ -45,7 +47,7 @@ const ListCards = (props) => {
     return h;
   };
   useEffect(() => {
-    getData();
+    getRestaurantes();
   }, []);
 
   useEffect(() => {
