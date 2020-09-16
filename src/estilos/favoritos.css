@@ -6,7 +6,7 @@
     display: flex;
     width: 45%;
     background:#fff;
-    height: 200px;
+    height: 150px;
     border-radius: 15px;
     box-shadow: 1px 1px 1px rgba(0,0,0, 0.1);
     margin:8px 8px;
@@ -40,7 +40,7 @@
 
 .img-fav img{
     border-radius:15px;
-    width: auto;
+    width: 100%;
     height: 100%;
 }
 
@@ -54,8 +54,25 @@
 }
 
 .text-fav-container > button {
-    margin-top: 50px;
+    margin-top: 10px;
 }
+
+
+@supports(object-fit: cover){
+    .img-fav img{
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /*.card img{
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+    }*/
+}
+
 
 .orange{
     background:#fec405 !important;
