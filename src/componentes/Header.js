@@ -20,7 +20,7 @@ const Header = (props) => {
     <div className="search" id='search-cont'>
       <div className="container-head">
         <div className="seccion-head">
-          <label>Final ex administracion de renta</label>
+          <label>Final ex administracion de rentas</label>
           <div className="circle-icon">
             <LocationOnOutlinedIcon />
           </div>
@@ -29,7 +29,7 @@ const Header = (props) => {
           <input
             type="text"
             id="search"
-            onChange={handleSearch}
+            onKeyUp={handleSearch}
             className="search-input"
             placeholder="Buscar un comercio"
           />

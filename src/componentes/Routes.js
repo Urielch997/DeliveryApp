@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import Detalles from "../Screen/Detalles";
 import Perfil from "../Screen/Perfil";
 import Favorito from "../Screen/Favoritos";
+import Ordenes from "../Screen/Ordenes";
 
 const History = createBrowserHistory();
 
@@ -17,9 +18,7 @@ const Routes = (props) => {
     setSearchValue(e.target.value);
   };
 
-  useEffect(() => {
-      //console.log(searchValue);
-  }, [searchValue]);
+ 
   return (
     <>
       <Header handleSearch={handleSearch} />
@@ -29,6 +28,7 @@ const Routes = (props) => {
         <Route path='/favorito' component={Favorito}/>
         <Route path="/detalles" component={Detalles} />
         <Route path="/Perfil" component={Perfil} />
+        <Route path="/Ordenes" component={Ordenes} />
       </Switch>
       <Footer isLoged={props.login} />
     </>

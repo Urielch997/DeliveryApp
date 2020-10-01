@@ -1,0 +1,19 @@
+.container-ordenes{
+    width: 90%;
+    margin:10px auto;
+}
+
+.container-datos-ordenes{
+    padding: 5px;
+    width: 60%;
+    background: #fff;
+}
+
+.btn-ordenes{
+    background:#fec405;
+    border-radius: 5px;
+    font-weight: normal;
+    color:#fff;
+    padding: 1px 2px;
+    height: 30px;
+}

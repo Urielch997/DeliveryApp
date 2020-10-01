@@ -6,7 +6,7 @@ const CardFav =()=>{
         <>
         <div className="card-fav">
                 <div className="img-fav">
-                    <img src={logo}/>
+                    <img src={logo} alt='logo'/>
                 </div>
                 <div className="img-fav text-fav-container">
                     <label className="text-orange">Titulo</label>
