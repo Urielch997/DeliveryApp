@@ -1,10 +1,20 @@
-import React from "react";
+import React,{useState} from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-
+import { Modal } from 'react-responsive-modal';
+import Map from '../componentes/Map';
 
 const Header = (props) => {
+  const [open,setOpen] = useState(false);
   const { handleSearch } = props;
+
+  function onOpenModal(){
+    setOpen(true);
+  };
+ 
+  function onCloseModal(){
+    setOpen(false);
+  };
 
  onscroll=()=>{
     var yScroll=document.documentElement.scrollTop+document.body.scrollTop;
@@ -16,10 +26,17 @@ const Header = (props) => {
     }
   }
 
+
+
+
   return (
+    
     <div className="search" id='search-cont'>
+      <Modal open={open} onClose={onCloseModal} center>
+          <Map/>
+      </Modal>
       <div className="container-head">
-        <div className="seccion-head">
+        <div className="seccion-head" onClick={onOpenModal}>
           <label>Final ex administracion de rentas</label>
           <div className="circle-icon">
             <LocationOnOutlinedIcon />
