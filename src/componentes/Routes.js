@@ -9,6 +9,7 @@ import Detalles from "../Screen/Detalles";
 import Perfil from "../Screen/Perfil";
 import Favorito from "../Screen/Favoritos";
 import Ordenes from "../Screen/Ordenes";
+import Logeado from '../Screen/Logeado';
 
 const History = createBrowserHistory();
 
@@ -17,6 +18,7 @@ const Routes = (props) => {
   const handleSearch = (e) => {
     setSearchValue(e.target.value);
   };
+
 
  
   return (
@@ -29,6 +31,7 @@ const Routes = (props) => {
         <Route path="/detalles" component={Detalles} />
         <Route path="/Perfil" component={Perfil} />
         <Route path="/Ordenes" component={Ordenes} />
+        <Route path="/logeado" component={Logeado} />
       </Switch>
       <Footer isLoged={props.login} />
     </>

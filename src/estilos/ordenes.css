@@ -11,6 +11,9 @@
     justify-content: center;
     align-items: center;
 }
+button{
+    cursor: pointer;
+}
 
 .btn-ordenes{
     background:#fec405;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link,matchPath,useParams } from 'react-router-dom';
 import firebase from 'firebase';
 import userIcon from '../img/userprofile.png';
 import {ReactComponent as Home} from '../img/icons/footer/home.svg';
@@ -8,7 +8,10 @@ import {ReactComponent as Persona} from '../img/icons/footer/persona.svg';
 import {ReactComponent as Tienda} from '../img/icons/footer/tienda.svg';
 import Face from '../img/icons/footer/facebook.png';
 import 'react-responsive-modal/styles.css';
+import { createBrowserHistory } from "history";
 import { Modal } from 'react-responsive-modal';
+
+const History = createBrowserHistory();
 
 class Footer extends Component{
     state = {
@@ -141,7 +144,9 @@ class Footer extends Component{
 
     render(){
         const {open,correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento} = this.state;
+        
     return(
+        
         <div className="footer">
             <Modal open={open} onClose={this.onCloseModal} center>
             <div className="container-login" id='container-login'>
@@ -229,11 +234,12 @@ class Footer extends Component{
                     </div>
                     </div>
             </Modal>
+            
             <ul>
                 <li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
                 <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
                 <li><Link to='/Ordenes' className='line-link'><Tienda/><span className='text-info'>ORDENES</span></Link></li>
-                {this.state.loged ? <li><><img src={userIcon} alt='icon' className='iconuser' onClick={this.onOpenModal}/></></li> : <li onClick={this.onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
+                {this.state.loged? <li><Link to='/Login'><img src={userIcon} alt='icon' className='iconuser'/></Link></li> : <li onClick={this.onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
             </ul>
         </div>
     )

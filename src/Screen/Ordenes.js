@@ -56,9 +56,9 @@ const Ordenes = () =>{
                             <div className='titulo-detail'><label>Detalle de tu orden</label></div>
                             <div>
                                 <ul className="list-order">
-                                    <li><img src={taco} className='tacoimg'/>Taki taki rumba</li>
-                                    <li><img src={taco} className='tacoimg'/>Taki taki rumba</li>
-                                    <li><img src={taco} className='tacoimg'/>Taki taki rumba</li>
+                                    <li><img src={taco} className='tacoimg' alt=''/>Taki taki rumba</li>
+                                    <li><img src={taco} className='tacoimg' alt=''/>Taki taki rumba</li>
+                                    <li><img src={taco} className='tacoimg' alt=''/>Taki taki rumba</li>
                                 </ul>
                                 <div className='text-center'>
                                     <label >Total: $50.25</label>
