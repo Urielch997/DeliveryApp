@@ -6,18 +6,14 @@ import db from "../fireConfig";
 import useSearch from "../hooks/useSearch";
 import { getAllByDisplayValue } from "@testing-library/react";
 
-
 const ListCards = (props) => {
+
   const [filteredData, setSearch, setSourceData] = useSearch();
   const [img, setImg] = useState([]);
-  const [items, setItems] = useState([]);
-  const [loading, setLoadig] = useState();
+  const [loading, setLoading] = useState(false);
 
-  const addData = () => {
-    setSearch(props.searchValue);
-    setSourceData(img);
-  };
   const getRestaurantes = () => {
+    console.log(loading);
     db.collection("imagenes")
       .get()
       .then((snapshot) => {
@@ -34,7 +30,7 @@ const ListCards = (props) => {
         );
       })
       .then(() => {
-        setLoadig(true);
+        setLoading(true);
       });
   };
   const getHoras = (hora) => {
@@ -47,19 +43,23 @@ const ListCards = (props) => {
     }
     return h;
   };
-  useEffect(() => {
-    getRestaurantes();
-  }, []);
 
-  useEffect(() => {
-    addData();
+  useEffect(()=>{
+    getRestaurantes();   
+  },[])
+
+ useEffect(() => {
+  setSearch(props.searchValue);
+  setSourceData(img);
+  
   }, [img]);
 
   useEffect(() => {
-    addData();
-  }, [filteredData]);
+    setSearch(props.searchValue);
+  }, [props.searchValue]);
 
   return (
+    
     <div className="center">
       
       <div className="ListCard-container ">

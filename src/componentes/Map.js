@@ -6,12 +6,12 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidXJpZWxjaDk5NyIsImEiOiJja2c0ZmRybmswazc4MnJsc
 
 const Map = () =>{
     const mapContainerRef = createRef();
+    
     const [location,setLocation] = useState({
         lng:13.5079,
         ltd: -88.8683,
-        zoom:15,
+        zoom:14,
       });
-    const [map, setMap] = useState(null);
 
   useEffect(() => {
       const {lng,ltd,zoom} = location;
@@ -22,6 +22,16 @@ const Map = () =>{
       zoom: zoom
     })
 
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+      positionOptions: {
+      enableHighAccuracy: true,
+      },
+      showUserLocation:true,
+      trackUserLocation: true
+      }),'top-left'
+      );
+
     map.on('move', () => {
         setLocation({
         lng: map.getCenter().lng.toFixed(4),
@@ -29,15 +39,6 @@ const Map = () =>{
         zoom: map.getZoom().toFixed(2)
         });
         });
-
-        map.addControl(
-          new mapboxgl.GeolocateControl({
-          positionOptions: {
-          enableHighAccuracy: true,
-          },
-          trackUserLocation: true
-          }),'top-left'
-          );
 
           
             map.on('load', function () {
@@ -71,6 +72,14 @@ const Map = () =>{
               }
               });
               });
+
+              var scale = new mapboxgl.ScaleControl({
+                maxWidth: 80,
+                unit: 'imperial'
+                });
+                map.addControl(scale);
+                 
+                scale.setUnit('metric');
 
         
   },[]);

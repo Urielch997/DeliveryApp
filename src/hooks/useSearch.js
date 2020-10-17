@@ -43,7 +43,7 @@ const useSearch = () => {
 
   useEffect(() => {
     filter();
-  },[searchValue, sourceData]);
+  },[sourceData,searchValue]);
 
   return [filtered, setSearchValue, setSourceData];
 };

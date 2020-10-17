@@ -5,11 +5,10 @@ import ListCards from '../componentes/ListCards';
 import firebase from 'firebase';
 import db from '../fireConfig';
 import Header from '../componentes/Header';
+import {selectActiveSearch} from '../store/search/reducer';
+import { connect } from 'react-redux';
 
-const Home =(props)=>{
-    const[value,setValue]=useState();
-    const {searchValue} = props;
-
+const Home =({search})=>{
     return(
             <>
               <div className="title-tex">
@@ -22,10 +21,16 @@ const Home =(props)=>{
                 <span className='text-info'>PROMOS DE HOY</span>
                 <Cards/>
               </div>
-                <ListCards searchValue={searchValue === undefined ? " ": searchValue}/>    
+                <ListCards searchValue={search === undefined ? " ": search}/>    
               </div>
             </>
     );
 }
 
-export default Home;
+const mapStateStore = state =>{
+  return {
+    search:selectActiveSearch(state)  
+  }
+}
+
+export default connect(mapStateStore)(Home);

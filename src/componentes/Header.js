@@ -3,10 +3,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Modal } from 'react-responsive-modal';
 import Map from '../componentes/Map';
+import handler from '../store/search/action';
+import { connect } from 'react-redux';
 
-const Header = (props) => {
+const Header = ({handler}) => {
   const [open,setOpen] = useState(false);
-  const { handleSearch } = props;
 
   function onOpenModal(){
     setOpen(true);
@@ -46,7 +47,7 @@ const Header = (props) => {
           <input
             type="text"
             id="search"
-            onKeyUp={handleSearch}
+            onKeyUp={(e)=>{handler(e.target.value)}}
             className="search-input"
             placeholder="Buscar un comercio"
           />
@@ -59,4 +60,4 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+export default connect(null,{handler})(Header);
