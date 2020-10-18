@@ -30,7 +30,7 @@ class Footer extends Component{
         sexo:'Masculino',
     }
 
-    async componentDidMount(){
+    /*async componentDidMount(){
         this.login();
     }
 
@@ -47,7 +47,7 @@ class Footer extends Component{
                     })
                 }
         })
-    }
+    }*/
     
     onOpenModal = () => {
         this.setState({ open: true });
@@ -140,7 +140,33 @@ class Footer extends Component{
             l.style.display = 'none';
             cont.style.minHeight = '80vh';
         }
-    } 
+    }
+
+    logFB(){
+        var provider = new firebase.auth.FacebookAuthProvider();
+
+        provider.setCustomParameters({
+            'display': 'popup'
+          });
+
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // ...
+          }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+          });
+    }
+
 
     render(){
         const {open,correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento} = this.state;
@@ -177,7 +203,7 @@ class Footer extends Component{
                     </div>
                         <div className="text-midle-button recor-group"><hr></hr><span className='text-midle-text'>o si prefieres</span><hr></hr></div>
                     <div className='button-con-login-fb'>
-                        <button onClick={this.login}><img src={Face}/></button>
+                        <button onClick={this.logFB}><img src={Face}/></button>
                     </div>
                     </div>
                     </div>
@@ -224,7 +250,7 @@ class Footer extends Component{
                     </div>
                         <div className="text-midle-button recor-group"><hr></hr><span className='text-midle-text'>o si prefieres</span><hr></hr></div>
                     <div className='button-con-login-fb'>
-                        <button onClick={this.login}><img src={Face}/></button>
+                        <button onClick={this.logFB}><img src={Face}/></button>
                     </div>
 
                         </div>
