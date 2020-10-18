@@ -10,3 +10,15 @@
     width: 90% !important;
     height: 80vh !important;
 }
+
+
+.btn-confirm{
+  z-index: 2000;
+  position:absolute;
+  width: 100%;
+  bottom: 0;
+  border-radius: 0;
+  left: 0;
+  font-weight: normal;
+  color:#fff;
+}

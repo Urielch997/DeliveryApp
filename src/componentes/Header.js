@@ -35,6 +35,7 @@ const Header = ({handler}) => {
     <div className="search" id='search-cont'>
       <Modal open={open} onClose={onCloseModal} center>
           <Map/>
+          <button className="btn-confirm"><LocationOnOutlinedIcon />Confirmar direccion</button>
       </Modal>
       <div className="container-head">
         <div className="seccion-head" onClick={onOpenModal}>
