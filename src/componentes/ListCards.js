@@ -13,7 +13,6 @@ const ListCards = (props) => {
   const [loading, setLoading] = useState(false);
 
   const getRestaurantes = () => {
-    console.log(loading);
     db.collection("imagenes")
       .get()
       .then((snapshot) => {

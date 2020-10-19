@@ -28,10 +28,11 @@ class Footer extends Component{
         fechaNacimiento:'',
         telefono:'',
         sexo:'Masculino',
+        userlog:['']
     }
 
-    /*async componentDidMount(){
-        this.login();
+    async componentDidMount(){
+        this.login()  
     }
 
     login(){
@@ -40,6 +41,10 @@ class Footer extends Component{
                 if(user){
                     this.setState({
                         loged:true,
+                        userlog:{
+                            imageProfile:user.photoURL,
+                            userName:user.displayName 
+                        }
                     })
                 }else{
                     this.setState({
@@ -47,7 +52,7 @@ class Footer extends Component{
                     })
                 }
         })
-    }*/
+    }
     
     onOpenModal = () => {
         this.setState({ open: true });
@@ -158,11 +163,15 @@ class Footer extends Component{
           }).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
+            console.log(errorCode)
             var errorMessage = error.message;
+            console.log(errorMessage)
             // The email of the user's account used.
             var email = error.email;
+            console.log(email)
             // The firebase.auth.AuthCredential type that was used.
             var credential = error.credential;
+            console.log(credential)
             // ...
           });
     }
@@ -170,7 +179,7 @@ class Footer extends Component{
 
     render(){
         const {open,correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento} = this.state;
-        
+        const {imageProfile,userName} = this.state.userlog
     return(
         
         <div className="footer">
@@ -193,9 +202,9 @@ class Footer extends Component{
                             <input type="password" className="input-login" placeholder='Contraseña'/>
                         </div>
                         <div className="input-group recor-group">
-                            <label className='check-recor' for='chek'></label>
+                            <label className='check-recor' htmlFor='chek'></label>
                             <input type="checkbox" id='chek'/>
-                            <span>Recordarme</span>   
+                            <span htmlFor='chek'>Recordarme</span>   
                         </div>
                     </div>
                     <div className='button-con-login'>
@@ -265,7 +274,7 @@ class Footer extends Component{
                 <li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
                 <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
                 <li><Link to='/Ordenes' className='line-link'><Tienda/><span className='text-info'>ORDENES</span></Link></li>
-                {this.state.loged? <li><Link to='/Login'><img src={userIcon} alt='icon' className='iconuser'/></Link></li> : <li onClick={this.onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
+                {this.state.loged? <li><Link to='/Login'><img src={imageProfile} alt='icon' className='iconuser'/></Link></li> : <li onClick={this.onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
             </ul>
         </div>
     )
