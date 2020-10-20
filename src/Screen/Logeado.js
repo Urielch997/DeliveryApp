@@ -2,9 +2,21 @@ import React from 'react';
 import picture from '../img/burger.jpg';
 import '../estilos/logeado.css';
 import facebookLogo from '../img/facebook.png';
+import firebase from 'firebase';
 import twitterLogo from '../img/twitter.png';
 
-const Logeado = () =>{
+const Logeado = (props) =>{
+    const history = props.history;
+
+    const logout = () =>{
+        firebase.auth().signOut().then(function() {
+            history.push('/')
+          }).catch(function(error) {
+            // An error happened.
+          });
+    }
+
+
     return(
         <div className='logeado-container'>
             <div className='rowLogeado'>
@@ -51,7 +63,7 @@ const Logeado = () =>{
                             <button className='button-logeado gray'>Contactanos</button>
                     </div>
                     <div className="d-flex">
-                        <button className='button-logeado w-40'>Cerrar sesion</button>
+                        <button className='button-logeado w-40' onClick={logout}>Cerrar sesion</button>
                     </div>
                 </div>
             </div>

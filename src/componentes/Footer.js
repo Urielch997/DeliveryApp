@@ -7,6 +7,7 @@ import {ReactComponent as Favorite} from '../img/icons/footer/favorite.svg';
 import {ReactComponent as Persona} from '../img/icons/footer/persona.svg';
 import {ReactComponent as Tienda} from '../img/icons/footer/tienda.svg';
 import Face from '../img/icons/footer/facebook.png';
+import db from '../fireConfig';
 import 'react-responsive-modal/styles.css';
 import { createBrowserHistory } from "history";
 import { Modal } from 'react-responsive-modal';
@@ -28,7 +29,7 @@ class Footer extends Component{
         fechaNacimiento:'',
         telefono:'',
         sexo:'Masculino',
-        userlog:['']
+        userlog:[]
     }
 
     async componentDidMount(){
@@ -37,13 +38,13 @@ class Footer extends Component{
 
     login(){
         firebase.auth().onAuthStateChanged((user)=>{
-            console.log(user)
                 if(user){
+                    console.log(user)
+                   
                     this.setState({
                         loged:true,
                         userlog:{
-                            imageProfile:user.photoURL,
-                            userName:user.displayName 
+                            img:user.photoURL
                         }
                     })
                 }else{
@@ -154,11 +155,24 @@ class Footer extends Component{
             'display': 'popup'
           });
 
+        provider.addScope('public_profile,email');
+
         firebase.auth().signInWithPopup(provider).then(function(result) {
             // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        
+            
             var token = result.credential.accessToken;
             // The signed-in user info.
-            var user = result.user;
+            var usuariofb = result.user;
+
+            this.setState({ open: false });
+
+            console.log(usuariofb)
+            
+    
+            
+            
+           
             // ...
           }).catch(function(error) {
             // Handle Errors here.
@@ -179,7 +193,7 @@ class Footer extends Component{
 
     render(){
         const {open,correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento} = this.state;
-        const {imageProfile,userName} = this.state.userlog
+        const {img,userName} = this.state.userlog
     return(
         
         <div className="footer">
@@ -274,7 +288,7 @@ class Footer extends Component{
                 <li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
                 <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
                 <li><Link to='/Ordenes' className='line-link'><Tienda/><span className='text-info'>ORDENES</span></Link></li>
-                {this.state.loged? <li><Link to='/Login'><img src={imageProfile} alt='icon' className='iconuser'/></Link></li> : <li onClick={this.onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
+                {this.state.loged? <li><Link to='/Logeado'><img src={img} alt='icon' className='iconuser'/></Link></li> : <li onClick={this.onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
             </ul>
         </div>
     )
