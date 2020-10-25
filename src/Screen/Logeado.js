@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import picture from '../img/burger.jpg';
 import '../estilos/logeado.css';
+import {connect} from 'react-redux'; 
 import facebookLogo from '../img/facebook.png';
 import firebase from 'firebase';
+import {addsesion} from '../store/sesion/reducer';
 import twitterLogo from '../img/twitter.png';
 
 const Logeado = (props) =>{
     const history = props.history;
+    const [userInfo,setUserInfo] = useState({
+        img:'',
+        email:'',
+        foto:'',
+    })
 
     const logout = () =>{
         firebase.auth().signOut().then(function() {
@@ -16,14 +23,15 @@ const Logeado = (props) =>{
           });
     }
 
-
+    console.log(props.sesion)
+   
     return(
         <div className='logeado-container'>
             <div className='rowLogeado'>
                 <div className='seccion-logeado'>
                             <h2>Perfil</h2>
                             <div className='containerPicLog'>
-                                <img src={picture} alt='Foto de perfil' className='picture-profileLoageado'/>
+                                <img src={props.sesion.img} alt='Foto de perfil' className='picture-profileLoageado'/>
                             </div>
                             
                         </div>
@@ -32,11 +40,11 @@ const Logeado = (props) =>{
                             <div className='form-logeado'>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Nombre</label>
-                                <input type='text' className="input-login"/>
+                                <input type='text' className="input-login" value={props.sesion.displayName}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Correo Electronico</label>
-                                <input type='email' className="input-login"/>
+                                <input type='email' className="input-login" value={props.sesion.email}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Telefono</label>
@@ -84,4 +92,11 @@ const Logeado = (props) =>{
     );
 }
 
-export default Logeado;
+
+const mapStateStore = state =>{
+    return {
+        sesion:addsesion(state)  
+    }
+  }
+
+export default connect(mapStateStore)(Logeado);

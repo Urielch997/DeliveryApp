@@ -1,8 +1,10 @@
 import {createStore, combineReducers} from 'redux';
 import searchReducer from './search/reducer';
+import sesionadd from './sesion/reducer';
 
 const reducers = combineReducers({
-    searchReducer
+    searchReducer,
+    sesionadd
 });
 
 const store = createStore(

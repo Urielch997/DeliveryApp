@@ -9,6 +9,21 @@ html {
     position: relative;
 }
 
+.cards-container::-webkit-scrollbar{
+    background: transparent;
+    height: 10px;
+}
+
+.cards-container::-webkit-scrollbar-thumb{
+    background: #fec405;
+    width: 20px;
+    border-radius: 50px;
+}
+
+.cards-container::-webkit-scrollbar-track{
+    width: 20px;
+}
+
 .wrap{
     width: 100%;
     display: flex;

@@ -33,7 +33,7 @@ const Routes = (props) => {
         <Route path="/Ordenes" component={Ordenes} />
         <Route path="/logeado" component={Logeado} />
       </Switch>
-      <Footer isLoged={props.login} />
+      <Footer/>
     </>
   );
 };
