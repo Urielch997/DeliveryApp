@@ -6,14 +6,12 @@ import facebookLogo from '../img/facebook.png';
 import firebase from 'firebase';
 import {addsesion} from '../store/sesion/reducer';
 import twitterLogo from '../img/twitter.png';
+import useDatos from '../hooks/useLog';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Logeado = (props) =>{
     const history = props.history;
-    const [userInfo,setUserInfo] = useState({
-        img:'',
-        email:'',
-        foto:'',
-    })
+    const[loged,datos] = useDatos();
 
     const logout = () =>{
         firebase.auth().signOut().then(function() {
@@ -23,15 +21,15 @@ const Logeado = (props) =>{
           });
     }
 
-    console.log(props.sesion)
-   
+    console.log(datos)
+
     return(
         <div className='logeado-container'>
             <div className='rowLogeado'>
                 <div className='seccion-logeado'>
                             <h2>Perfil</h2>
                             <div className='containerPicLog'>
-                                <img src={props.sesion.img} alt='Foto de perfil' className='picture-profileLoageado'/>
+                                {loged?<img src={datos.img} alt='Foto de perfil' className='picture-profileLoageado'/>:<CircularProgress classes={{svg:'red'}}/>}
                             </div>
                             
                         </div>
@@ -40,11 +38,11 @@ const Logeado = (props) =>{
                             <div className='form-logeado'>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Nombre</label>
-                                <input type='text' className="input-login" value={props.sesion.displayName}/>
+                                <input type='text' className="input-login" value={datos.nombre}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Correo Electronico</label>
-                                <input type='email' className="input-login" value={props.sesion.email}/>
+                                <input type='email' className="input-login" value={datos.correo}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Telefono</label>

@@ -12,13 +12,17 @@ import { createBrowserHistory } from "history";
 import { Modal } from 'react-responsive-modal';
 import {connect} from 'react-redux';
 import datosLogeo from '../store/sesion/action';
+import {addsesion} from '../store/sesion/reducer';
+import useDatos from '../hooks/useLog';
 
 const History = createBrowserHistory();
 
 const Footer = ({datosLogeo}) =>{
+    const[loged,datos] = useDatos();
+    const[uidlog,setuidlog] = useState();
 
     const [data,setDATA] = useState({
-        loged:false,
+        logede:false,
         open:false,
         correo:'',
         pass:'',
@@ -32,7 +36,8 @@ const Footer = ({datosLogeo}) =>{
         telefono:'',
         sexo:'Masculino',
         userlog:[],
-        img:''
+        img:'',
+        load:false
     })
 
     function onOpenModal(){
@@ -100,11 +105,9 @@ const Footer = ({datosLogeo}) =>{
 
     useEffect(()=>{
         login();
+        
     },[])
 
-    useEffect(()=>{
-        datosLogeo(data);
-    },[data])
        
 
 
@@ -175,20 +178,29 @@ const Footer = ({datosLogeo}) =>{
     }
 
     function login(){
-        firebase.auth().onAuthStateChanged((usuario)=>{
+         firebase.auth().onAuthStateChanged(async (usuario)=>{
             if(usuario){
+                console.log(usuario.uid)
+                console.log(usuario.providerData[0].uid);
                 console.log(localStorage.getItem('token')||'Sin token')
-                fetch('https://graph.facebook.com/v8.0/'+usuario.providerData[0].uid+'/picture?access_token='+localStorage.getItem('token')).then((res)=>{
+                fetch('https://graph.facebook.com/v8.0/'+usuario.providerData[0].uid+'/picture?type=normal&access_token='+localStorage.getItem('token')).then((res)=>{
                     setDATA({
-                        img:res.url,
-                        loged:true
+                        userlog:{
+                            correo:usuario.email,
+                            nombre:usuario.displayName,
+                            img:res.url,
+                        },
+                        load:true,
+                        logede:true
                     })
+                    setuidlog(usuario.providerData[0].uid)
+        
                     
-                })
-                
+                }) 
             }else{
                 setDATA({
-                    loged:false
+                    logede:false,
+                    load:false,
                 })
             }
         })
@@ -196,8 +208,8 @@ const Footer = ({datosLogeo}) =>{
 
 
 
-        const {open,correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento,loged} = data;
-        const {img,userName} = data
+        const {open,correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento,logede,load,img,userName,userlog} = data;
+        console.log(load)
     return(
         
         <div className="footer">
@@ -292,11 +304,17 @@ const Footer = ({datosLogeo}) =>{
                 <li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
                 <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
                 <li><Link to='/Ordenes' className='line-link'><Tienda/><span className='text-info'>ORDENES</span></Link></li>
-                {loged? <li><Link to='/Logeado'><img src={img} alt='icon' className='iconuser'/></Link></li> : <li onClick={onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
+                {logede ? <li><Link to='/Logeado'><img src={userlog.img} alt='icon' className='iconuser'/></Link></li> : <li onClick={onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
             </ul>
         </div>
     )
     
 }
 
-export default connect(null,{datosLogeo})(Footer);
+const mapStateStore = state =>{
+    return {
+        sesion:addsesion(state)  
+    }
+  }
+
+export default connect(mapStateStore,{datosLogeo})(Footer);
