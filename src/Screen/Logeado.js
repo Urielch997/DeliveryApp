@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import picture from '../img/burger.jpg';
 import '../estilos/logeado.css';
 import {connect} from 'react-redux'; 
 import facebookLogo from '../img/facebook.png';
