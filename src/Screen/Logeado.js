@@ -11,6 +11,21 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const Logeado = (props) =>{
     const history = props.history;
     const[loged,datos] = useDatos();
+    const[login,setLogin] = useState(false);
+    const[useData,setUseData] = useState({
+        nombre:'',
+        img:'',
+        correo:'',
+    })
+
+    useEffect(()=>{
+        setUseData({
+            nombre:datos.nombre,
+            img:datos.img,
+            correo:datos.correo
+        })
+        setLogin(loged);  
+    },[datos])
 
     const logout = () =>{
         firebase.auth().signOut().then(function() {
@@ -20,7 +35,9 @@ const Logeado = (props) =>{
           });
     }
 
-    console.log(datos)
+
+
+    console.log(useData)
 
     return(
         <div className='logeado-container'>
@@ -28,7 +45,7 @@ const Logeado = (props) =>{
                 <div className='seccion-logeado'>
                             <h2>Perfil</h2>
                             <div className='containerPicLog'>
-                                {loged?<img src={datos.img} alt='Foto de perfil' className='picture-profileLoageado'/>:<CircularProgress classes={{svg:'red'}}/>}
+                                {login?<img src={useData.img} alt='Foto de perfil' className='picture-profileLoageado'/>:<CircularProgress classes={{svg:'red'}}/>}
                             </div>
                             
                         </div>
@@ -37,11 +54,11 @@ const Logeado = (props) =>{
                             <div className='form-logeado'>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Nombre</label>
-                                <input type='text' className="input-login" value={datos.nombre}/>
+                                <input type='text' className="input-login" value={useData.nombre}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Correo Electronico</label>
-                                <input type='email' className="input-login" value={datos.correo}/>
+                                <input type='email' className="input-login" value={useData.correo}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Telefono</label>

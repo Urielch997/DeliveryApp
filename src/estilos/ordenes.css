@@ -160,3 +160,30 @@ button{
     width: 100%;
     text-align: center;
 }
+
+@media screen and (max-width:1024px){
+    .container-datos-ordenes{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .info-order-date{
+        width: 100%;
+    }
+
+    .detail-order{
+        margin-left: 0;
+    }
+
+    .pay-method{
+        flex-wrap: wrap;
+    }
+
+    .order-colum{
+        width: 100%;
+    }
+
+    .w-30{
+        width: 60%;
+    }
+}
