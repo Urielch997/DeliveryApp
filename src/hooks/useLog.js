@@ -12,6 +12,7 @@ const useDatos = () =>{
         if(uid){
             db.collection('users').doc(uid).get().then(async (snapshot)=>{
                 setDatos(snapshot.data())
+                console.log(snapshot.data())
                 setloged(true)
             })
             
@@ -21,6 +22,8 @@ const useDatos = () =>{
     const logeado = () =>{
         firebase.auth().onAuthStateChanged((usuario)=>{
             if(usuario){
+                console.log('logeado')
+                
                 fetch('https://graph.facebook.com/v8.0/'+usuario.providerData[0].uid+'/picture?type=normal&access_token='+localStorage.getItem('token')).then((res)=>{
                     setDATA({
                         userlog:{
@@ -30,7 +33,7 @@ const useDatos = () =>{
                         }
                     })
                     setUid(usuario.providerData[0].uid)
-                    setloged(true)
+                    console.log(res.url)
                 })
                 
                 
@@ -43,7 +46,7 @@ const useDatos = () =>{
     useEffect(()=>{
         if(uid){
             db.collection('users').doc(uid).set(data.userlog).then((response)=>{
-               
+                console.log(response)
             })
         }
     },[uid])
