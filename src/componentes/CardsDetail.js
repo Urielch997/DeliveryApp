@@ -12,7 +12,9 @@ class CardsDetail extends Component {
         }
 
     componentDidMount(){
+        if(this.state.id){
         this.getData()
+        }
     }
     
 

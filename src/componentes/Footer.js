@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import firebase from 'firebase';
 import db from '../fireConfig';
 import {ReactComponent as Home} from '../img/icons/footer/home.svg';
@@ -17,8 +17,9 @@ import useDatos from '../hooks/useLog';
 
 const History = createBrowserHistory();
 
-const Footer = ({datosLogeo}) =>{
+const Footer = (props) =>{
     const[loged,datos] = useDatos();
+    const [sle,setsle] = useState(false);
     const[uidlog,setuidlog] = useState();
 
     const [data,setDATA] = useState({
@@ -180,9 +181,6 @@ const Footer = ({datosLogeo}) =>{
     function login(){
          firebase.auth().onAuthStateChanged(async (usuario)=>{
             if(usuario){
-                console.log(usuario.uid)
-                console.log(usuario.providerData[0].uid);
-                console.log(localStorage.getItem('token')||'Sin token')
                 fetch('https://graph.facebook.com/v8.0/'+usuario.providerData[0].uid+'/picture?type=normal&access_token='+localStorage.getItem('token')).then((res)=>{
                     setDATA({
                         userlog:{
@@ -209,7 +207,6 @@ const Footer = ({datosLogeo}) =>{
 
 
         const {open,correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento,logede,load,img,userName,userlog} = data;
-        console.log(load)
     return(
         
         <div className="footer">
@@ -299,9 +296,8 @@ const Footer = ({datosLogeo}) =>{
                     </div>
                     </div>
             </Modal>
-            
             <ul>
-                <li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
+                {sle?<li onClick={()=>{setsle(false)}}><Home className='yellow'/></li>:<li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>}
                 <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
                 <li><Link to='/Ordenes' className='line-link'><Tienda/><span className='text-info'>ORDENES</span></Link></li>
                 {logede ? <li><Link to='/Logeado'><img src={userlog.img} alt='icon' className='iconuser'/></Link></li> : <li onClick={onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}

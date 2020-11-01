@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import Skeleton from 'react-loading-skeleton';
-import { Link } from "react-router-dom";
 import db from "../fireConfig";
 import useSearch from "../hooks/useSearch";
-import { getAllByDisplayValue } from "@testing-library/react";
+import useClick from "../hooks/useClick";
+import Detalles from "../Screen/Detalles";
 
 const ListCards = (props) => {
-
+  const [setElegir,seleccionado,elegir] = useClick();
   const [filteredData, setSearch, setSourceData] = useSearch();
   const [img, setImg] = useState([]);
   const [loading, setLoading] = useState(false);
+
 
   const getRestaurantes = () => {
     db.collection("imagenes")
@@ -62,19 +62,14 @@ const ListCards = (props) => {
     <div className="center">
       
       <div className="ListCard-container ">
-        {loading ? (
+        {seleccionado?<Detalles props={elegir}/>:<>{loading ? (
           filteredData.map((datos) => {
             const hora = new Date().getHours();
             const apertura = datos.horario[0].substr(0, 2);
             const cierre = datos.horario[1].substr(0, 2);
             return (
-              <div className="cards-list" key={datos.id}>
-                <Link
-                  to={{
-                    pathname: "/detalles",
-                    state: datos,
-                  }}
-                >
+              
+              <div className="cards-list" key={datos.id} onClick={()=>{setElegir(datos)}}>
                   <div className="card-img">
                     {parseInt(hora) >= apertura && parseInt(hora) < cierre ? (
                       ""
@@ -93,7 +88,6 @@ const ListCards = (props) => {
                         : "Cerrado"}
                     </span>
                   </div>
-                </Link>
               </div>
             );
           })
@@ -110,7 +104,8 @@ const ListCards = (props) => {
           </div>
     </div>
     </>
-        )}
+        )}</>}
+        
       </div>
     </div>
   );

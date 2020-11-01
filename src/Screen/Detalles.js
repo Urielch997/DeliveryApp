@@ -5,8 +5,8 @@ import StarIcon from '@material-ui/icons/Star';
 import CardsDetail from '../componentes/CardsDetail';
 import {useLocation} from 'react-router-dom';
 
-const Detalles = () =>{
-
+const Detalles = (props) =>{
+    console.log(props.props)
     function hora(hora){
         var time = parseInt(hora.substr(0,2));
         var h;
@@ -19,7 +19,7 @@ const Detalles = () =>{
         return h;
     }
 
-    const {url,restaurante,id,horario} = useLocation().state
+    const {url,restaurante,id,horario} = props.props;
     return(
         
         <div className="container-detalles">

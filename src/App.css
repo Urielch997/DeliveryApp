@@ -80,7 +80,7 @@ html {
 .search{
     position: sticky; 
     top:0;
-    z-index: 1000;
+    z-index: 3000;
     background: #f7f7f7f7;
     padding: 10px;
     box-sizing: border-box;
@@ -200,6 +200,7 @@ html {
     border-radius:10px;
     display: flex;
     justify-content: center;
+    z-index: 2000;
 }
 
 ul{
@@ -228,6 +229,14 @@ ul li{
     font-weight: 500;
 }
 
+.iconuser{
+    border-radius: 50px;
+}
+
+.react-responsive-modal-overlay{
+    z-index: 3000;
+}
+
 .container-navmidle{
     display: inline-flex;
     width: 100%;
@@ -235,7 +244,7 @@ ul li{
     justify-content: center;
     position: sticky;
     top:110px;
-    z-index:1000;
+    z-index:2000;
 }
 
 
@@ -390,6 +399,7 @@ a{
     align-items: center;
     font-size: 30px;
     font-weight: 500;
+    color:#fff;
     background: rgba(0,0,0, 0.6);
 }
 

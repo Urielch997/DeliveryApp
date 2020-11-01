@@ -8,6 +8,7 @@ import {addsesion} from '../store/sesion/reducer';
 import twitterLogo from '../img/twitter.png';
 import useDatos from '../hooks/useLog';
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { cleanup } from '@testing-library/react';
 
 const Logeado = (props) =>{
     const history = props.history;
@@ -25,7 +26,8 @@ const Logeado = (props) =>{
             img:datos.img,
             correo:datos.correo
         })
-        setLogin(loged);  
+        setLogin(loged);
+       
     },[datos])
 
     const logout = () =>{

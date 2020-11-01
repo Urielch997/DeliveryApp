@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import db from "../fireConfig";
+import { cleanup } from '@testing-library/react';
 
 
 const Cards = () =>{  
@@ -20,6 +21,7 @@ const Cards = () =>{
     
     useEffect(()=>{
         getData();
+        return async ()=>{cleanup()}
     })
 
     return(
