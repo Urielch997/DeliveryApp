@@ -21,8 +21,8 @@ const Cards = () =>{
     
     useEffect(()=>{
         getData();
-        return async ()=>{cleanup()}
-    })
+        return ()=>{cleanup()}
+    },[])
 
     return(
         <>

@@ -22,7 +22,7 @@ const Header = ({handler}) => {
     var ancho = window.innerWidth;
     if(yScroll>0 && ancho > 1024){
       document.getElementById('search-cont').style = 'box-shadow: 0.5px 0.5px 7px rgba(0,0,0, 0.1);';
-    }else if(yScroll==0 && ancho > 1024){
+    }else if(yScroll===0 && ancho > 1024){
       document.getElementById('search-cont').style = 'box-shadow: 0.5px 0.5px 7px rgba(0,0,0, 0);';
     }
   }

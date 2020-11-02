@@ -6,7 +6,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidXJpZWxjaDk5NyIsImEiOiJja2c0ZmRybmswazc4MnJsc
 
 const Map = () =>{
     const mapContainerRef = createRef();
-    
+    const [Selectlocation,setSelectlocation] = useState("");
     const [location,setLocation] = useState({
         lng:13.5079,
         ltd: -88.8683,
@@ -119,7 +119,7 @@ const Map = () =>{
                     },
                     paint: {
                       'circle-radius': 10,
-                      'circle-color': '#f30'
+                      'circle-color': '#fec405'
                     }
                   });
                 }
@@ -128,39 +128,9 @@ const Map = () =>{
 
 
   // Add starting point to the map
-  map.addLayer({
-    id: 'point',
-    type: 'circle',
-    source: {
-      type: 'geojson',
-      data: {
-        type: 'FeatureCollection',
-        features: [{
-          type: 'Feature',
-          properties: {},
-          geometry: {
-            type: 'Point',
-            coordinates: [ltd,lng]
-          }
-        }
-        ]
-      }
-    },
-    paint: {
-      'circle-radius': 10,
-      'circle-color': '#3887be'
-    }
-  });
+
 
               });
-
-              var scale = new mapboxgl.ScaleControl({
-                maxWidth: 80,
-                unit: 'imperial'
-                });
-                map.addControl(scale);
-                 
-                scale.setUnit('metric');
 
                 function getRoute(end) {
                   // make a directions request using cycling profile
@@ -184,7 +154,9 @@ const Map = () =>{
                         coordinates: route
                       }
                     };
-                    console.log(json.routes[0].legs[0]);
+                    console.log(json.routes[0].legs[0].summary);
+                    setSelectlocation(json.routes[0].legs[0].summary);
+                   
                     // if the route already exists on the map, reset it using setData
                     if (map.getSource('route')) {
                       map.getSource('route').setData(geojson);

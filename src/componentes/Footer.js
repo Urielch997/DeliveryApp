@@ -19,7 +19,7 @@ const History = createBrowserHistory();
 
 const Footer = (props) =>{
     const[loged,datos] = useDatos();
-    const [sle,setsle] = useState(false);
+    
     const[uidlog,setuidlog] = useState();
 
     const [data,setDATA] = useState({
@@ -297,7 +297,7 @@ const Footer = (props) =>{
                     </div>
             </Modal>
             <ul>
-                {sle?<li onClick={()=>{setsle(false)}}><Home className='yellow'/></li>:<li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>}
+                <li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
                 <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
                 <li><Link to='/Ordenes' className='line-link'><Tienda/><span className='text-info'>ORDENES</span></Link></li>
                 {logede ? <li><Link to='/Logeado'><img src={userlog.img} alt='icon' className='iconuser'/></Link></li> : <li onClick={onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}

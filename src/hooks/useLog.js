@@ -29,7 +29,7 @@ const useDatos = () =>{
                             img:res.url,
                         }
                     })
-                    setUid(usuario.providerData[0].uid)
+                    setUid(usuario.uid)
                     setloged(true)
                 })
                 

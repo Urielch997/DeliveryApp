@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import useDatos from '../hooks/useLog';
 
 const Home =(props)=>{
-  const [ele,setEle] = useState(false);
   const[loged,datos] = useDatos();
 
     return(

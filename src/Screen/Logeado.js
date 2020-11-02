@@ -9,6 +9,9 @@ import twitterLogo from '../img/twitter.png';
 import useDatos from '../hooks/useLog';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { cleanup } from '@testing-library/react';
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+import { Modal } from 'react-responsive-modal';
+import Map from '../componentes/Map';
 
 const Logeado = (props) =>{
     const history = props.history;
@@ -19,6 +22,16 @@ const Logeado = (props) =>{
         img:'',
         correo:'',
     })
+    const[open,setOpen] = useState(false);
+
+
+    function onOpenModal(){
+        setOpen(true);
+      };
+     
+      function onCloseModal(){
+        setOpen(false);
+      };
 
     useEffect(()=>{
         setUseData({
@@ -27,12 +40,15 @@ const Logeado = (props) =>{
             correo:datos.correo
         })
         setLogin(loged);
-       
+       return ()=>{cleanup()}
     },[datos])
 
     const logout = () =>{
         firebase.auth().signOut().then(function() {
-            history.push('/')
+            if(loged){
+                history.push('/')
+            }
+            
           }).catch(function(error) {
             // An error happened.
           });
@@ -57,11 +73,11 @@ const Logeado = (props) =>{
                             <div className='form-logeado'>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Nombre</label>
-                                <input type='text' className="input-login" value={useData.nombre}/>
+                                <input type='text' className="input-login" value={useData.nombre?useData.nombre:''} onChange={(e)=>{setUseData({nombre:e.target.value,correo:datos.correo,img:datos.img})}}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Correo Electronico</label>
-                                <input type='email' className="input-login" value={useData.correo}/>
+                                <input type='email' className="input-login" value={useData.correo?useData.correo:''} onChange={(e)=>{setUseData({correo:e.target.value,nombre:datos.nombre,img:datos.img})}}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Telefono</label>
@@ -76,8 +92,12 @@ const Logeado = (props) =>{
             <div className='rowLogeado'>
                 <div className="seccion-logeado2">
                     <label>Direccion de entrega</label>
+                    <Modal open={open} onClose={onCloseModal} center>
+                        <Map/>
+                        <button className="btn-confirm"><LocationOnOutlinedIcon />Confirmar direccion</button>
+                    </Modal>
                     <div className='form-logeado d-flex'>
-                            <button className='button-logeado'>Añadir direccion de entrega</button>
+                            <button className='button-logeado' onClick={onOpenModal}>Añadir direccion de entrega</button>
                             <button className='button-logeado gray'>Bo los remedios zacatecoluca</button>
                     </div>
                 </div>
