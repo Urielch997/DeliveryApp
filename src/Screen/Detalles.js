@@ -6,7 +6,6 @@ import CardsDetail from '../componentes/CardsDetail';
 import {useLocation} from 'react-router-dom';
 
 const Detalles = (props) =>{
-    console.log(props.props)
     function hora(hora){
         var time = parseInt(hora.substr(0,2));
         var h;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import picture from '../img/burger.jpg';
 import '../estilos/logeado.css';
 import {connect} from 'react-redux'; 
 import facebookLogo from '../img/facebook.png';
@@ -12,6 +11,7 @@ import { cleanup } from '@testing-library/react';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Modal } from 'react-responsive-modal';
 import Map from '../componentes/Map';
+import {UpdateUser} from '../hooks/useUpdateInfo';
 
 const Logeado = (props) =>{
     const history = props.history;
@@ -21,6 +21,7 @@ const Logeado = (props) =>{
         nombre:'',
         img:'',
         correo:'',
+        telefono:'',
     })
     const[open,setOpen] = useState(false);
 
@@ -37,7 +38,8 @@ const Logeado = (props) =>{
         setUseData({
             nombre:datos.nombre,
             img:datos.img,
-            correo:datos.correo
+            correo:datos.correo,
+            uid:datos.uid
         })
         setLogin(loged);
        return ()=>{cleanup()}
@@ -54,10 +56,6 @@ const Logeado = (props) =>{
           });
     }
 
-
-
-    console.log(useData)
-
     return(
         <div className='logeado-container'>
             <div className='rowLogeado'>
@@ -73,18 +71,18 @@ const Logeado = (props) =>{
                             <div className='form-logeado'>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Nombre</label>
-                                <input type='text' className="input-login" value={useData.nombre?useData.nombre:''} onChange={(e)=>{setUseData({nombre:e.target.value,correo:datos.correo,img:datos.img})}}/>
+                                <input type='text' className="input-login" value={useData.nombre?useData.nombre:''} onChange={(e)=>{setUseData({nombre:e.target.value,correo:datos.correo,img:datos.img,uid:useData.uid})}}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Correo Electronico</label>
-                                <input type='email' className="input-login" value={useData.correo?useData.correo:''} onChange={(e)=>{setUseData({correo:e.target.value,nombre:datos.nombre,img:datos.img})}}/>
+                                <input type='email' className="input-login" value={useData.correo?useData.correo:''} onChange={(e)=>{setUseData({correo:e.target.value,nombre:datos.nombre,img:datos.img,uid:useData.uid})}}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Telefono</label>
-                                <input type='text' className="input-login"/>
+                                <input type='text' className="input-login" value={useData.telefono?useData.telefono:''} onChange={(e)=>{setUseData({img:useData.img,correo:useData.correo,nombre:useData.nombre,telefono:e.target.value,uid:useData.uid})}}/>
                             </div>
                             <div className="d-flex justify-content-center aling-items-center">
-                                <button className='button-logeado w-40'>Editar</button>
+                                <button className='button-logeado w-40' onClick={()=>{UpdateUser(useData,useData.uid)}}>Editar</button>
                             </div>
                         </div>
                     </div>

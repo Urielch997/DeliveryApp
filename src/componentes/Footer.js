@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {Link, useLocation} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import firebase from 'firebase';
-import db from '../fireConfig';
 import {ReactComponent as Home} from '../img/icons/footer/home.svg';
 import {ReactComponent as Favorite} from '../img/icons/footer/favorite.svg';
 import {ReactComponent as Persona} from '../img/icons/footer/persona.svg';
@@ -15,12 +14,13 @@ import datosLogeo from '../store/sesion/action';
 import {addsesion} from '../store/sesion/reducer';
 import useDatos from '../hooks/useLog';
 
+
 const History = createBrowserHistory();
 
 const Footer = (props) =>{
     const[loged,datos] = useDatos();
-    
     const[uidlog,setuidlog] = useState();
+
 
     const [data,setDATA] = useState({
         logede:false,
@@ -105,11 +105,11 @@ const Footer = (props) =>{
     }
 
     useEffect(()=>{
-        login();
-        
+        login(); 
+        if(props){
+            console.log(props)
+        }   
     },[])
-
-       
 
 
 
@@ -206,6 +206,7 @@ const Footer = (props) =>{
 
 
 
+
         const {open,correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento,logede,load,img,userName,userlog} = data;
     return(
         
@@ -297,7 +298,7 @@ const Footer = (props) =>{
                     </div>
             </Modal>
             <ul>
-                <li><Link to='/' className='line-link'><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
+                <li><Link to={{pathname: '/',state:'hola'}} className="line-link"><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
                 <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
                 <li><Link to='/Ordenes' className='line-link'><Tienda/><span className='text-info'>ORDENES</span></Link></li>
                 {logede ? <li><Link to='/Logeado'><img src={userlog.img} alt='icon' className='iconuser'/></Link></li> : <li onClick={onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}

@@ -4,12 +4,22 @@ import db from "../fireConfig";
 import useSearch from "../hooks/useSearch";
 import useClick from "../hooks/useClick";
 import Detalles from "../Screen/Detalles";
+import { useLocation } from 'react-router-dom';
+import {createBrowserHistory} from 'history';
+
+const History = createBrowserHistory();
 
 const ListCards = (props) => {
-  const [setElegir,seleccionado,elegir] = useClick();
+  const [setElegir,seleccionado,elegir,setSeleccionado] = useClick();
   const [filteredData, setSearch, setSourceData] = useSearch();
   const [img, setImg] = useState([]);
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+
+  useEffect(()=>{
+    setElegir("")
+    setSeleccionado(false)
+  },[location.key])
 
 
   const getRestaurantes = () => {
@@ -56,6 +66,14 @@ const ListCards = (props) => {
   useEffect(() => {
     setSearch(props.searchValue);
   }, [props.searchValue]);
+
+  useEffect(()=>{
+    if(elegir){
+    setSeleccionado(true)
+    }else{
+      setSeleccionado(false)
+    }
+  },[elegir])
 
   return (
     

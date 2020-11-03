@@ -27,6 +27,9 @@ const useDatos = () =>{
                             correo:usuario.email,
                             nombre:usuario.displayName,
                             img:res.url,
+                            uid:usuario.uid,
+                            telefono:''
+                            
                         }
                     })
                     setUid(usuario.uid)

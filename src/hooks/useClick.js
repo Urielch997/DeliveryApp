@@ -7,7 +7,7 @@ const useClick = () =>{
 
 
     useEffect(()=>{
-        if(elegir){
+        if(elegir !== ""){
          setSeleccionado(true) 
         }else{
          setSeleccionado(false)
@@ -16,7 +16,7 @@ const useClick = () =>{
 
 
 
-    return[setElegir,seleccionado,elegir];
+    return[setElegir,seleccionado,elegir,setSeleccionado];
 }
 
 export default useClick;
