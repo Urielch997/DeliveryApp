@@ -1,17 +1,36 @@
 import React,{createRef,useEffect,useState} from 'react';
 import mapboxgl from 'mapbox-gl';
 import '../estilos/Map.css';
+import { cleanup } from '@testing-library/react';
+import db from '../fireConfig';
+import firebase from 'firebase';
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJpZWxjaDk5NyIsImEiOiJja2c0ZmRybmswazc4MnJscGJieGR1cmpkIn0.dOm9wTLrzqWI6qlfYJ6JSA';
 
-const Map = () =>{
+export const GuardarDir = Selectlocation =>{
+  console.log(Selectlocation)
+  if(Selectlocation.direccion !==""){
+  db.collection('users').doc(firebase.auth().currentUser.uid).update(Selectlocation).then((res)=>{
+    console.log(res)
+  })
+}
+}
+
+const Map = (props) =>{
     const mapContainerRef = createRef();
-    const [Selectlocation,setSelectlocation] = useState("");
+    const [Selectlocation,setSelectlocation] = useState({direccion:""});
     const [location,setLocation] = useState({
         lng:13.5079,
         ltd: -88.8683,
         zoom:14,
       });
+
+    useEffect(()=>{
+      GuardarDir(Selectlocation);
+    },[Selectlocation.direccion])
+      
+
 
   useEffect(() => {
       const {lng,ltd,zoom} = location;
@@ -20,6 +39,7 @@ const Map = () =>{
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [ltd,  lng],
       zoom: zoom,
+      
     })
 
     var userlocate = new mapboxgl.GeolocateControl({
@@ -153,10 +173,7 @@ const Map = () =>{
                         type: 'LineString',
                         coordinates: route
                       }
-                    };
-                    console.log(json.routes[0].legs[0].summary);
-                    setSelectlocation(json.routes[0].legs[0].summary);
-                   
+                    };           
                     // if the route already exists on the map, reset it using setData
                     if (map.getSource('route')) {
                       map.getSource('route').setData(geojson);
@@ -187,11 +204,13 @@ const Map = () =>{
                       });
                     }
                     // add turn instructions here at the end
+                    setSelectlocation({direccion:json.routes[0].legs[0].summary})
                   };
+                  
                   req.send();
                 }
              
-  return ()=>{}
+  return ()=>{cleanup()}
         
   },[]);
 

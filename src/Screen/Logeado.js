@@ -39,7 +39,8 @@ const Logeado = (props) =>{
             nombre:datos.nombre,
             img:datos.img,
             correo:datos.correo,
-            uid:datos.uid
+            uid:datos.uid,
+            telefono:datos.telefono
         })
         setLogin(loged);
        return ()=>{cleanup()}
@@ -96,7 +97,7 @@ const Logeado = (props) =>{
                     </Modal>
                     <div className='form-logeado d-flex'>
                             <button className='button-logeado' onClick={onOpenModal}>Añadir direccion de entrega</button>
-                            <button className='button-logeado gray'>Bo los remedios zacatecoluca</button>
+                            <button className='button-logeado gray'>{datos.direccion?datos.direccion:"Seleccione una direccion"}</button>
                     </div>
                 </div>
                 <div className="seccion-logeado2">
