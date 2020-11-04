@@ -301,7 +301,7 @@ const Footer = (props) =>{
                 <li><Link to={{pathname: '/',state:'hola'}} className="line-link"><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
                 <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
                 <li><Link to='/Ordenes' className='line-link'><Tienda/><span className='text-info'>ORDENES</span></Link></li>
-                {logede ? <li><Link to='/Logeado'><img src={userlog.img} alt='icon' className='iconuser'/></Link></li> : <li onClick={onOpenModal}><Persona/><span className='text-info' >PERFIL</span></li>}
+                {logede ? <li><Link to='/Logeado'><img src={userlog.img} alt='icon' className='iconuser'/></Link></li> : <li onClick={onOpenModal} className="line-link"><Persona/><span className='text-info' >PERFIL</span></li>}
             </ul>
         </div>
     )

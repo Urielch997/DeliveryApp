@@ -304,6 +304,7 @@ a{
 .line-link{
     display: inline-flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .card-img{

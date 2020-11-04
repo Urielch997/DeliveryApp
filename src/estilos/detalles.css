@@ -17,7 +17,7 @@ html {
 .container-detalles{
     left: 0;
     margin: -5px auto 0;
-    width: 100%;
+    width: 90%;
     margin-top: 20px;
     border-radius: 5px 5px 0 0;
 }
@@ -125,13 +125,20 @@ html {
     width: 100%;
 }
 
-@media screen and (min-width:1024px){
+@media screen and (max-width:1024px){
     .menu-img{
         width: 30%;
     }
 
     .container-detalles{
-        width: 70%; 
+        width: 100%; 
 
+    }
+
+    .cards-detail{
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 }
