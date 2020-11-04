@@ -93,7 +93,6 @@ const Logeado = (props) =>{
                     <label>Direccion de entrega</label>
                     <Modal open={open} onClose={onCloseModal} center>
                         <Map/>
-                        <button className="btn-confirm"><LocationOnOutlinedIcon />Confirmar direccion</button>
                     </Modal>
                     <div className='form-logeado d-flex'>
                             <button className='button-logeado' onClick={onOpenModal}>Añadir direccion de entrega</button>

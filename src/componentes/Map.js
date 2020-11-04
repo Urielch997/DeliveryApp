@@ -3,16 +3,19 @@ import mapboxgl from 'mapbox-gl';
 import '../estilos/Map.css';
 import { cleanup } from '@testing-library/react';
 import db from '../fireConfig';
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import firebase from 'firebase';
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJpZWxjaDk5NyIsImEiOiJja2c0ZmRybmswazc4MnJscGJieGR1cmpkIn0.dOm9wTLrzqWI6qlfYJ6JSA';
 
-export const GuardarDir = Selectlocation =>{
+const GuardarDir = Selectlocation =>{
   console.log(Selectlocation)
   if(Selectlocation.direccion !==""){
-  db.collection('users').doc(firebase.auth().currentUser.uid).update(Selectlocation).then((res)=>{
+  db.collection('users').doc(firebase.auth().currentUser.uid).update(Selectlocation).then(res =>{
     console.log(res)
+  }).catch(err =>{
+    console.log(err)
   })
 }
 }
@@ -25,12 +28,6 @@ const Map = (props) =>{
         ltd: -88.8683,
         zoom:14,
       });
-
-    useEffect(()=>{
-      GuardarDir(Selectlocation);
-    },[Selectlocation.direccion])
-      
-
 
   useEffect(() => {
       const {lng,ltd,zoom} = location;
@@ -68,8 +65,7 @@ const Map = (props) =>{
         });
         });
 
-          
-            map.on('load', function () {
+    map.on('load', function () {
               map.addSource('maine', {
               'type': 'geojson',
               'data': {
@@ -152,7 +148,7 @@ const Map = (props) =>{
 
               });
 
-                function getRoute(end) {
+    function getRoute(end) {
                   // make a directions request using cycling profile
                   // an arbitrary start will always be the same
                   // only the end or destination will change
@@ -208,11 +204,19 @@ const Map = (props) =>{
                   };
                   
                   req.send();
-                }
+    }
+   
              
   return ()=>{cleanup()}
-        
+      
   },[]);
+
+  function handler(){
+    if(Selectlocation){
+    GuardarDir(Selectlocation)
+    }
+  }
+  
 
   
 
@@ -221,6 +225,7 @@ const Map = (props) =>{
             <div ref={mapContainerRef} className='map-container'>
                 
             </div>
+            <button className="btn-confirm" onClick={handler}><LocationOnOutlinedIcon />Confirmar direccion</button>
         </>
     );
 }

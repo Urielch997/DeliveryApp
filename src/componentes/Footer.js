@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import firebase from 'firebase';
 import {ReactComponent as Home} from '../img/icons/footer/home.svg';
 import {ReactComponent as Favorite} from '../img/icons/footer/favorite.svg';
@@ -20,6 +20,7 @@ const History = createBrowserHistory();
 const Footer = (props) =>{
     const[loged,datos] = useDatos();
     const[uidlog,setuidlog] = useState();
+    let uselocation = useLocation();
 
 
     const [data,setDATA] = useState({
@@ -106,9 +107,6 @@ const Footer = (props) =>{
 
     useEffect(()=>{
         login(); 
-        if(props){
-            console.log(props)
-        }   
     },[])
 
 
@@ -207,6 +205,7 @@ const Footer = (props) =>{
 
 
 
+
         const {open,correo,pass,passR,correoR,nombre,apellido,telefono,fechaNacimiento,logede,load,img,userName,userlog} = data;
     return(
         
@@ -298,9 +297,9 @@ const Footer = (props) =>{
                     </div>
             </Modal>
             <ul>
-                <li><Link to={{pathname: '/',state:'hola'}} className="line-link"><Home className='yellow'/><span className='text-info'>INICIO</span></Link></li>
-                <li><Link to='/favorito' className='line-link'><Favorite/><span className='text-info'>FAVORITOS</span></Link></li>
-                <li><Link to='/Ordenes' className='line-link'><Tienda/><span className='text-info'>ORDENES</span></Link></li>
+                <li><Link to={{pathname: '/',state:'hola'}} className="line-link"><Home className={uselocation.pathname === "/"?"yellow":""}/><span className={uselocation.pathname === "/"?"text-info yellow":"text-info"}>INICIO</span></Link></li>
+                <li><Link to='/favorito' className='line-link'><Favorite className={uselocation.pathname === "/favorito"?"yellow":""}/><span className={uselocation.pathname === "/favorito"?"text-info yellow":"text-info"}>FAVORITOS</span></Link></li>
+                <li><Link to='/Ordenes' className='line-link'><Tienda className={uselocation.pathname === "/Ordenes"?"yellow":""}/><span className={uselocation.pathname === "/Ordenes"?"text-info yellow":"text-info"}>ORDENES</span></Link></li>
                 {logede ? <li><Link to='/Logeado'><img src={userlog.img} alt='icon' className='iconuser'/></Link></li> : <li onClick={onOpenModal} className="line-link"><Persona/><span className='text-info' >PERFIL</span></li>}
             </ul>
         </div>

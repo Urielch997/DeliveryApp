@@ -1,4 +1,4 @@
-import React,{useRef, useState} from "react";
+import React,{useEffect, useRef, useState} from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Modal } from 'react-responsive-modal';
@@ -10,6 +10,11 @@ import useDatos from '../hooks/useLog';
 const Header = ({handler}) => {
   const [open,setOpen] = useState(false);
   const[loged,datos] = useDatos();
+  const[direccion,setDireccion] = useState(""); 
+
+  useEffect(()=>{
+      setDireccion(datos.direccion);
+  },[datos.direccion])
 
   function onOpenModal(){
     setOpen(true);
@@ -30,21 +35,16 @@ const Header = ({handler}) => {
     }
   }
 
-  const clic = () =>{
-
-  }
-
 
   return (
     
     <div className="search" id='search-cont'>
       <Modal open={open} onClose={onCloseModal} center>
           <Map/>
-          <button className="btn-confirm" onClick={()=>{GuardarDir()}}><LocationOnOutlinedIcon />Confirmar direccion</button>
       </Modal>
       <div className="container-head">
         <div className="seccion-head" onClick={onOpenModal}>
-  <label>{datos.direccion?datos.direccion:"Seleccione una direccion"}</label>
+  <label>{direccion?direccion:"Seleccione una direccion"}</label>
           <div className="circle-icon">
             <LocationOnOutlinedIcon />
           </div>

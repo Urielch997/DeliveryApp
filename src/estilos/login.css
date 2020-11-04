@@ -79,7 +79,7 @@ html {
 }
 
 .yellow{
-    color:#fec405;
+    color:#fec405 !important;
     font-weight: 500;
 }
 
