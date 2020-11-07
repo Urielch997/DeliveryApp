@@ -43,7 +43,7 @@ const CardFav =()=>{
                     <img src={datos.url} alt='logo'/>
                 </div>
                 <div className="img-fav text-fav-container">
-                    <label className="text-orange">Titulo</label>
+            <label className="text-orange">{datos.restaurante}</label>
                     <label>Categoria</label>
                     <button className="white orange">ver menu.</button>
                 </div>
