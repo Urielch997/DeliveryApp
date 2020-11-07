@@ -1,9 +1,17 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import '../estilos/ordenes.css';
 import taco from '../img/taco.png';
+import useDatos from '../hooks/useLog';
+import {UpdateUser} from '../hooks/useUpdateInfo';
 
 const Ordenes = () =>{
+    const[loged,datos,setDATA,setDatos] = useDatos();
+    const[useData,setUseData] = useState("");
     
+    useEffect(()=>{
+        setUseData(datos)
+    },[datos])
+console.log(datos)
     return(
         <>
             <div className='container-ordenes'>
@@ -14,16 +22,16 @@ const Ordenes = () =>{
                                     <label>Confirmar tus datos</label>
                                 </div>
                                 <div className='form-order'>
-                                    <input type='text' className='input-login w-60' value='Barrio los remedios final ex administracion de renta'/>
-                                    <button className='btn-ordenes'>Cambiar ubicacion</button>
+                                    <input type='text' className='input-login w-60' value={useData?useData.direccion:''} onChange={(e)=>{setUseData({...useData,direccion:e.target.value})}}/>
+                                    <button className='btn-ordenes' onClick={()=>{UpdateUser(useData,useData.uid)}}>Cambiar ubicacion</button>
                                 </div>
                                 <div>
                                 <div>
                                     <label>Numero de telefono</label>
                                 </div>
                                     <div>
-                                            <input type='text' className='input-login w-30' value='+503'/>
-                                            <button className='btn-ordenes'>Editar numero</button>
+                                            <input type='text' className='input-login w-30' value={useData?useData.telefono:''} onChange={(e)=>{setUseData({...useData,telefono:e.target.value})}}/>
+                                            <button className='btn-ordenes' onClick={()=>{UpdateUser(useData,useData.uid)}}>Editar numero</button>
                                     </div>
                                 </div>
                             </div>

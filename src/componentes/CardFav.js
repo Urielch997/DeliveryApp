@@ -29,7 +29,7 @@ const CardFav =()=>{
     useEffect(()=>{
         setLo(true)
         getFavUse()
-        
+        return()=>{cleanup()}
     },[loged])
 
 

@@ -19,7 +19,6 @@ const useDatos = () =>{
     }
 
     const logeado = () =>{
-        
         firebase.auth().onAuthStateChanged((usuario)=>{
             if(usuario){
                 const uid = firebase.auth().currentUser.uid;
@@ -29,7 +28,7 @@ const useDatos = () =>{
                             correo:usuario.email,
                             nombre:usuario.displayName,
                             img:res.url,
-                            uid:usuario.uid, 
+                            uid:usuario.uid,
                         }
                     })
                     setUid(uid)
