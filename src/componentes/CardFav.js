@@ -4,6 +4,7 @@ import logo from '../img/alitas.png';
 import firebase from 'firebase';
 import useDatos from '../hooks/useLog';
 import { cleanup } from '@testing-library/react';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const CardFav =()=>{
     const[loged,datos,setDATA,setDatos] = useDatos();
@@ -50,7 +51,7 @@ const CardFav =()=>{
             </div>
           
             )
-        }):'cargando..'}
+        }):<CircularProgress classes={{svg:'red'}}/>}
         </>
     )
 }
