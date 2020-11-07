@@ -2,24 +2,19 @@ import React,{useEffect, useRef, useState} from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Modal } from 'react-responsive-modal';
-import Map,{GuardarDir} from '../componentes/Map';
+import Map from '../componentes/Map';
 import handler from '../store/search/action';
 import { connect } from 'react-redux';
 import useDatos from '../hooks/useLog';
 
 const Header = ({handler}) => {
   const [open,setOpen] = useState(false);
-  const[loged,datos] = useDatos();
+  const[loged,datos,data] = useDatos();
   const[direccion,setDireccion] = useState(""); 
-
-  useEffect(()=>{
-      setDireccion(datos.direccion);
-  },[datos.direccion])
 
   function onOpenModal(){
     setOpen(true);
   };
-
  
   function onCloseModal(){
     setOpen(false);
@@ -44,7 +39,7 @@ const Header = ({handler}) => {
       </Modal>
       <div className="container-head">
         <div className="seccion-head" onClick={onOpenModal}>
-  <label>{direccion?direccion:"Seleccione una direccion"}</label>
+  <label>{datos.direccion?datos.direccion:"Seleccione una direccion"}</label>
           <div className="circle-icon">
             <LocationOnOutlinedIcon />
           </div>

@@ -4,6 +4,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import StarIcon from '@material-ui/icons/Star';
 import CardsDetail from '../componentes/CardsDetail';
 import {useLocation} from 'react-router-dom';
+import {addFav} from '../hooks/useUpdateInfo';
 
 const Detalles = (props) =>{
     function hora(hora){
@@ -27,7 +28,7 @@ const Detalles = (props) =>{
             </div>
             <div className="title-detail">
                 <div className="title-detail-text-container">
-                    <label className="title-detail-text">{restaurante}</label><FavoriteIcon/>
+                    <label className="title-detail-text">{restaurante}</label><FavoriteIcon onClick={()=>{addFav(props.props)}}/>
                 </div>
                 <span>Pizza</span>
                 <div className="seccion-detail">

@@ -1,12 +1,46 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
+import db from '../fireConfig';
 import logo from '../img/alitas.png';
+import firebase from 'firebase';
+import useDatos from '../hooks/useLog';
+import { cleanup } from '@testing-library/react';
 
 const CardFav =()=>{
+    const[loged,datos,setDATA,setDatos] = useDatos();
+    const[fav,setFav] = useState([])
+    const[lo,setLo] = useState(false);
+    const[load,setLoad] = useState(false);
+    console.log(loged)
+
+    const getFavUse = () =>{
+        if(lo){
+                db.collection('users').doc(firebase.auth().currentUser.uid).collection('useFav').get().then((response)=>{
+                    setFav(
+                    response.docs.map((datos)=>{  
+                               return(datos.data())    
+                        })
+                    )
+                        setLoad(true)
+            })
+        }
+    }
+
+    useEffect(()=>{
+        setLo(true)
+        getFavUse()
+        
+    },[loged])
+
+
+    console.log(fav)
     return(
         <>
-        <div className="card-fav">
+        {load?fav.map((datos,key)=>{
+            return(
+            
+            <div className="card-fav" key={key}>
                 <div className="img-fav">
-                    <img src={logo} alt='logo'/>
+                    <img src={datos.url} alt='logo'/>
                 </div>
                 <div className="img-fav text-fav-container">
                     <label className="text-orange">Titulo</label>
@@ -14,6 +48,9 @@ const CardFav =()=>{
                     <button className="white orange">ver menu.</button>
                 </div>
             </div>
+          
+            )
+        }):'cargando..'}
         </>
     )
 }

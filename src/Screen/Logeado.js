@@ -22,6 +22,7 @@ const Logeado = (props) =>{
         img:'',
         correo:'',
         telefono:'',
+        direccion:'',
     })
     const[open,setOpen] = useState(false);
 
@@ -40,7 +41,8 @@ const Logeado = (props) =>{
             img:datos.img,
             correo:datos.correo,
             uid:datos.uid,
-            telefono:datos.telefono
+            telefono:datos.telefono,
+            direccion:datos.direccion
         })
         setLogin(loged);
        return ()=>{cleanup()}
@@ -72,15 +74,15 @@ const Logeado = (props) =>{
                             <div className='form-logeado'>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Nombre</label>
-                                <input type='text' className="input-login" value={useData.nombre?useData.nombre:''} onChange={(e)=>{setUseData({nombre:e.target.value,correo:datos.correo,img:datos.img,uid:useData.uid})}}/>
+                                <input type='text' className="input-login" value={useData.nombre?useData.nombre:''} onChange={(e)=>{setUseData({...useData,nombre:e.target.value})}}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Correo Electronico</label>
-                                <input type='email' className="input-login" value={useData.correo?useData.correo:''} onChange={(e)=>{setUseData({correo:e.target.value,nombre:datos.nombre,img:datos.img,uid:useData.uid})}}/>
+                                <input type='email' className="input-login" value={useData.correo?useData.correo:''} onChange={(e)=>{setUseData({...useData,correo:e.target.value})}}/>
                             </div>
                             <div className="form-group-logeado">
                                 <label className='labelLogeado'>Telefono</label>
-                                <input type='text' className="input-login" value={useData.telefono?useData.telefono:''} onChange={(e)=>{setUseData({img:useData.img,correo:useData.correo,nombre:useData.nombre,telefono:e.target.value,uid:useData.uid})}}/>
+                                <input type='text' className="input-login" value={useData.telefono?useData.telefono:''} onChange={(e)=>{setUseData({...useData,telefono:e.target.value,uid:useData.uid})}}/>
                             </div>
                             <div className="d-flex justify-content-center aling-items-center">
                                 <button className='button-logeado w-40' onClick={()=>{UpdateUser(useData,useData.uid)}}>Editar</button>

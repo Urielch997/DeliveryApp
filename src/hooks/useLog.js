@@ -52,7 +52,9 @@ const useDatos = () =>{
                     })
                 }else{
                     db.collection('users').doc(uid).update(data.userlog).then((response)=>{
-               
+                            db.collection('users').doc(uid).get().then((doc)=>{
+                                setDatos(doc.data())
+                            })
                     })
                 }
             })
@@ -70,7 +72,7 @@ const useDatos = () =>{
 
 
 
-    return[loged,datos];
+    return[loged,datos,setDATA,setDatos];
 };
 
 export default useDatos;

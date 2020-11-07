@@ -11,9 +11,6 @@ const Favorito=({})=>{
         </div>
         <div className="cards-fav-container">
             <CardFav/>
-            <CardFav/>
-            <CardFav/>
-            <CardFav/>
         </div>
     </>
     )

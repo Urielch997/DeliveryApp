@@ -5,22 +5,14 @@ import { cleanup } from '@testing-library/react';
 import db from '../fireConfig';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import firebase from 'firebase';
+import useDatos from '../hooks/useLog';
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJpZWxjaDk5NyIsImEiOiJja2c0ZmRybmswazc4MnJscGJieGR1cmpkIn0.dOm9wTLrzqWI6qlfYJ6JSA';
 
-const GuardarDir = Selectlocation =>{
-  console.log(Selectlocation)
-  if(Selectlocation.direccion !==""){
-  db.collection('users').doc(firebase.auth().currentUser.uid).update(Selectlocation).then(res =>{
-    console.log(res)
-  }).catch(err =>{
-    console.log(err)
-  })
-}
-}
 
 const Map = (props) =>{
+  const[loged,datos,setDATA,setDatos] = useDatos()
     const mapContainerRef = createRef();
     const [Selectlocation,setSelectlocation] = useState({direccion:""});
     const [location,setLocation] = useState({
@@ -213,7 +205,12 @@ const Map = (props) =>{
 
   function handler(){
     if(Selectlocation){
-    GuardarDir(Selectlocation)
+      if(Selectlocation.direccion !==""){
+      db.collection('users').doc(firebase.auth().currentUser.uid).update(Selectlocation).then(res =>{
+      }).catch(err =>{
+        console.log(err)
+      })
+    }
     }
   }
   
