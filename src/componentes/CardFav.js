@@ -33,7 +33,6 @@ const CardFav =()=>{
     },[loged])
 
 
-    console.log(fav)
     return(
         <>
         {load?fav.map((datos,key)=>{

@@ -6,6 +6,8 @@ import db from '../fireConfig';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import firebase from 'firebase';
 import useDatos from '../hooks/useLog';
+import {UpdateUser} from '../hooks/useUpdateInfo'
+
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJpZWxjaDk5NyIsImEiOiJja2c0ZmRybmswazc4MnJscGJieGR1cmpkIn0.dOm9wTLrzqWI6qlfYJ6JSA';
@@ -69,6 +71,7 @@ const Map = (props) =>{
                             [-88.8749105,13.5246644],
                             [-88.8673997,13.5170492],
                             [-88.8670117,13.5071962],
+                            [-88.849915,13.506917],
                             [-88.8678337,13.4985142],
                             [-88.8846457,13.4974552],
                             
@@ -206,7 +209,7 @@ const Map = (props) =>{
   function handler(){
     if(Selectlocation){
       if(Selectlocation.direccion !==""){
-      db.collection('users').doc(firebase.auth().currentUser.uid).update(Selectlocation).then(res =>{
+        db.collection('users').doc(firebase.auth().currentUser.uid).update(Selectlocation).then(res =>{
       }).catch(err =>{
         console.log(err)
       })
@@ -222,7 +225,7 @@ const Map = (props) =>{
             <div ref={mapContainerRef} className='map-container'>
                 
             </div>
-            <button className="btn-confirm" onClick={handler}><LocationOnOutlinedIcon />Confirmar direccion</button>
+            <button className="btn-confirm" onClick={()=>{UpdateUser(Selectlocation,firebase.auth().currentUser.uid)}}><LocationOnOutlinedIcon />Confirmar direccion</button>
         </>
     );
 }

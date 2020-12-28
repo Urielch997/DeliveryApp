@@ -3,6 +3,7 @@ import '../estilos/ordenes.css';
 import taco from '../img/taco.png';
 import useDatos from '../hooks/useLog';
 import {UpdateUser} from '../hooks/useUpdateInfo';
+import { cleanup } from '@testing-library/react';
 
 const Ordenes = () =>{
     const[loged,datos,setDATA,setDatos] = useDatos();
@@ -11,7 +12,7 @@ const Ordenes = () =>{
     useEffect(()=>{
         setUseData(datos)
     },[datos])
-console.log(datos)
+
     return(
         <>
             <div className='container-ordenes'>
