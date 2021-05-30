@@ -2,7 +2,8 @@ import React,{useState} from 'react';
 import '../estilos/detalles.css';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import StarIcon from '@material-ui/icons/Star';
-import CardsDetail from '../componentes/CardsDetail';
+import CardsDetail from '../componentes/CardsDetail'; 
+import {Rate} from 'antd';
 import {useLocation} from 'react-router-dom';
 import {addFav} from '../hooks/useUpdateInfo';
 import { Modal } from 'react-responsive-modal';
@@ -41,11 +42,7 @@ const Detalles = (props) =>{
                 <div className="seccion-detail">
                     <span>HORARIO</span>
                     <div>
-                        <StarIcon/>
-                        <StarIcon/>
-                        <StarIcon/>
-                        <StarIcon/>
-                        <StarIcon/>
+                    <Rate allowHalf defaultValue={2.5} />
                     </div>
                 </div>
     <span>{`${hora(horario[0])} ${hora(horario[1])}`}</span>

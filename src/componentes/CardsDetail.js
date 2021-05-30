@@ -48,7 +48,7 @@ class CardsDetail extends Component {
                         <br/>
                         <label className="description-text">{data.descipcion}</label>
                         <br/>
-            <span className="yellow">{`$${data.precio}`}</span>
+                            <span className="yellow">{`$${data.precio}`}</span>
                     </div>
                 </div>
             )

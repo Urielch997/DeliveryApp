@@ -3,7 +3,6 @@ import db from '../fireConfig';
 import logo from '../img/alitas.png';
 import firebase from 'firebase';
 import useDatos from '../hooks/useLog';
-import { cleanup } from '@testing-library/react';
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const CardFav =()=>{
@@ -11,7 +10,6 @@ const CardFav =()=>{
     const[fav,setFav] = useState([])
     const[lo,setLo] = useState(false);
     const[load,setLoad] = useState(false);
-    console.log(loged)
 
     const getFavUse = () =>{
         if(lo){
@@ -29,7 +27,7 @@ const CardFav =()=>{
     useEffect(()=>{
         setLo(true)
         getFavUse()
-        return()=>{cleanup()}
+        return()=>{}
     },[loged])
 
 

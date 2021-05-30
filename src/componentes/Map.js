@@ -13,7 +13,7 @@ import {UpdateUser} from '../hooks/useUpdateInfo'
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJpZWxjaDk5NyIsImEiOiJja2c0ZmRybmswazc4MnJscGJieGR1cmpkIn0.dOm9wTLrzqWI6qlfYJ6JSA';
 
 
-const Map = (props) =>{
+const Map = ({setDireccion}) =>{
   const[loged,datos,setDATA,setDatos] = useDatos()
     const mapContainerRef = createRef();
     const [Selectlocation,setSelectlocation] = useState({direccion:""});
@@ -195,7 +195,7 @@ const Map = (props) =>{
                       });
                     }
                     // add turn instructions here at the end
-                    setSelectlocation({direccion:json.routes[0].legs[0].summary})
+                    setDireccion(json.routes[0].legs[0].summary)
                   };
                   
                   req.send();

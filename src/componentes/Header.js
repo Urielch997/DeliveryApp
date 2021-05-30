@@ -1,4 +1,4 @@
-import React,{useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Modal } from 'react-responsive-modal';
@@ -6,30 +6,34 @@ import Map from '../componentes/Map';
 import handler from '../store/search/action';
 import { connect } from 'react-redux';
 import useDatos from '../hooks/useLog';
+import useDirection from '../hooks/useDirection';
 
-const Header = ({handler}) => {
-  const [open,setOpen] = useState(false);
-  const[loged,datos,data] = useDatos();
-  const[direccion,setDireccion] = useState(datos); 
+const Header = ({ handler }) => {
+  const [open, setOpen] = useState(false);
+  const [loged, datos, data] = useDatos();
+  const [setDireccion, direccion] = useDirection();
 
-  function onOpenModal(){
+  /*Abrir el modal */
+  const onOpenModal = () =>{
     setOpen(true);
   };
- 
-  function onCloseModal(){
+
+  /**Cerrar el modal */
+  const onCloseModal = () => {
     setOpen(false);
   };
 
 
+
   return (
-    
+
     <div className="search" id='search-cont'>
       <Modal open={open} onClose={onCloseModal} center>
-          <Map/>
+        <Map setDireccion={setDireccion} />
       </Modal>
       <div className="container-head">
         <div className="seccion-head" onClick={onOpenModal}>
-  <label>{datos.direccion?datos.direccion:"Seleccione una direccion"}</label>
+          <label>{direccion ? direccion : "Seleccione una direccion"}</label>
           <div className="circle-icon">
             <LocationOnOutlinedIcon />
             {console.log(datos)}
@@ -39,7 +43,7 @@ const Header = ({handler}) => {
           <input
             type="text"
             id="search"
-            onKeyUp={(e)=>{handler(e.target.value)}}
+            onKeyUp={(e) => { handler(e.target.value) }}
             className="search-input"
             placeholder="Buscar un comercio"
           />
@@ -52,4 +56,4 @@ const Header = ({handler}) => {
   );
 };
 
-export default connect(null,{handler})(Header);
+export default connect(null, { handler })(Header);
