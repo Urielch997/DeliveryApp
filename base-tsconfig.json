@@ -19,13 +19,14 @@
       "isolatedModules": true,
       "noEmit": true,
       "jsx": "react-jsx",
-      "baseUrl": "./src",
+      "baseUrl": ".",
       "paths": {
-        "@Components/*":["./components/*"],
-        "@Hooks/*":["./hooks/*"],
-        "@Layout/*":["./layout/*"],
-        "@Screens/*":["./Screens/*"],
-        "@Styles/*":["./styles/*"]
+        "@/*": ["src/*"],
+        "@Components/*":["src/components/*"],
+        "@Hooks/*":["src/hooks/*"],
+        "@Layout/*":["src/layout/*"],
+        "@Screens/*":["src/Screens/*"],
+        "@Styles/*":["src/styles/*"]
       }
     },
     "exclude": [

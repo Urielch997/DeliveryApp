@@ -1,5 +1,5 @@
-import Cards from "../components/Orden/Cards"
-import { OrdenContainer } from "../styles/OrdenStyle"
+import Cards from "@Components/Orden/Cards"
+import { OrdenContainer } from "@Styles/OrdenStyle"
 
 const OrdenScreen = () => {
 

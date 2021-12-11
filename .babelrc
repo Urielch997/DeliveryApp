@@ -3,7 +3,8 @@
       ["module-resolver", {
         "root": ["./src"],
         "alias": {
-          "test": "./test",
+          "@Components": "./components",
+          "@Styles":"./styles",
           "underscore": "lodash"
         }
       }]
