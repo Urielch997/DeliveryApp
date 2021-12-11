@@ -1,4 +1,4 @@
-import { OrdenContainer } from "../styles/CraerOrdenStyle"
+import { OrdenContainer } from "@Styles/CraerOrdenStyle";
 
 const CrearOrdenScreen = () => {
     return (

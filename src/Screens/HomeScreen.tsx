@@ -1,9 +1,9 @@
 import { useState } from "react"
-import Card from "../components/Home/Card"
-import CardArticle from "../components/Home/CardArticle"
-import Detail from "../components/Home/Detail"
-import Pagination from "../components/Util/Pagination"
-import { Container } from "../styles/HomeStyle"
+import Card from "@Components/Home/Card"
+import CardArticle from "@Components/Home/CardArticle"
+import Detail from "@Components/Home/Detail"
+import Pagination from "@Components/Util/Pagination"
+import { Container } from "@Styles/HomeStyle"
 
 const HomeScreen = () => {
     const [seeDetail, setSeeDetail] = useState<Boolean>(false)
