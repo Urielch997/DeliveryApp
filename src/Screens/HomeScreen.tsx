@@ -32,7 +32,14 @@ const HomeScreen = () => {
                     {seeDetail ?
                         <Detail />
                         :
-                        <Card setSeeDetail={setSeeDetail} />
+                        <>
+                            <Card setSeeDetail={setSeeDetail} />
+                            <Card setSeeDetail={setSeeDetail} />
+                            <Card setSeeDetail={setSeeDetail} />
+                            <Card setSeeDetail={setSeeDetail} />
+                            <Card setSeeDetail={setSeeDetail} />
+                            <Card setSeeDetail={setSeeDetail} />
+                        </>
                     }
                     {seeDetail ?
                         null
