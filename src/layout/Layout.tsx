@@ -12,9 +12,6 @@ const Layout = ({ children }: Props) => {
     const history = useHistory();
     const uselocation = useLocation();
 
-
-    
-
     return (
         <Container>
             <Header>

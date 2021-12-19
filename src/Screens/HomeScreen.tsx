@@ -30,7 +30,7 @@ const HomeScreen = () => {
             <div className='container_content'>
                 <div className='container_card'>
                     {seeDetail ?
-                        <Detail />
+                            <Detail />
                         :
                         <>
                             <Card setSeeDetail={setSeeDetail} />
