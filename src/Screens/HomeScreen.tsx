@@ -1,16 +1,24 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Card from "@Components/Home/Card"
 import CardArticle from "@Components/Home/CardArticle"
 import Detail from "@Components/Home/Detail"
 import Pagination from "@Components/Util/Pagination"
 import { Container } from "@Styles/HomeStyle"
+import useRequest from "@/Services/useRequest"
+import { ProductsList } from "@/interface/ProducstListInterface"
 
 const HomeScreen = () => {
     const [seeDetail, setSeeDetail] = useState<Boolean>(false)
+    const [state,getData] = useRequest<ProductsList>();
 
     const pageChange = (page: number) => {
 
     }
+
+    useEffect(()=>{
+       getData("","");
+       
+    },[])
 
 
     return (
