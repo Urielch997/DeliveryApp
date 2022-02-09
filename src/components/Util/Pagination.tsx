@@ -13,6 +13,7 @@ interface Props {
 
 const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, size = 10 }: Props) => {
     const [count, setCount] = useState<number[]>([]);
+    const [current,setCurrent] = useState<number>(1);
 
     /**
      * Se realiza la ejecucion de la funcion a la hora de realizar el calculo de las paginas
@@ -22,20 +23,23 @@ const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, siz
         const generatePageNumber = () => {
             let cont: number[] = [];
             
-            for (let index = 6; index < total; index++) {
-                if (Number.isInteger(index / size) && (index / size) !== 0) {
-                    let page1 = index / size;
-                    cont.push(page1)
+            let pages = Math.ceil(total / size);
+
+            for (let index = current; index <= pages; index++) {
+                cont.push(index)
+
+                if(count[4] === page){
+                    setCurrent(count[4])
                 }
 
-                if (cont.length >= 5) {
+                if(cont.length === 5){
                     break;
                 }
             }
             setCount(cont)
         }
         generatePageNumber();
-    }, [page, size, total])
+    }, [page, size, total,current])
 
     return (
         <Wrapper>
