@@ -1,28 +1,34 @@
-import React from "react"
+import { Content } from "@/interface/ProducstListInterface"
 import styled from "styled-components"
 
 interface CardProps{
-    setSeeDetail:React.Dispatch<React.SetStateAction<Boolean>>
+    setSeeDetail:React.Dispatch<React.SetStateAction<Boolean>>;
+    data:Content
 }
 
-const Card = ({setSeeDetail}:CardProps) => {
-    return (
-        <CardWrapper onClick={()=>setSeeDetail(true)}>
-            <div className='second_card'>
+interface propsCard{
+    image:string
+}
 
+const Card = ({setSeeDetail,data}:CardProps) => {
+
+    return (
+        <CardWrapper onClick={()=>setSeeDetail(true)} image={data.imagen || ""}>
+            <div className='second_card'>
+                    <img src={data.imagen || ""} alt="foto de producto"/>
             </div>
             <div className='state_card'>
                 <div className='background'>
-
+                    
                 </div>
-                <label><strong>Hibou</strong></label>
+                <label><strong>{data.nombre}</strong></label>
                 <label className='active'><strong>Abierto</strong></label>
             </div>
         </CardWrapper>
     )
 }
 
-const CardWrapper = styled.div`
+const CardWrapper = styled.div<propsCard>`
     width: 350px;
     height: 200px;
     background: #ECECEC;
@@ -32,10 +38,24 @@ const CardWrapper = styled.div`
     border-radius: 10px;
 
     .second_card{
-        background: #fff;
         width: 100%;
         height: 170px;
         border-radius: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .second_card img{
+        width: 50%;
+        height: auto;
+        border-radius: 10px;
+    }
+    @supports(object-fit: cover){
+        .second_card img{
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
     }
 
     .state_card{
@@ -46,6 +66,8 @@ const CardWrapper = styled.div`
         overflow: hidden;
 
     }
+
+
 `
 
 export default Card

@@ -14,18 +14,18 @@ interface Props {
 const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, size = 10 }: Props) => {
     const [count, setCount] = useState<number[]>([]);
 
+    /**
+     * Se realiza la ejecucion de la funcion a la hora de realizar el calculo de las paginas
+     * para poder renderizar los 5 numeros de paginas correspondientes
+     */
     useEffect(() => {
         const generatePageNumber = () => {
             let cont: number[] = [];
-            let concat = 0;
-           
-            concat = parseInt(page + '0');
             
-            
-            for (let index = concat; index < total; index++) {
+            for (let index = 6; index < total; index++) {
                 if (Number.isInteger(index / size) && (index / size) !== 0) {
-                    let page = index / size;
-                    cont.push(page)
+                    let page1 = index / size;
+                    cont.push(page1)
                 }
 
                 if (cont.length >= 5) {
@@ -33,11 +33,7 @@ const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, siz
                 }
             }
             setCount(cont)
-
-            console.log(total - parseInt(page + '0'))
         }
-
-
         generatePageNumber();
     }, [page, size, total])
 
@@ -46,8 +42,8 @@ const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, siz
             <ul>
                 <li className="prev" onClick={() => { onChange(1) }}><FontAwesomeIcon icon={faCaretLeft} /></li>
                 {total - parseInt(page + '0') < 50 ?
-                    <li>...</li>
-                    : null
+                    count.length > 4 ?<li>...</li>
+                    : null : null
                 }
                 {
                     count.map((item, index) => (<li className={page === item ? 'active_page' : ''} key={index} onClick={() => { onChange(item) }}>{item}</li>))

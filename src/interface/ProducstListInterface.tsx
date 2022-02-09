@@ -26,7 +26,7 @@ export interface Content {
     idCategoria:  number;
     precio:       number;
     precioOferta: number;
-    picture:      null;
+    imagen:      null;
 }
 
 export interface Pageable {
