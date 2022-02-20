@@ -26,7 +26,9 @@
         "@Hooks/*":["src/hooks/*"],
         "@Layout/*":["src/layout/*"],
         "@Screens/*":["src/Screens/*"],
-        "@Styles/*":["src/styles/*"]
+        "@Styles/*":["src/styles/*"],
+        "@Interface/*":["src/interface/*"],
+        "@Utils/*":["src/utils/*"]
       }
     },
     "exclude": [

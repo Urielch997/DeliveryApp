@@ -1,4 +1,4 @@
-import { Content } from "@/interface/ProducstListInterface"
+import { Content } from "@Interface/ProducstListInterface"
 import styled from "styled-components"
 
 interface CardProps{

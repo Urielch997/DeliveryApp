@@ -5,12 +5,21 @@ import Detail from "@Components/Home/Detail"
 import Pagination from "@Components/Util/Pagination"
 import { Container } from "@Styles/HomeStyle"
 import useRequest from "../Services/useRequest";
-import { ProductsList } from "@/interface/ProducstListInterface"
+import { ProductsList } from "@Interface/ProducstListInterface";
 import Loading from "@Components/Util/Loading"
+import SubMenu from "@Utils/SubMenu";
 
 const HomeScreen = () => {
     const [seeDetail, setSeeDetail] = useState<Boolean>(false)
     const [state,getData] = useRequest<ProductsList>();
+
+    const Options = [
+        {id:1, nombre:"Comida"},
+        {id:2, nombre:"Postres"},
+        {id:3,nombre:"Mariscos"},
+        {id:4,nombre:"Carnes"},
+        {id:5,nombre:"Cereales"},
+    ]
 
     const pageChange = (page: number) => {
         getData(`http://localhost:8080/deliveryapp/api/products?page=${page - 1}&size=10`,"GET");
@@ -27,12 +36,7 @@ const HomeScreen = () => {
                 <label>Que vas a comer hoy?</label>
             </div>
             <div className='container_submenu'>
-                <div className='submenu'>
-                    <div><span className='active'>Comida</span></div>
-                    <div><span>Comida</span></div>
-                    <div><span>Comida</span></div>
-                    <div><span>Comida</span></div>
-                </div>
+                <SubMenu options={Options}/>
             </div>
             <div className='container_content'>
                 <div className='container_card'>

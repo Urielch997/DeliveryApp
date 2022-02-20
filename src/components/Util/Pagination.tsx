@@ -10,7 +10,15 @@ interface Props {
     onChange?: (page: number) => void
 }
 
-
+/**
+ * Componente para realiar paginacion con estilos personalizados
+ * 
+ * @param page numero de pagina a la cual navegar
+ * @param total total de elementos de la pagina para realizar la division
+ * @param size  cantidad de elementos a mostrar por pagina
+ *  @param onChange funcion para realizar la paginacion retorna el numero de pagina seleccionada
+ * @returns numero de la pagina seleccionada por el usuairo
+ */
 const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, size = 10 }: Props) => {
     const [count, setCount] = useState<number[]>([]);
     const [current,setCurrent] = useState<number>(1);
