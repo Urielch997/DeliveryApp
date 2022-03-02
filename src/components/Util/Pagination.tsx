@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 
@@ -52,7 +51,7 @@ const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, siz
     return (
         <Wrapper>
             <ul>
-                <li className="prev" onClick={() => { onChange(1) }}><FontAwesomeIcon icon={faCaretLeft} /></li>
+                <li className="prev" onClick={() => { onChange(1) }}><FontAwesomeIcon icon={'caret-left'} /></li>
                 {total - parseInt(page + '0') < 50 ?
                     count.length > 4 ?<li>...</li>
                     : null : null
@@ -64,7 +63,7 @@ const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, siz
                     <li>...</li>
                     : null
                 }
-                <li className="next" onClick={() => { onChange(count.length) }}><FontAwesomeIcon icon={faCaretRight} /></li>
+                <li className="next" onClick={() => { onChange(count.length) }}><FontAwesomeIcon icon={'caret-right'} /></li>
             </ul>
         </Wrapper>
     )
