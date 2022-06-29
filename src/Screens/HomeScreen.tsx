@@ -38,8 +38,7 @@ const HomeScreen = () => {
     return (
         <Container>
             <div className='title_home'>
-                <label>Hola, </label>
-                <label>Que vas a comer hoy?</label>
+                <label>Hola </label>
             </div>
             <div className='container_submenu'>
                 <SubMenu options={Options}/>

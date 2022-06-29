@@ -1,4 +1,5 @@
 import { MoneyFormat } from '@Interface/UtilsInterface';
+import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
 
 /**
  * Convertir entero a decimales de money
@@ -11,3 +12,7 @@ import { MoneyFormat } from '@Interface/UtilsInterface';
     let numero = text || 0
     return formatterDolar.format(numero);
   };
+
+  export const iconProps = (icon:IconDefinition) =>{
+    return icon as IconProp;
+  }

@@ -1,18 +1,22 @@
+import { iconProps } from '@Utils/Tools/Utils'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { faArrowCircleLeft, faBackspace } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
-const Back = ({action = ()=>{}}) => {
+
+const Back = ({ action = () => { } }) => {
     return (
-        <BackButton onClick={()=>action()}>
-            Back
-        </BackButton>
+        <Container>
+            <FontAwesomeIcon onClick={() => action()} icon={iconProps(faArrowCircleLeft as IconDefinition)} className="icon_color" />
+        </Container>
     )
 }
 
-const BackButton = styled.button`
-    position: absolute;
-    top:0;
-    background: var(--primary);
-    border: 0;
+const Container = styled.div`
+    .icon_color{
+        cursor: pointer;
+    }
 `
 
 export default Back

@@ -27,6 +27,7 @@ export interface Content {
     precio:       number;
     precioOferta: number;
     imagen:      null;
+    description: string | null;
 }
 
 export interface Pageable {

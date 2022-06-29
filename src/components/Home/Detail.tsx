@@ -1,7 +1,8 @@
-import { Content } from "@/interface/ProducstListInterface";
-import { MoneyFormat } from "@/interface/UtilsInterface";
+import { Content } from "@Interface/ProducstListInterface";
+import { MoneyFormat } from "@Interface/UtilsInterface";
 import { convertMoney } from "@Utils/Tools/Utils";
 import styled from "styled-components"
+import FavButton from "../Favoritos/FavButton";
 import Back from "../Util/Back"
 import Button from "../Util/Button"
 
@@ -20,9 +21,10 @@ const Detail = ({setSeeDetail,data}:CardProps) => {
                 <img className="imagen" src={data?.imagen || ""}/>
             </div>
             <div className="card_description">
+                <div className="card_header"><FavButton/></div>
                 <div className="price"><h1>{convertMoney({text:data?.precio} as MoneyFormat)}</h1></div>
                 <div className="text_descripcion">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, corrupti ex ut id, dolore quasi temporibus numquam quia nobis praesentium veritatis sit minus nesciunt doloribus cumque itaque neque provident ducimus?
+                    {data?.description}
                 </div>
                 <div className="card_button">
                     <Button text="AGREGAR AL CARRITO"/>
@@ -41,6 +43,12 @@ position: relative;
     justify-content: space-between;
     align-items: center;
 
+    .card_header{
+        display: flex;
+        justify-content: flex-end;
+        margin:5px 10px;
+    }
+
     .price{
         margin-top:60px;
         width: 100%;
@@ -50,7 +58,7 @@ position: relative;
     .card_product{
         width: 400px;
         height: 80%;
-        background: #000;
+        background: transparent;
         display: flex;
         justify-content: center;
 

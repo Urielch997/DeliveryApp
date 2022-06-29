@@ -1,7 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styled from 'styled-components'
-import { useEffect, useState } from 'react'
-import { faCaretLeft,iconName } from '@fortawesome/free-solid-svg-icons/faCaretLeft';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faCaretRight,faCaretLeft } from '@fortawesome/free-solid-svg-icons';
+import { iconProps } from '@Utils/Tools/Utils';
 
 interface Props {
     page?: number,
@@ -38,13 +40,13 @@ const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, siz
             for (let index = current; index <= pages; index++) {
                 cont.push(index)
 
-                if(count[4] === page){
-                    setCurrent(count[4])
-                }
+                // if(count[4] === page){
+                //     setCurrent(count[4])
+                // }
 
-                if(cont.length === 5){
-                    break;
-                }
+                // if(cont.length === 5){
+                //     break;
+                // }
             }
             setCount(cont)
         }
@@ -54,20 +56,19 @@ const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, siz
     return (
         <Wrapper>
             <ul>
-                <li className="prev" onClick={() => { onChange(1) }}><FontAwesomeIcon icon={'caret-right'} /></li>
-                {total - parseInt(page + '0') < 50 ?
-                    count.length > 4 ?<li>...</li>
-                    : null : null
+                {page === 1 ?
+                null:
+                <li className="prev" onClick={() => { onChange(1) }}><FontAwesomeIcon icon={iconProps(faCaretLeft as IconDefinition)} /></li>
                 }
                 {
                     count.map((item, index) => (<li className={page === item ? 'active_page' : ''} key={index} onClick={() => { onChange(item) }}>{item}</li>))
                 }
-                {total - parseInt(page + '0') > 50 ?
-                    <li>...</li>
-                    : null
+                {page === count.length ?
+                null
+                :
+                <li className="next" onClick={() => { onChange(count.length) }}><FontAwesomeIcon icon={iconProps(faCaretRight as IconDefinition)}/></li>
                 }
-                <li className="next" onClick={() => { onChange(count.length) }}><FontAwesomeIcon icon={'alarm-plus'}/></li>
-            </ul>
+                </ul>
         </Wrapper>
     )
 }

@@ -53,7 +53,7 @@ const CardWrapper = styled.div<propsCard>`
     @supports(object-fit: cover){
         .second_card img{
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center center;
         }
     }

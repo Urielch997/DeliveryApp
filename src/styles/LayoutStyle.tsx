@@ -2,9 +2,16 @@ import styled from 'styled-components';
 
 export const Header = styled.div`
     width: 100%;
-    display: 'flex';
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
     box-sizing: border-box;
+
+    .shopping_cart{
+        margin: 0px auto;
+        cursor: pointer;
+        font-size:20px;
+    }
     
     .container_button{
         width: 90%;
@@ -44,6 +51,10 @@ export const Container = styled.div`
     min-height: 100vh;
     box-sizing:border-box;
     position: relative;
+
+    .icon{
+        margin-right: 10px;
+    }
 
     .container_button{
         width: 90%;

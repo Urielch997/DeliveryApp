@@ -51,6 +51,14 @@ body::-webkit-scrollbar-thumb{
   outline: none;
 }
 
+.icon_color{
+    position: absolute;
+    top:0;
+    color: var(--primary);
+    border: 0;
+    font-size: 30px;
+}
+
 .buttondefult{
   background: ${({colorApp})=>(colorApp)};
   border:0;
