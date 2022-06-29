@@ -2,7 +2,7 @@ import { Content } from "@Interface/ProducstListInterface"
 import styled from "styled-components"
 
 interface CardProps{
-    setSeeDetail:React.Dispatch<React.SetStateAction<Boolean>>;
+    setSeeDetail:(e:Content)=>void;
     data:Content
 }
 
@@ -13,7 +13,7 @@ interface propsCard{
 const Card = ({setSeeDetail,data}:CardProps) => {
 
     return (
-        <CardWrapper onClick={()=>setSeeDetail(true)} image={data.imagen || ""}>
+        <CardWrapper onClick={()=>setSeeDetail(data)} image={data.imagen || ""}>
             <div className='second_card'>
                     <img src={data.imagen || ""} alt="foto de producto"/>
             </div>

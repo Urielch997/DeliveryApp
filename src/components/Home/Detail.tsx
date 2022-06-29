@@ -1,18 +1,26 @@
-import { useHistory } from "react-router";
+import { Content } from "@/interface/ProducstListInterface";
+import { MoneyFormat } from "@/interface/UtilsInterface";
+import { convertMoney } from "@Utils/Tools/Utils";
 import styled from "styled-components"
 import Back from "../Util/Back"
 import Button from "../Util/Button"
 
-const Detail = ({setSeeDetail=(e:boolean)=>{}}) => {
+interface CardProps{
+    setSeeDetail:React.Dispatch<React.SetStateAction<Boolean>>;
+    data:Content | undefined
+}
+
+
+const Detail = ({setSeeDetail,data}:CardProps) => {
 
     return (
         <Wrapper>
-            <Back action={()=>{setSeeDetail(false)}}/>
+            <Back action={()=>setSeeDetail(false)}/>
             <div className="card_product">
-                <img className="imagen" src="https://resource.logitechg.com/w_1000,c_limit,q_auto,f_auto,dpr_auto/d_transparent.gif/content/dam/gaming/en/products/g733/gallery/g733-lilac-gallery-1.png?v=1"/>
+                <img className="imagen" src={data?.imagen || ""}/>
             </div>
             <div className="card_description">
-                <div className="price"><h1>$9.90</h1></div>
+                <div className="price"><h1>{convertMoney({text:data?.precio} as MoneyFormat)}</h1></div>
                 <div className="text_descripcion">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, corrupti ex ut id, dolore quasi temporibus numquam quia nobis praesentium veritatis sit minus nesciunt doloribus cumque itaque neque provident ducimus?
                 </div>

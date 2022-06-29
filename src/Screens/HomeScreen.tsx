@@ -5,13 +5,14 @@ import Detail from "@Components/Home/Detail"
 import Pagination from "@Components/Util/Pagination"
 import { Container } from "@Styles/HomeStyle"
 import useRequest from "../Services/useRequest";
-import { ProductsList, ResultProduct } from "@Interface/ProducstListInterface";
+import { Content, ProductsList, ResultProduct } from "@Interface/ProducstListInterface";
 import Loading from "@Components/Util/Loading"
 import SubMenu from "@Utils/SubMenu";
 
 const HomeScreen = () => {
     const [seeDetail, setSeeDetail] = useState<Boolean>(false)
     const [state,getData] = useRequest<ResultProduct>();
+    const [CardSelected,setCardSelected] = useState<Content>();
 
     const Options = [
         {id:1, nombre:"Comida"},
@@ -29,6 +30,11 @@ const HomeScreen = () => {
         pageChange();
     },[])// eslint-disable-line react-hooks/exhaustive-deps
 
+    const SeeDetail = (data:Content) =>{
+        setCardSelected(data);
+        setSeeDetail(true)
+    }
+
     return (
         <Container>
             <div className='title_home'>
@@ -41,14 +47,14 @@ const HomeScreen = () => {
             <div className='container_content'>
                 <div className='container_card'>
                     {seeDetail ?
-                            <Detail setSeeDetail={setSeeDetail}/>
+                            <Detail setSeeDetail={setSeeDetail} data={CardSelected}/>
                         :
                         <>
                         {state.isLoading ?
                             <Loading/>
                             :
                             state.data?.content.map((item,index)=>
-                                <Card setSeeDetail={setSeeDetail} key={index} data={item}/>
+                                <Card setSeeDetail={SeeDetail} key={index} data={item} />
                                 )
                         }
                         </>
