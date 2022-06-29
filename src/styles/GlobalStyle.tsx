@@ -1,8 +1,18 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyle = createGlobalStyle`
+interface Props {
+  colorApp:string
+}
+
+export const GlobalStyle = createGlobalStyle<Props>`
+  :root{
+    --primary:#fec405;
+    --theme:#f7f7f7f7;
+    --components:#fff;
+  }
+
   .active {
-    color:#fec405;
+    color:${({colorApp})=>(colorApp)};
   }
 
   body::-webkit-scrollbar{
@@ -11,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body::-webkit-scrollbar-thumb{
-    background: #fec405;
+    background:${({colorApp})=>(colorApp)};
     border-radius: 10px;
 }
 
@@ -42,7 +52,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .buttondefult{
-  background: #fec405;
+  background: ${({colorApp})=>(colorApp)};
   border:0;
   padding: 2px 10px;
   height: 25px;

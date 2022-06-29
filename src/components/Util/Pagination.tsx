@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 
@@ -10,44 +9,54 @@ interface Props {
     onChange?: (page: number) => void
 }
 
-
+/**
+ * Componente para realiar paginacion con estilos personalizados
+ * 
+ * @param page numero de pagina a la cual navegar
+ * @param total total de elementos de la pagina para realizar la division
+ * @param size  cantidad de elementos a mostrar por pagina
+ *  @param onChange funcion para realizar la paginacion retorna el numero de pagina seleccionada
+ * @returns numero de la pagina seleccionada por el usuairo
+ */
 const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, size = 10 }: Props) => {
     const [count, setCount] = useState<number[]>([]);
+    const [current,setCurrent] = useState<number>(1);
 
+    /**
+     * Se realiza la ejecucion de la funcion a la hora de realizar el calculo de las paginas
+     * para poder renderizar los 5 numeros de paginas correspondientes
+     */
+     
     useEffect(() => {
+      
         const generatePageNumber = () => {
             let cont: number[] = [];
-            let concat = 0;
-           
-            concat = parseInt(page + '0');
             
-            
-            for (let index = concat; index < total; index++) {
-                if (Number.isInteger(index / size) && (index / size) !== 0) {
-                    let page = index / size;
-                    cont.push(page)
+            let pages = Math.ceil(total / size);
+
+            for (let index = current; index <= pages; index++) {
+                cont.push(index)
+
+                if(count[4] === page){
+                    setCurrent(count[4])
                 }
 
-                if (cont.length >= 5) {
+                if(cont.length === 5){
                     break;
                 }
             }
             setCount(cont)
-
-            console.log(total - parseInt(page + '0'))
         }
-
-
         generatePageNumber();
-    }, [page, size, total])
+    }, [page, size, total,current])
 
     return (
         <Wrapper>
             <ul>
-                <li className="prev" onClick={() => { onChange(1) }}><FontAwesomeIcon icon={faCaretLeft} /></li>
+                <li className="prev" onClick={() => { onChange(1) }}><FontAwesomeIcon icon={'caret-left'} /></li>
                 {total - parseInt(page + '0') < 50 ?
-                    <li>...</li>
-                    : null
+                    count.length > 4 ?<li>...</li>
+                    : null : null
                 }
                 {
                     count.map((item, index) => (<li className={page === item ? 'active_page' : ''} key={index} onClick={() => { onChange(item) }}>{item}</li>))
@@ -56,7 +65,7 @@ const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, siz
                     <li>...</li>
                     : null
                 }
-                <li className="next" onClick={() => { onChange(count.length) }}><FontAwesomeIcon icon={faCaretRight} /></li>
+                <li className="next" onClick={() => { onChange(count.length) }}><FontAwesomeIcon icon={'caret-right'} /></li>
             </ul>
         </Wrapper>
     )
