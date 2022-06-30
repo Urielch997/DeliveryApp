@@ -1,21 +1,25 @@
+import { Content } from "@Interface/ProducstListInterface";
+import { useDispatch } from "react-redux";
+import { addFavAction, removeFav } from "../../store/actions/ShoopingCardActions";
 
 
 const useShooping = () => {
+    const dispatch  = useDispatch();
 
     /**
      * Agregar a favoritos
      * @param product producto seleccionado
      */
-    const addFav = (id:number) =>{
-        
+    const addFav = (producto:Content) =>{
+        dispatch(addFavAction(producto))
     }
 
     /**
      * Eliminar producto de favoritos
-     * @param id id de producto a eliminar de favoritos
+     * @param producto producto a eliminar de favoritos
      */
-    const deleteFav = (id:number) =>{
-
+    const deleteFav = (producto:Content) =>{
+        removeFav(producto)
     }
 
     return {

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { Container, Footer, Header } from '../styles/LayoutStyle';
-import { faHome, faShoppingBag, faUser, faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faShoppingBag, faUser, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { iconProps } from '@Utils/Tools/Utils';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import ShoopingCart from '@Components/ShoopingCart/ShoopingCart';

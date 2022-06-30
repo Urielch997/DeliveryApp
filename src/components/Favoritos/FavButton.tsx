@@ -2,13 +2,19 @@ import { iconProps } from '@Utils/Tools/Utils'
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
 import styled from 'styled-components'
+import { Content } from '@Interface/ProducstListInterface'
 
-const FavButton = () => {
+interface FavProps {
+    action:(data:Content)=>void,
+    data:Content,
+    isFavorite:boolean
+}
+
+const FavButton = ({action,data,isFavorite = false}:FavProps) => {
   return (
-    <CustomFav>
-        <FontAwesomeIcon icon={iconProps(faHeart as IconDefinition)} className="cursor loved"/>
+    <CustomFav onClick={()=>{action(data)}}>
+        <FontAwesomeIcon icon={iconProps(faHeart as IconDefinition)} className={`cursor ${isFavorite ? "loved":""}`}/>
     </CustomFav>
   )
 }

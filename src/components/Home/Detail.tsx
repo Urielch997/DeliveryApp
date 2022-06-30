@@ -1,33 +1,46 @@
+import useShooping from "@Hooks/ShoopingCart/useShooping";
 import { Content } from "@Interface/ProducstListInterface";
 import { MoneyFormat } from "@Interface/UtilsInterface";
 import { convertMoney } from "@Utils/Tools/Utils";
+import { useSelector } from "react-redux";
+import { RootState } from "src/store/store";
 import styled from "styled-components"
 import FavButton from "../Favoritos/FavButton";
 import Back from "../Util/Back"
 import Button from "../Util/Button"
 
-interface CardProps{
-    setSeeDetail:React.Dispatch<React.SetStateAction<Boolean>>;
-    data:Content | undefined
+interface CardProps {
+    setSeeDetail: React.Dispatch<React.SetStateAction<Boolean>>;
+    data: Content | undefined
 }
 
 
-const Detail = ({setSeeDetail,data}:CardProps) => {
+const Detail = ({ setSeeDetail, data = {
+    idItem: 0,
+    nombre: "",
+    idCategoria: 0,
+    precio: 0,
+    precioOferta: 0,
+    imagen: null,
+    description: ""
+} }: CardProps) => {
+    const { addFav } = useShooping();
+    const fav = useSelector((x:RootState)=>x.favoritos);
 
     return (
         <Wrapper>
-            <Back action={()=>setSeeDetail(false)}/>
+            <Back action={() => setSeeDetail(false)} />
             <div className="card_product">
-                <img className="imagen" src={data?.imagen || ""}/>
+                <img className="imagen" src={data?.imagen || ""} />
             </div>
             <div className="card_description">
-                <div className="card_header"><FavButton/></div>
-                <div className="price"><h1>{convertMoney({text:data?.precio} as MoneyFormat)}</h1></div>
+                <div className="card_header"><FavButton action={(e) => {addFav(e)}} data={data} isFavorite={fav.some(x=>x.idItem === data.idItem)}/></div>
+                <div className="price"><h1>{convertMoney({ text: data?.precio } as MoneyFormat)}</h1></div>
                 <div className="text_descripcion">
                     {data?.description}
                 </div>
                 <div className="card_button">
-                    <Button text="AGREGAR AL CARRITO"/>
+                    <Button text="AGREGAR AL CARRITO" />
                 </div>
             </div>
         </Wrapper>

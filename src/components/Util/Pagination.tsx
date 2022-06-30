@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faCaretRight,faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import { iconProps } from '@Utils/Tools/Utils';
 

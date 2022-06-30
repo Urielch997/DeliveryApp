@@ -5,7 +5,7 @@ import Detail from "@Components/Home/Detail"
 import Pagination from "@Components/Util/Pagination"
 import { Container } from "@Styles/HomeStyle"
 import useRequest from "../Services/useRequest";
-import { Content, ProductsList, ResultProduct } from "@Interface/ProducstListInterface";
+import { Content, ResultProduct } from "@Interface/ProducstListInterface";
 import Loading from "@Components/Util/Loading"
 import SubMenu from "@Utils/SubMenu";
 

@@ -1,5 +1,5 @@
 export interface MoneyFormat {
-    text: bigint | undefined,
+    text: bigint | number,
     currency?:string,
     format?:string
 }

@@ -1,6 +1,6 @@
 import { iconProps } from '@Utils/Tools/Utils'
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { faArrowCircleLeft, faBackspace } from '@fortawesome/free-solid-svg-icons'
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
