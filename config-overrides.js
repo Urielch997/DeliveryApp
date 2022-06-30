@@ -7,6 +7,7 @@ module.exports = function override(config){
         "@Styles":"./src/styles",
         "@Utils":"./src/utils",
         "@Interface":"./src/interface",
+        "@Service":"./src/services",
         "@Hooks":"./src/hooks"
     })(config)
 

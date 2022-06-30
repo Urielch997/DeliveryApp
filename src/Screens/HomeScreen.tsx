@@ -4,10 +4,11 @@ import CardArticle from "@Components/Home/CardArticle"
 import Detail from "@Components/Home/Detail"
 import Pagination from "@Components/Util/Pagination"
 import { Container } from "@Styles/HomeStyle"
-import useRequest from "../Services/useRequest";
+import useRequest from "@Service/useRequest";
 import { Content, ResultProduct } from "@Interface/ProducstListInterface";
 import Loading from "@Components/Util/Loading"
 import SubMenu from "@Utils/SubMenu";
+import { getFavoritos, getProductos } from "@Service/Paths"
 
 const HomeScreen = () => {
     const [seeDetail, setSeeDetail] = useState<Boolean>(false)
@@ -23,7 +24,7 @@ const HomeScreen = () => {
     ]
 
     const pageChange = (page = 1) => {
-        getData(`http://localhost:8080/deliveryapp/api/products?page=${page - 1}&size=10`,"GET");
+        getData(getProductos(page),"GET");
     }
 
     useEffect(()=>{

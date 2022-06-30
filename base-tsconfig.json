@@ -21,12 +21,14 @@
       "jsx": "react-jsx",
       "baseUrl": ".",
       "paths": {
+        "@*": ["src/*"],
         "@Components/*":["src/components/*"],
         "@Hooks/*":["src/hooks/*"],
         "@Layout/*":["src/layout/*"],
         "@Screens/*":["src/Screens/*"],
         "@Styles/*":["src/styles/*"],
         "@Interface/*":["src/interface/*"],
+        "@Service/*":["src/services/*"],
         "@Utils/*":["src/utils/*"]
       }
     },
