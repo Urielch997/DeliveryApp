@@ -21,8 +21,8 @@ const Load = styled.div`
 
 
     .carga{
-        border-left:5px solid #fec405;
-        border-top:5px solid #fec405;
+        border-left:5px solid var(--primary);
+        border-top:5px solid var(--primary);
         border-right: 5px solid transparent;
         border-bottom: 5px solid transparent;
         border-radius: 50%;

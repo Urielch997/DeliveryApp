@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle<Props>`
   }
 
   .active {
-    color:${({colorApp})=>(colorApp)};
+    color:var(--primary);
   }
 
   body::-webkit-scrollbar{
@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle<Props>`
 }
 
 body::-webkit-scrollbar-thumb{
-    background:${({colorApp})=>(colorApp)};
+    background:var(--primary);
     border-radius: 10px;
 }
 
@@ -60,7 +60,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .buttondefult{
-  background: ${({colorApp})=>(colorApp)};
+  background: var(--primary);
   border:0;
   padding: 2px 10px;
   height: 25px;

@@ -1,19 +1,14 @@
 import { Content } from "@Interface/ProducstListInterface"
+import { ActionInterface } from "@Interface/ShoopingCartInteface";
+import { ShoopingTypes } from "@Interface/types/ShoopingCartType";
 
 const initialState:Content[] = [];
 
-interface ActionInterface {
-    type:AddProduct,
-    payload:Content
-}
-
-export type AddProduct = "ADD_PRODUCT" | "DELETE_PRODUCT" | "ADD_FIRST_PRODUCT"
-
 const ShoopingCartReducer = (state = initialState,action:ActionInterface) =>{
     switch (action.type) {
-        case 'ADD_PRODUCT':
+        case ShoopingTypes.addProduct:
             return  [...state,{...action.payload}]
-        case "DELETE_PRODUCT":
+        case ShoopingTypes.deleteProduct:
             return [
                 ...state,{...action.payload}
             ]

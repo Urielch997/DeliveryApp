@@ -30,7 +30,7 @@ export const Header = styled.div`
         .ubicacion{
             margin-left: 10px;
             font-weight: bold;
-            background: #fec405;
+            background: var(--primary);
             border:0px;
             cursor: pointer;
         }

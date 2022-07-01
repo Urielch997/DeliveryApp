@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div>
       <Provider store={store}>
-        <GlobalStyle colorApp={colorApp || "#fec405"} />
+        <GlobalStyle colorApp={colorApp || "#fe3705"} />
         <Layout>
           <Routes />
         </Layout>

@@ -97,7 +97,7 @@ const Wrapper = styled.div`
     }
 
     .active_page{
-        background: #fec405;
+        background: var(--primary);
         color:#FFF;
     }
 `
