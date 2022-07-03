@@ -1,8 +1,7 @@
-import { ProductsAction, ResultProduct } from "@Interface/ProducstListInterface";
+import { ProductsAction, RequestPageableGeneric } from "@Interface/ProducstListInterface";
 import { ProductsTypes } from "@Interface/types/ProductsType";
-import { RequestProducts } from "@interface/UtilsInterface";
 
-export const initialStateProduct: RequestProducts = {
+export const initialStateProduct: RequestPageableGeneric = {
     isLoading: false,
     isSuccess: false,
     isError: false,
@@ -42,13 +41,12 @@ const ProductoReducer = (state = initialStateProduct, action: ProductsAction) =>
     switch (action.type) {
         case ProductsTypes.getProduct:
             return action.payload
-        case ProductsTypes.deleteProduct:
-
-            break;
-
+        case ProductsTypes.modifyProduct:
+            return action.payload
         default:
             return state;
     }
 }
 
 export default ProductoReducer;
+

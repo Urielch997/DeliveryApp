@@ -12,4 +12,4 @@ export const getProductosList = (page:number = 0) => async (dispatch: Dispatch<a
     } else {
         dispatch({ type: ProductsTypes.getProduct, payload: { ...initialStateProduct, isError: true, data: null } })
     }
-}   
+}
