@@ -1,9 +1,10 @@
-import { CardFavInterface } from "@interface/CardFavInterface"
+import Button from "@Components/Util/Button"
+import { CardFavInterface } from "@Interface/CardFavInterface"
 import styled from "styled-components"
 
 
 
-const CardFav = ({data}:CardFavInterface) => {
+const CardFav = ({data,action}:CardFavInterface) => {
   return (
     <CustomCard>
         <div className="product_img">
@@ -11,6 +12,7 @@ const CardFav = ({data}:CardFavInterface) => {
         </div>
         <div className="product_name">
             {data.producto.nombre}
+            <div className="button_product"><Button text="Ver producto" action={()=>action(data.producto)}/></div>
         </div>
     </CustomCard>
   )
@@ -43,6 +45,12 @@ const CustomCard = styled.div`
         justify-content: center;
         text-align: center;
         align-items: center;
+        flex-direction: column;
+    }
+
+    .button_product{
+        margin-top: 15px;
+        width: 100%;
     }
 `
 

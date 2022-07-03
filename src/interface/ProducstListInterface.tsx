@@ -28,7 +28,7 @@ export interface Content {
     idCategoria:  number;
     precio:       number;
     precioOferta: number;
-    imagen:      null;
+    imagen:      string;
     description: string | null;
     favorito:boolean
 }

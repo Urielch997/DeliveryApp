@@ -1,8 +1,14 @@
+import { Content } from '@Interface/ProducstListInterface'
 import styled from 'styled-components'
 
-const Button = ({text=""}) => {
+interface ButtonInteface{
+  text:string,
+  action:()=>void
+}
+
+const Button = ({text="",action}:ButtonInteface) => {
   return (
-    <ButtonCustom>
+    <ButtonCustom onClick={()=>action()}>
         {text}
     </ButtonCustom>
   )

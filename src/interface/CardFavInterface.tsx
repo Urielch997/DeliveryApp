@@ -1,5 +1,8 @@
+import { Content } from "./ProducstListInterface";
+
 export interface CardFavInterface {
-    data:ContentFav
+    data:ContentFav,
+    action:(e:Content)=>void
 }
 
 export interface Producto {
@@ -8,8 +11,9 @@ export interface Producto {
     idCategoria: number;
     precio: number;
     precioOferta: number;
-    imagen: string;
+    imagen:  string;
     description: string;
+    favorito:boolean;
 }
 
 export interface Usuario {
