@@ -19,9 +19,10 @@ const CardWrapperAr = styled.div`
     background: #ECECEC;
     border-radius: 10px;
     margin-bottom: 20px;
+    margin:10px 15px;
 
     img{
-        width: 100%;
+        width: 350px;
         height: auto;
         border-radius: 5px;
     }
@@ -29,7 +30,7 @@ const CardWrapperAr = styled.div`
     @supports(object-fit: cover){
         img{
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center center;
         }
     }

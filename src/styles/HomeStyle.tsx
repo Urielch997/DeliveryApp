@@ -34,6 +34,8 @@ export const Container = styled.div`
 
             .card{
                 width: 100%;
+                margin-bottom: 10px;
+
             }
         }
     }
@@ -53,11 +55,19 @@ export const Container = styled.div`
         .container_content{
             display: flex;
             flex-direction: column-reverse;
+
+            .container_section{
+                width: 100%;
+                display: inline-block;
+
+                    .card{
+                        display: flex;
+                        overflow-y: hidden;
+                        overflow-x: scroll;
+                    }
+            }
         }
 
-        .container_section{
-            
-            display: inline-block;
-        }
+        
     }
 `

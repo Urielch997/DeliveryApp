@@ -21,8 +21,6 @@ const HomeScreen = () => {
         { id: 1, nombre: "Comida" },
         { id: 2, nombre: "Postres" },
         { id: 3, nombre: "Mariscos" },
-        { id: 4, nombre: "Carnes" },
-        { id: 5, nombre: "Cereales" },
     ]
 
     const pageChange = (page = 1) => {
