@@ -44,4 +44,20 @@ export const Container = styled.div`
         text-align:center;
         margin: 10px auto;
     }
+
+    @media screen and (max-width:600px){
+        .container_submenu{
+            width: 100%;
+        }
+
+        .container_content{
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .container_section{
+            
+            display: inline-block;
+        }
+    }
 `

@@ -1,3 +1,4 @@
+import { ContentFav } from "@interface/CardFavInterface";
 import { Content } from "@Interface/ProducstListInterface";
 import { RootState } from "@store/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,7 +7,7 @@ import { addFavAction, modifyFavorite, removeFav } from "../../store/actions/Sho
 
 const useShooping = () => {
     const dispatch  = useDispatch();
-    const {productos} = useSelector((x:RootState) => x )
+    const {productos,favoritos} = useSelector((x:RootState) => x )
 
     /**
      * Agregar a favoritos
@@ -21,8 +22,9 @@ const useShooping = () => {
      * Eliminar producto de favoritos
      * @param producto producto a eliminar de favoritos
      */
-    const deleteFav = (producto:Content) =>{
-        removeFav(producto)
+    const deleteFav = (favorito:ContentFav) =>{
+        console.log(productos)
+        dispatch(removeFav(favorito,favoritos))
     }
 
     return {

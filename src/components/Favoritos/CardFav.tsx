@@ -1,12 +1,17 @@
 import Button from "@Components/Util/Button"
+import useShooping from "@Hooks/ShoopingCart/useShooping"
 import { CardFavInterface } from "@Interface/CardFavInterface"
 import styled from "styled-components"
+import FavButton from "./FavButton"
 
 
 
 const CardFav = ({data,action}:CardFavInterface) => {
+    const {deleteFav} = useShooping();
+
   return (
     <CustomCard>
+        <div className="header_product_card"><FavButton data={data.producto} isFavorite={data.producto.favorito} action={()=>{deleteFav(data)}}/></div>
         <div className="product_img">
             <img src={data.producto.imagen} alt="producto" className="image"/>
         </div>
@@ -25,7 +30,14 @@ const CustomCard = styled.div`
     margin-top:15px;
     display: flex;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    position: relative;
     border-radius: 10px;
+
+    .header_product_card{
+        right: 10px;
+        top:10px;
+        position: absolute;
+    }
 
     .image{
         width: 100%;

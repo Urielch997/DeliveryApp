@@ -65,7 +65,7 @@ const HomeScreen = () => {
                             }
                         </>
                     }
-                    {seeDetail ?
+                    {seeDetail || productos.isLoading ?
                         null
                         :
                         <div className='pagination_container'>

@@ -34,6 +34,12 @@ const Submenu = styled.div`
         .name{
             cursor: pointer;
         }
+
+        @media screen and (max-width:600px){
+            margin: 0px auto;
+            width: 90%;
+        
+    }
 `
 
 export default SubMenu;
