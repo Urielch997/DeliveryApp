@@ -3,34 +3,49 @@ import useFormL from '@Hooks/FormLogin/useFormL'
 import styled from 'styled-components'
 import Checkbox from '../Util/Checkbox'
 import facebookLogo from '@Img/facebooklogo.svg';
+import googleLogo from '@Img/Google.svg';
 import Input from '../Util/Input'
+import FormLog from './FormLog';
+import FormRegister from './FormRegister';
 
 
 const FormLogin = () => {
-    const { checked, setChecked } = useFormL();
+    const { changeType, typeForm } = useFormL();
+
 
     return (
         <FormContainer>
-            <h3>FormLogin</h3>
-            <div className='formulario'>
-                <div className='item'>
-                    <Input clases='width_input' />
-                </div>
-                <div className='item'>
-                    <Input clases='width_input' />
-                </div>
-                <div className='container_check'>
-                    <Checkbox size='15px' checked={checked} setChecked={setChecked} />
-                </div>
-                <div>
-                    <Button text='Iniciar' />
-                    <div className='line'>
-                        <div className='line_divider' />
-                        <div className='text_line'>o si prefieres</div>
-                        <div className='line_divider' />
+            <div className='content'>
+                <div className='formulario_container'>
+                    <div>
+                        <h3>{typeForm === "LOGIN" ? "INICIAR SESION" : "CREA UNA CUENTA!"}</h3>
+                        <div className='header_container'>
+                            <div>
+                                <label>No tienes una cuenta?</label>
+                            </div>
+                            <div>
+                                <label className='cursor' onClick={() => changeType(typeForm === "LOGIN" ? "REGISTER" : "LOGIN")}>{typeForm === "LOGIN" ? "Registrate" : "Iniciar sesion"}</label>
+                            </div>
+                        </div>
                     </div>
-                    <Button text=""  Icon={<img src={facebookLogo} className="facebooklogo"/>} />
-                   
+                    {typeForm === "LOGIN" ?
+                        <FormLog />
+                        :
+                        <FormRegister />
+                    }
+                    <div>
+                        <Button text={typeForm === "LOGIN" ? "Iniciar" : "Registrarme"} classButton="white border_social" />
+                        <div className='line'>
+                            <div className='line_divider' />
+                            <div className='text_line'>o si prefieres</div>
+                            <div className='line_divider' />
+                        </div>
+                        <Button text="" Icon={<img src={facebookLogo} className="facebooklogo" />} color="#1976D2" classButton='border_social' />
+                        <Button text="" Icon={<img src={googleLogo} className="facebooklogo" />} classButton="button_login_google border_social" />
+                    </div>
+                </div>
+                <div className='img_example'>
+                    <img className='img_style' src='https://res.cloudinary.com/agglobal-com/image/upload/v1643217143/fierros/ecommerce/undraw_empty_cart_co35.svg' alt='people' />
                 </div>
             </div>
         </FormContainer>
@@ -38,8 +53,22 @@ const FormLogin = () => {
 }
 
 const FormContainer = styled.div`
-    width: 45%;
+    width: 100%;
     padding:20px;
+
+    .content{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .img_example{
+        width: 50%;
+    }
+
+    .item{
+        box-sizing: border-box;
+    }
 
     .item:nth-child(2){
         margin-top:15px;
@@ -50,12 +79,43 @@ const FormContainer = styled.div`
         fill:var(--primary)
     }
 
+    .img_style{
+        width: 100%;
+        height: 80%;
+        object-fit: contain;
+    }
+
+    .formulario_container{
+        width: 40%;
+    }
+
     .width_input{
         width: 100%;
+        box-sizing: border-box;
+    }
+
+    .border_social{
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    .header_container{
+        display: flex;
+        justify-content: space-between;
+
+        div:nth-child(2){
+            color:var(--primary);
+            font-weight: 600;
+        }
+    }
+
+    .button_login_google{
+        background:#F44336;
     }
 
     .container_check{
         margin-top:10px;
+        display: flex;
     }
 
     .line{

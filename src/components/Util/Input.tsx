@@ -13,6 +13,7 @@ const InputCustom = styled.input`
     padding: 10px 20px;
     border-radius: 5px;
     outline: none;
+    box-sizing: border-box;
 
     &:focus,&:active{
         border:0px transparent;

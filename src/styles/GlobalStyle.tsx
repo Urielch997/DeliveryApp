@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle<Props>`
     --primary:#fec405;
     --theme:#f7f7f7f7;
     --components:#fff;
+    --text:#fff
   }
 
   .active {
@@ -31,6 +32,14 @@ body::-webkit-scrollbar-thumb{
   border: 0px;
   height: 25px;
   border-radius: 5px;
+}
+
+.white{
+  color:var(--text)
+}
+
+.cursor{
+  cursor:pointer;
 }
 
 .inputBack{

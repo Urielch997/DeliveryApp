@@ -46,7 +46,7 @@ const Layout = ({ children }: Props) => {
                     <label onClick={() => true ? setOpen(true) : history.push('/perfil')} className='link'><strong><FontAwesomeIcon icon={iconProps(faUser as IconDefinition)} className="icon" />PERFIL</strong></label>
                 </div>
             </Footer>
-            <Modal seeModal={open} setSeeModal={setOpen} children={<FormLogin />} width={"800px"} />
+            <Modal seeModal={open} setSeeModal={setOpen} children={<FormLogin />} width={"800px"} height={"550px"}/>
         </Container>
     )
 }

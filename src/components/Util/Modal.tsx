@@ -13,7 +13,7 @@ const Modal = ({ width = "400px", height = "400px", children = <></>, seeModal =
         <>
             <ContainerModal width={width} height={height} seeModal={seeModal} onClick={() => setSeeModal(false)} />
             <ModalBody width={width} height={height} seeModal={seeModal}>
-                <div className="close_tab" onClick={()=>setSeeModal(false)}>x</div>
+                <div className="close_tab" onClick={()=>setSeeModal(false)}><span>x</span></div>
                 {children}
             </ModalBody>
         </>
@@ -47,6 +47,15 @@ const ModalBody = styled.div<ModalProps>`
         position: absolute;
         right: 15px;
         top:10px;
+        width:30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: stretch;
+        border-radius: 100%;
+        color:#fff;
+        background: var(--primary);
         cursor: pointer;
     }
 `

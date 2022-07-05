@@ -3,12 +3,14 @@ import styled from 'styled-components'
 interface ButtonInteface{
   text:string,
   action?:()=>void,
-  Icon?:any
+  Icon?:any,
+  color?:string,
+  classButton?:string
 }
 
-const Button = ({text="",action = ()=>{},Icon}:ButtonInteface) => {
+const Button = ({text="",action = ()=>{},Icon,color,classButton = ""}:ButtonInteface) => {
   return (
-    <ButtonCustom onClick={()=>action()}>
+    <ButtonCustom onClick={()=>action()} style={{background:color}} className={classButton}>
         {Icon}
         {text}
     </ButtonCustom>
@@ -16,7 +18,7 @@ const Button = ({text="",action = ()=>{},Icon}:ButtonInteface) => {
 }
 
 const ButtonCustom = styled.button`
-    width: 95%;
+    width: 100%;
     padding: 10px 5px;
     margin:0px auto;
     background: var(--primary);
