@@ -3,12 +3,13 @@ import styled from 'styled-components'
 interface ButtonInteface{
   text:string,
   action?:()=>void,
+  Icon?:any
 }
 
-const Button = ({text="",action = ()=>{}}:ButtonInteface) => {
+const Button = ({text="",action = ()=>{},Icon}:ButtonInteface) => {
   return (
     <ButtonCustom onClick={()=>action()}>
-  
+        {Icon}
         {text}
     </ButtonCustom>
   )

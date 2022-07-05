@@ -1,9 +1,10 @@
 import Button from '@Components/Util/Button'
 import useFormL from '@Hooks/FormLogin/useFormL'
-import { iconProps } from '@utils/Tools/Utils';
 import styled from 'styled-components'
 import Checkbox from '../Util/Checkbox'
+import facebookLogo from '@Img/facebooklogo.svg';
 import Input from '../Util/Input'
+
 
 const FormLogin = () => {
     const { checked, setChecked } = useFormL();
@@ -28,7 +29,7 @@ const FormLogin = () => {
                         <div className='text_line'>o si prefieres</div>
                         <div className='line_divider' />
                     </div>
-                    <Button text="Facebook"  />
+                    <Button text=""  Icon={<img src={facebookLogo} className="facebooklogo"/>} />
                    
                 </div>
             </div>
@@ -42,6 +43,11 @@ const FormContainer = styled.div`
 
     .item:nth-child(2){
         margin-top:15px;
+    }
+
+    .facebooklogo{
+        width: 25px;
+        fill:var(--primary)
     }
 
     .width_input{

@@ -30,7 +30,8 @@
         "@Styles/*":["src/styles/*"],
         "@Interface/*":["src/interface/*"],
         "@Service/*":["src/services/*"],
-        "@Utils/*":["src/utils/*"]
+        "@Utils/*":["src/utils/*"],
+        "@Img/*":["src/img/*"]
       }
     },
     "exclude": [
