@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 interface ButtonInteface{
   text:string,
-  action:()=>void,
+  action?:()=>void,
 }
 
-const Button = ({text="",action}:ButtonInteface) => {
+const Button = ({text="",action = ()=>{}}:ButtonInteface) => {
   return (
     <ButtonCustom onClick={()=>action()}>
   

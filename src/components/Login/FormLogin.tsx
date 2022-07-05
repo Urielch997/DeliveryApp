@@ -1,7 +1,4 @@
 import Button from '@Components/Util/Button'
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormL from '@Hooks/FormLogin/useFormL'
 import { iconProps } from '@utils/Tools/Utils';
 import styled from 'styled-components'
@@ -31,7 +28,7 @@ const FormLogin = () => {
                         <div className='text_line'>o si prefieres</div>
                         <div className='line_divider' />
                     </div>
-                    <Button text="Hola"  />
+                    <Button text="Facebook"  />
                    
                 </div>
             </div>

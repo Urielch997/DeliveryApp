@@ -21,7 +21,7 @@ const Detail = ({ setSeeDetail, data = {
     idCategoria: 0,
     precio: 0,
     precioOferta: 0,
-    imagen: null,
+    imagen: "",
     description: "",
     favorito:false
 } }: CardProps) => {
