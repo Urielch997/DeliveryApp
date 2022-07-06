@@ -6,7 +6,7 @@ const Loading = () => {
             <div className="carga"></div>
             <div className="text_loading">
                 <label>Cargando...</label>
-                <div className="cover_text"></div>
+
             </div>
         </Load>
     )

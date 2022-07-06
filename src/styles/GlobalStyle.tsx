@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 interface Props {
-  colorApp:string
+  colorApp: string
 }
 
 export const GlobalStyle = createGlobalStyle<Props>`
@@ -76,5 +76,23 @@ body::-webkit-scrollbar-thumb{
   border-radius: 5px;
   color:#fff;
   cursor: pointer;
+}
+
+.label_footer{
+display: block;
+}
+
+.shadow{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.shadow_solid{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+@media screen and (max-width:600px){
+.label_footer{
+display: none;
+}
 }
 `

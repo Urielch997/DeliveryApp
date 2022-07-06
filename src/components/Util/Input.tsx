@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const Input = ({clases = ""}) => {
+const Input = ({clases = "",placeholder = ""}) => {
   return (
-    <InputCustom className={clases}/>
+    <InputCustom className={clases} placeholder = {placeholder}/>
   )
 }
 

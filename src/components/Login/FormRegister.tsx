@@ -6,24 +6,24 @@ const FormRegister = () => {
         <Form>
             <div className='row'>
                 <div className='item'>
-                    <Input clases='input_style'/>
+                    <Input clases='input_style' placeholder='nombre'/>
                 </div>
                 <div className='item'>
-                    <Input clases='input_style'/>
+                    <Input clases='input_style' placeholder='apellido'/>
                 </div>
             </div>
             <div className='item'>
-                <Input clases='input_style'/>
+                <Input clases='input_style' placeholder='correo'/>
             </div>
             <div className='item'>
-                <Input clases='input_style'/>
+                <Input clases='input_style' placeholder='contraseña'/>
             </div>
             <div className='row'>
                 <div className='item'>
-                    <Input clases='input_style'/>
+                    <Input clases='input_style' placeholder='sexo'/>
                 </div>
                 <div className='item'>
-                    <Input clases='input_style'/>
+                    <Input clases='input_style' placeholder='fecha de nacimiento'/>
                 </div>
             </div>
         </Form>

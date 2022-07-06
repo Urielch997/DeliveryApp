@@ -52,9 +52,15 @@ export const Container = styled.div`
             width: 100%;
         }
 
+ 
+
         .container_content{
             display: flex;
             flex-direction: column-reverse;
+
+            .container_card{
+            width: 100%;
+        }
 
             .container_section{
                 width: 100%;
@@ -64,6 +70,16 @@ export const Container = styled.div`
                         display: flex;
                         overflow-y: hidden;
                         overflow-x: scroll;
+                        &::-webkit-scrollbar{
+                            background: #ececec;
+                            width: 10px;
+                            height: 5px;
+                        }
+
+                        &::-webkit-scrollbar-thumb{
+                            background:var(--primary);
+                            border-radius: 10px;
+                        }
                     }
             }
         }

@@ -32,18 +32,18 @@ const Layout = ({ children }: Props) => {
             <div className='container_button'>
                 {children}
             </div>
-            <Footer>
+            <Footer className='shadow_solid'>
                 <div className={`option_footer ${uselocation.pathname === '/' && 'active'}`}>
-                    <label onClick={() => history.push('/')} className='link'><strong><FontAwesomeIcon icon={iconProps(faHome as IconDefinition)} className="icon" />INICIO</strong></label>
+                    <label onClick={() => history.push('/')} className='link'><strong><FontAwesomeIcon icon={iconProps(faHome as IconDefinition)} className="icon" /><span className='label_footer'>INICIO</span></strong></label>
                 </div>
                 <div className={`option_footer ${uselocation.pathname === '/favoritos' && 'active'}`}>
-                    <label onClick={() => history.push('/favoritos')} className='link'><strong><FontAwesomeIcon icon={iconProps(faHeart as IconDefinition)} className="icon" />FAVORITOS</strong></label>
+                    <label onClick={() => history.push('/favoritos')} className='link'><strong><FontAwesomeIcon icon={iconProps(faHeart as IconDefinition)} className="icon" /><span className='label_footer'>FAVORITOS</span></strong></label>
                 </div>
                 <div className={`option_footer ${uselocation.pathname === '/Orden' && 'active'}`}>
-                    <label onClick={() => history.push('/Orden')} className='link'><strong><FontAwesomeIcon icon={iconProps(faShoppingBag as IconDefinition)} className="icon" />ORDENES</strong></label>
+                    <label onClick={() => history.push('/Orden')} className='link'><strong><FontAwesomeIcon icon={iconProps(faShoppingBag as IconDefinition)} className="icon" /><span className='label_footer'>ORDENES</span></strong></label>
                 </div>
                 <div className={`option_footer ${uselocation.pathname === '/perfil' && 'active'}`}>
-                    <label onClick={() => true ? setOpen(true) : history.push('/perfil')} className='link'><strong><FontAwesomeIcon icon={iconProps(faUser as IconDefinition)} className="icon" />PERFIL</strong></label>
+                    <label onClick={() => true ? setOpen(true) : history.push('/perfil')} className='link'><strong><FontAwesomeIcon icon={iconProps(faUser as IconDefinition)} className="icon" /><span className='label_footer'>PERFIL</span></strong></label>
                 </div>
             </Footer>
             <Modal seeModal={open} setSeeModal={setOpen} children={<FormLogin />} width={"800px"} height={"550px"}/>

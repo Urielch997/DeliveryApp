@@ -35,7 +35,7 @@ const FavoritosScreen = () => {
                     <Loading />
                     : favoritos.isSuccess ?
                         favoritos.data.content.map((item) =>
-                            <CardFav data={item} action={SeeDetail} />
+                            <CardFav data={item} action={SeeDetail} key={item.idFavorito}/>
                         )
                         : null
             }

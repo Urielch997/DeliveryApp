@@ -6,21 +6,24 @@ import FavButton from "./FavButton"
 
 
 
-const CardFav = ({data,action}:CardFavInterface) => {
-    const {deleteFav} = useShooping();
+const CardFav = ({ data, action }: CardFavInterface) => {
+    const { deleteFav } = useShooping();
 
-  return (
-    <CustomCard>
-        <div className="header_product_card"><FavButton data={data.producto} isFavorite={data.producto.favorito} action={()=>{deleteFav(data)}}/></div>
-        <div className="product_img">
-            <img src={data.producto.imagen} alt="producto" className="image"/>
-        </div>
-        <div className="product_name">
-            {data.producto.nombre}
-            <div className="button_product"><Button text="Ver producto" action={()=>action(data.producto)}/></div>
-        </div>
-    </CustomCard>
-  )
+    return (
+        <CustomCard>
+            <div className="header_product_card"><FavButton data={data.producto} isFavorite={data.producto.favorito} action={() => { deleteFav(data) }} /></div>
+            <div className="product_img">
+                <img src={data.producto.imagen} alt="producto" className="image" />
+            </div>
+            <div className="product_name">
+                {data.producto.nombre}
+                <div className="button_product">
+                    <Button text="Ver producto" action={() => action(data.producto)} />
+                    <Button text="Agregar al carrito" action={() => action(data.producto)} />
+                </div>
+            </div>
+        </CustomCard>
+    )
 }
 
 const CustomCard = styled.div`
@@ -45,6 +48,14 @@ const CustomCard = styled.div`
         object-fit: contain;
     }
 
+    .button_product{
+        width: 90%;
+        margin: 0 auto;
+        button{
+            margin:10px auto;
+        }
+    }
+
     .product_img{
         width: 50%;
         height: 100%;
@@ -62,6 +73,10 @@ const CustomCard = styled.div`
 
     .button_product{
         margin-top: 15px;
+        width: 90%;
+    }
+
+    @media screen and (max-width:600px){
         width: 100%;
     }
 `
