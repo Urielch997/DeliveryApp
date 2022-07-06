@@ -1,10 +1,8 @@
-import Button from '@Components/Util/Button'
-import useFormL from '@Hooks/FormLogin/useFormL'
-import styled from 'styled-components'
-import Checkbox from '../Util/Checkbox'
+import Button from '@Components/Util/Button';
+import useFormL from '@Hooks/FormLogin/useFormL';
 import facebookLogo from '@Img/facebooklogo.svg';
 import googleLogo from '@Img/Google.svg';
-import Input from '../Util/Input'
+import styled from 'styled-components';
 import FormLog from './FormLog';
 import FormRegister from './FormRegister';
 
@@ -40,8 +38,8 @@ const FormLogin = () => {
                             <div className='text_line'>o si prefieres</div>
                             <div className='line_divider' />
                         </div>
-                        <Button text="" Icon={<img src={facebookLogo} className="facebooklogo" />} color="#1976D2" classButton='border_social' />
-                        <Button text="" Icon={<img src={googleLogo} className="facebooklogo" />} classButton="button_login_google border_social" />
+                        <Button text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo'/>} color="#1976D2" classButton='border_social' />
+                        <Button text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo'/>} classButton="button_login_google border_social" />
                     </div>
                 </div>
                 <div className='img_example'>

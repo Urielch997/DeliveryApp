@@ -23,7 +23,9 @@ const FavoritosScreen = () => {
         if (!favoritos.data.content.length) {
             dispatch(getFavAction());
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
 
     return (
         <Wrapper>
@@ -48,6 +50,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    height: 100%;
 
     .title{
         width: 100%;

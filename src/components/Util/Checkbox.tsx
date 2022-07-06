@@ -10,7 +10,7 @@ const Checkbox = ({checked = true,size = "10px",setChecked = (e:boolean) =>{}}) 
         <CheckContainer size={size} onClick={()=>setChecked(!checked)}>
             {checked ?
                 <div className='checked'>
-                    <img src={checkMark} className="img_mark"/>
+                    <img src={checkMark} className="img_mark" alt='checkmark'/>
                 </div>
                 : <div className='no_checked'>
 

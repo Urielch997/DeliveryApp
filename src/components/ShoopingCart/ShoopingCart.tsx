@@ -21,6 +21,7 @@ const ShoopingCart = ({counter = 10}) => {
 
 const CustomCart = styled.div`
     position: relative;
+  width: fit-content;
 
     .counter_item{
         display: flex;

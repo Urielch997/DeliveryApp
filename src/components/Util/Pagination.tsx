@@ -23,7 +23,7 @@ interface Props {
  */
 const Pagination = ({ onChange = (page: number) => { }, page = 0, total = 0, size = 10 }: Props) => {
     const [count, setCount] = useState<number[]>([]);
-    const [current,setCurrent] = useState<number>(1);
+    const [current] = useState<number>(1);
 
     /**
      * Se realiza la ejecucion de la funcion a la hora de realizar el calculo de las paginas

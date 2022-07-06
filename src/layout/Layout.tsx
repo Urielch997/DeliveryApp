@@ -21,7 +21,7 @@ const Layout = ({ children }: Props) => {
     return (
         <Container>
             <Header>
-                <div className='container_button'>
+                <div className='container_button_header'>
                     <input placeholder='Buscar un comercio' className='search br7 pd5' />
                     <button className='ubicacion br7 pd5'>Seleccionar ubicacion</button>
                 </div>

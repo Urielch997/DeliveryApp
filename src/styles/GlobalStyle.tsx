@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle<Props>`
     --primary:#fec405;
     --theme:#f7f7f7f7;
     --components:#fff;
-    --text:#fff
+    --text:#fff;
+    --headerTheme:#E9E7E7;
   }
 
   .active {

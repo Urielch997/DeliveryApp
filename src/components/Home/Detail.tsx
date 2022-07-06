@@ -23,19 +23,19 @@ const Detail = ({ setSeeDetail, data = {
     precioOferta: 0,
     imagen: "",
     description: "",
-    favorito:false
+    favorito: false
 } }: CardProps) => {
     const { addFav } = useShooping();
-    const fav = useSelector((x:RootState)=>x.favoritos);
+    const fav = useSelector((x: RootState) => x.favoritos);
 
     return (
         <Wrapper>
-            <Back action={() => setSeeDetail(false)} />
+            <Back action={() => setSeeDetail(false)} clases="boton_back" />
             <div className="card_product">
-                <img className="imagen" src={data?.imagen || ""} />
+                <img className="imagen" src={data?.imagen || ""} alt="producto"/>
             </div>
             <div className="card_description">
-                <div className="card_header"><FavButton action={(e) => {addFav(e)}} data={data} isFavorite={data.favorito}/></div>
+                <div className="card_header"><FavButton action={(e) => { addFav(e) }} data={data} isFavorite={data.favorito} /></div>
                 <div className="price"><h1>{convertMoney({ text: data?.precio } as MoneyFormat)}</h1></div>
                 <div className="text_descripcion">
                     {data?.description}
@@ -61,6 +61,10 @@ position: relative;
         display: flex;
         justify-content: flex-end;
         margin:5px 10px;
+    }
+
+    .boton_back{
+        width: max-content;
     }
 
     .price{
@@ -156,6 +160,19 @@ position: relative;
             label{
                 margin:5px 20px;
             }
+        }
+    }
+
+    @media screen and (max-width:600px){
+        display: flex;
+        flex-direction: column;
+
+        .card_product, .card_description{
+            width: 100%;
+        }
+
+        .boton_back{
+            width: 100%;
         }
     }
 `

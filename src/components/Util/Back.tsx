@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 
-const Back = ({ action = () => { } }) => {
+const Back = ({ action = () => { },clases = "" }) => {
     return (
-        <Container>
+        <Container className={clases}>
             <FontAwesomeIcon onClick={() => action()} icon={iconProps(faArrowCircleLeft as IconDefinition)} className="icon_color" />
         </Container>
     )

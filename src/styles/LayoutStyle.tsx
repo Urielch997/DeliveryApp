@@ -13,7 +13,7 @@ export const Header = styled.div`
         font-size:20px;
     }
     
-    .container_button{
+    .container_button_header{
         width: 90%;
         margin:5px auto;
 
@@ -21,6 +21,7 @@ export const Header = styled.div`
             border:0px;
             box-shadow:1px 1px 1px rgba(0,0,0, 0.1);
             width: 350px;
+            box-sizing: border-box;
 
             &:focus{
                 outline:0px;
@@ -42,6 +43,37 @@ export const Header = styled.div`
 
     .br7{
         border-radius: 7px;
+    }
+
+    @media screen and (max-width:600px){
+        top: 0;
+        position: sticky;
+        background: var(--headerTheme);
+        flex-direction: column-reverse;
+        z-index:1000;
+
+        .container_button_header{
+            width: 100%;
+            padding-bottom: 0px;
+            .ubicacion{
+                width: 100%;
+                margin-left: 0;
+                margin-top:10px;
+            }
+
+            .search{
+            border:0px;
+            box-shadow:1px 1px 1px rgba(0,0,0, 0.1);
+            width: 100%;
+            margin-top:10px;
+        }
+        }
+
+        .shopping_cart{
+            display: flex;
+            justify-content: flex-end;
+            width: 90%;    
+        }
     }
 `
 
@@ -81,5 +113,10 @@ export const Footer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    @media screen and (max-width:600px){
+        position: sticky;
+        bottom: 0;
     }
 `
