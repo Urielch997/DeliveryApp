@@ -1,12 +1,11 @@
 import Button from '@Components/Util/Button';
+import useFacebookLogin from '@Hooks/FormLogin/Social/useFacebookLogin';
 import useFormL from '@Hooks/FormLogin/useFormL';
-import facebookLogo from '@Img/facebooklogo.svg';
 import googleLogo from '@Img/Google.svg';
+import FacebookLogin from 'react-facebook-login';
 import styled from 'styled-components';
 import FormLog from './FormLog';
 import FormRegister from './FormRegister';
-import useFacebookLogin from '@Hooks/FormLogin/Social/useFacebookLogin';
-import FacebookLogin from 'react-facebook-login';
 
 
 const FormLogin = () => {
