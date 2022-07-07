@@ -1,8 +1,8 @@
 import Button from '@Components/Util/Button';
 import useFacebookLogin from '@Hooks/FormLogin/Social/useFacebookLogin';
 import useFormL from '@Hooks/FormLogin/useFormL';
+import facebookLogo from '@Img/facebooklogo.svg';
 import googleLogo from '@Img/Google.svg';
-import FacebookLogin from 'react-facebook-login';
 import styled from 'styled-components';
 import FormLog from './FormLog';
 import FormRegister from './FormRegister';
@@ -40,17 +40,7 @@ const FormLogin = () => {
                             <div className='text_line'>o si prefieres</div>
                             <div className='line_divider' />
                         </div>
-                        <FacebookLogin
-      appId="2865902096975315"
-      autoLoad={true}
-      fields="name,email,picture"
-      callback={responseFacebook}
-      cssClass="my-facebook-button-class"
-      icon="fa-facebook"
-      version="3.1"
-      scope='public_profile'
-    />
-                        {/* <Button text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' /> */}
+                        <Button text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' />
                         <Button text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
                     </div>
                 </div>
