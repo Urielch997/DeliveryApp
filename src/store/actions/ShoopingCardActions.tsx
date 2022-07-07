@@ -1,4 +1,4 @@
-import { ContentFav } from "@interface/CardFavInterface";
+import { ContentFav } from "@Interface/CardFavInterface";
 import { Content, RequestPageableGeneric } from "@Interface/ProducstListInterface";
 import { RequestPageableGenericFav } from "@Interface/ShoopingCartInteface";
 import { ShoopingTypes } from "@Interface/types/ShoopingCartType";

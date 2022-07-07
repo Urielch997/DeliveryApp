@@ -1,4 +1,19 @@
 {
   "extends": "./base-tsconfig.json",
-  "compilerOptions": {}
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["src/*"],
+      "@Store/*":["src/store/*"],
+      "@Components/*":["src/components/*"],
+      "@Hooks/*":["src/hooks/*"],
+      "@Layout/*":["src/layout/*"],
+      "@Screens/*":["src/Screens/*"],
+      "@Styles/*":["src/styles/*"],
+      "@Interface/*":["src/interface/*"],
+      "@Service/*":["src/services/*"],
+      "@Utils/*":["src/utils/*"],
+      "@Img/*":["src/img/*"]
+    }
+  }
 }
