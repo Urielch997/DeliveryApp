@@ -1,4 +1,4 @@
-import { LoginType } from "@interface/types/LoginTypes"
+import { LoginType } from "@Interface/types/LoginTypes"
 import { useState } from "react"
 
 const useFormL = () => {

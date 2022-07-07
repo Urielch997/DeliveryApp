@@ -9,7 +9,7 @@ import Loading from "@Components/Util/Loading"
 import SubMenu from "@Utils/SubMenu";
 import { getProductosList } from "@Store/actions/ProductosActions"
 import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "@store/store"
+import { RootState } from "@Store/store"
 
 const HomeScreen = () => {
     const dispatch = useDispatch();

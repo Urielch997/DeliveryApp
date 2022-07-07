@@ -1,6 +1,6 @@
-import { ContentFav } from "@interface/CardFavInterface";
+import { ContentFav } from "@Interface/CardFavInterface";
 import { Content } from "@Interface/ProducstListInterface";
-import { RootState } from "@store/store";
+import { RootState } from "@Store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavAction, modifyFavorite, removeFav } from "../../store/actions/ShoopingCardActions";
 
