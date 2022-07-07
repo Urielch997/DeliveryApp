@@ -58,6 +58,13 @@ const ModalBody = styled.div<ModalProps>`
         background: var(--primary);
         cursor: pointer;
     }
+
+    @media screen and (max-width:600px){
+        width: 95%;
+        margin:0 auto;
+        top: ${({ height }) =>`calc(100% / 2 - ${height ? parseInt(height?.substring(0, height.length - 2)) / 2 : 0}px)`};
+        left: calc(5% / 2);
+    }
 `
 
 export default Modal

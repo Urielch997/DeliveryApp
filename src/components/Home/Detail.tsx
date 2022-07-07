@@ -166,7 +166,7 @@ position: relative;
     @media screen and (max-width:600px){
         display: flex;
         flex-direction: column;
-
+        margin: 0;
         .card_product, .card_description{
             width: 100%;
         }
@@ -174,6 +174,7 @@ position: relative;
         .boton_back{
             width: 100%;
         }
+        
     }
 `
 

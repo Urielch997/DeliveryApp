@@ -92,6 +92,7 @@ export const Container = styled.div`
         width: 90%;
         margin:0px auto;
         padding-bottom: 81px;
+        min-height: 72vh;
     }
 `
 

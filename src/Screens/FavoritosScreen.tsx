@@ -33,11 +33,12 @@ const FavoritosScreen = () => {
             {seeDetail ?
                 <Detail setSeeDetail={setSeeDetail} data={CardSelected} />
                 :
-                favoritos.isLoading ?
+                favoritos.isLoading
+                    ?
                     <Loading />
                     : favoritos.isSuccess ?
                         favoritos.data.content.map((item) =>
-                            <CardFav data={item} action={SeeDetail} key={item.idFavorito}/>
+                            <CardFav data={item} action={SeeDetail} key={item.idFavorito} />
                         )
                         : null
             }
@@ -47,9 +48,7 @@ const FavoritosScreen = () => {
 }
 
 const Wrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+
     height: 100%;
 
     .title{

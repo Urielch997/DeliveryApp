@@ -18,6 +18,7 @@ const Load = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 30px;
     height: calc(50vh - 127px);
 
 

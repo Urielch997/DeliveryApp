@@ -5,10 +5,13 @@ import googleLogo from '@Img/Google.svg';
 import styled from 'styled-components';
 import FormLog from './FormLog';
 import FormRegister from './FormRegister';
+import useFacebookLogin from '@Hooks/FormLogin/Social/useFacebookLogin';
+import FacebookLogin from 'react-facebook-login';
 
 
 const FormLogin = () => {
     const { changeType, typeForm } = useFormL();
+    const {responseFacebook} = useFacebookLogin();
 
 
     return (
@@ -38,8 +41,18 @@ const FormLogin = () => {
                             <div className='text_line'>o si prefieres</div>
                             <div className='line_divider' />
                         </div>
-                        <Button text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo'/>} color="#1976D2" classButton='border_social' />
-                        <Button text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo'/>} classButton="button_login_google border_social" />
+                        <FacebookLogin
+      appId="2865902096975315"
+      autoLoad={true}
+      fields="name,email,picture"
+      callback={responseFacebook}
+      cssClass="my-facebook-button-class"
+      icon="fa-facebook"
+      version="3.1"
+      scope='public_profile'
+    />
+                        {/* <Button text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' /> */}
+                        <Button text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
                     </div>
                 </div>
                 <div className='img_example'>
@@ -135,6 +148,17 @@ const FormContainer = styled.div`
         }
 
     }
+
+    @media screen and (max-width:600px){
+        padding: 0;
+    .img_example{
+        display: none;
+    }
+
+    .formulario_container{
+        width: 90%;
+    }
+}
 
    
 `
