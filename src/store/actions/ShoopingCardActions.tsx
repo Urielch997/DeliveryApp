@@ -2,7 +2,7 @@ import { ContentFav } from "@Interface/CardFavInterface";
 import { Content, RequestPageableGeneric } from "@Interface/ProducstListInterface";
 import { RequestPageableGenericFav } from "@Interface/ShoopingCartInteface";
 import { ShoopingTypes } from "@Interface/types/ShoopingCartType";
-import { getFavoritos, SaveFavoritos,DeleteFavoritos } from "./../../services/Paths";
+import { getFavoritos, SaveFavoritos,DeleteFavoritos } from "@Service/Paths";
 import { requestApi } from "@Service/Request";
 import { initialStateFav } from "@Store/reducer/ShoopingCartReducer";
 import { Dispatch } from "react";
