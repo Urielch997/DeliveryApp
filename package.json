@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
+    "@react-oauth/google": "^0.2.6",
     "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -33,7 +34,6 @@
     "react-app-rewire-alias": "^1.1.5",
     "react-app-rewired": "^2.1.8",
     "react-dom": "^17.0.2",
-    "react-google-login": "^5.2.2",
     "react-icons": "^4.4.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
@@ -44,11 +44,9 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "set HTTPS=true && env-cmd -f .env.dev react-app-rewired start",
+    "start": "env-cmd -f .env.local react-app-rewired start",
+    "dev": "env-cmd -f .env.dev react-app-rewired start",
     "build": "env-cmd -f .env.dev react-app-rewired build",
-    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
-    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

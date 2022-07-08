@@ -116,6 +116,12 @@ export const Footer = styled.div`
         align-items: center;
     }
 
+    .photo_profile{
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+    }
+
     @media screen and (max-width:600px){
         position: sticky;
         bottom: 0;

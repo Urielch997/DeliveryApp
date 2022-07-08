@@ -10,7 +10,7 @@ interface ButtonInteface{
 
 const Button = ({text="",action = ()=>{},Icon,color,classButton = ""}:ButtonInteface) => {
   return (
-    <ButtonCustom onClick={()=>action()} style={{background:color}} className={classButton}>
+    <ButtonCustom onClick={action} style={{background:color}} className={classButton}>
         {Icon}
         {text}
     </ButtonCustom>

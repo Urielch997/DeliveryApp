@@ -1,16 +1,19 @@
 import Button from '@Components/Util/Button';
-import useFacebookLogin from '@Hooks/FormLogin/Social/useFacebookLogin';
 import useFormL from '@Hooks/FormLogin/useFormL';
 import facebookLogo from '@Img/facebooklogo.svg';
 import googleLogo from '@Img/Google.svg';
+import { GoogleLogin, hasGrantedAllScopesGoogle, useGoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import styled from 'styled-components';
 import FormLog from './FormLog';
 import FormRegister from './FormRegister';
 
 
 const FormLogin = () => {
-    const { changeType, typeForm } = useFormL();
-    const {responseFacebook} = useFacebookLogin();
+    const { changeType, typeForm,LoginFacebook } = useFormL();
+    const login = useGoogleLogin({
+        onSuccess: tokenResponse => console.log(tokenResponse),
+      });
 
 
     return (
@@ -40,8 +43,11 @@ const FormLogin = () => {
                             <div className='text_line'>o si prefieres</div>
                             <div className='line_divider' />
                         </div>
-                        <Button text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' />
-                        <Button text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
+                        <Button action={LoginFacebook} text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' />
+
+                        <Button action={login} text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
+
+
                     </div>
                 </div>
                 <div className='img_example'>

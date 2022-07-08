@@ -2,10 +2,12 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import ShoopingCartReducer from './reducer/ShoopingCartReducer';
 import thunk from "redux-thunk";
 import ProductoReducer from './reducer/ProductoReducer';
+import AuthReducer from './reducer/AuthReducer';
 
 const Reducers = combineReducers({
     favoritos: ShoopingCartReducer,
-    productos:ProductoReducer
+    productos:ProductoReducer,
+    Auth:AuthReducer
 })
 
   

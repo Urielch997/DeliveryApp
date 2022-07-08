@@ -10,10 +10,11 @@ import SubMenu from "@Utils/SubMenu";
 import { getProductosList } from "@Store/actions/ProductosActions"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@Store/store"
+import { isLogin } from "@Store/actions/AuthActions"
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
-    const { productos } = useSelector((x: RootState) => x)
+    const { productos,Auth:{Logged,facebookLogin,typeAuth} } = useSelector((x: RootState) => x)
     const [seeDetail, setSeeDetail] = useState<Boolean>(false)
     const [CardSelected, setCardSelected] = useState<Content>();
 
@@ -31,6 +32,8 @@ const HomeScreen = () => {
         if (!productos?.data.content.length) {
             dispatch(getProductosList());
         }
+
+        dispatch(isLogin());
     }, [])
 
 
@@ -43,7 +46,7 @@ const HomeScreen = () => {
     return (
         <Container>
             <div className='title_home'>
-                <label>Hola </label>
+                <label>{`Hola ${facebookLogin.name}`}</label>
             </div>
             <div className='container_submenu'>
                 <SubMenu options={Options} />

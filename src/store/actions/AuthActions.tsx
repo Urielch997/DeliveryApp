@@ -1,57 +1,77 @@
+
+import { DataLogin } from "@Interface/AuthInterface";
 import { Dispatch } from "react"
+declare global {
+    interface Window {
+        FB: any;
+    }
+}
+
 
 /**
  * Verificacion de estado de logeo
  */
- export const isLogin = async () => (dispatch:Dispatch<any>) =>{
-    
+export const isLogin = () => (dispatch: Dispatch<any>) => {
+    if (!window.FB) return;
+    window.FB.getLoginStatus((response: any) => {
+        console.log(response)
+        if (response.status === "connected") {
+            //leer los datos del usuario
+            dispatch(facebookLogin());
+        } else {
+            //intentar iniciar sesion
+            dispatch({type:"LOGOUT_FACEBOOK",payload:{Logged:false}});
+        }
+    });
+}
+
+/**
+ *  Iniciar sesion con facebook
+ */
+export const facebookLogin = () => (dispatch: Dispatch<any>) => {
+        window.FB.api('/me?fields=id,name,email,picture', (userDate: DataLogin) => {
+            dispatch({type:"LOGIN_FACEBOOK",payload:userDate})
+        });
 }
 
 /**
  * Loggin de usuarios
  */
-export const Loggin = async () => (dispatch:Dispatch<any>) => {
+export const Loggin = () => (dispatch: Dispatch<any>) => {
 
 }
 
 /**
  * Logut de usuarios
  */
-export const Logout = async () => (dispatch:Dispatch<any>) => {
+export const Logout = () => (dispatch: Dispatch<any>) => {
 
 }
 
 /**
  * Registro de usuarios
  */
-export const Register = async () => (dispatch:Dispatch<any>) =>{
+export const Register = () => (dispatch: Dispatch<any>) => {
 
 }
 
 /**
  * Refresca la sesion del usuario
  */
-export const RefreshToken = async () => (dispatch:Dispatch<any>) =>{
+export const RefreshToken = () => (dispatch: Dispatch<any>) => {
 
 }
 
 /**
  * Guarda token
  */
-export const SaveToken = async () => (dispatch:Dispatch<any>) =>{
-
-}
-
-/**
- * Iniciar sesion con facebook
- */
-export const FacebookLogin = async () => (dispatch:Dispatch<any>) =>{
+export const SaveToken = () => (dispatch: Dispatch<any>) => {
 
 }
 
 /**
  * Iniciar sesion con Google
  */
-export const GoogleLogin = async () => (dispatch:Dispatch<any>) =>{
+export const GoogleLogin = () => (dispatch: Dispatch<any>) => {
 
 }

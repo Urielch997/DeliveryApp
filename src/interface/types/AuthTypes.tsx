@@ -1,0 +1,1 @@
+export type AuthType = "VERIFY_LOGIN" | "LOGIN" | "LOGIN_FACEBOOK" | "LOGOUT_FACEBOOK"
