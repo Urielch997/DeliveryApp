@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
-const Input = ({clases = "",placeholder = ""}) => {
+export interface PropsInput {
+  clases?:string,
+  placeholder?:string,
+  value?:string,
+  onChange?:React.ChangeEventHandler<HTMLInputElement>
+}
+
+const Input = ({clases = "",placeholder = "",value = "",onChange}:PropsInput) => {
   return (
-    <InputCustom className={clases} placeholder = {placeholder}/>
+    <InputCustom className={clases} placeholder = {placeholder} value={value} onChange={onChange}/>
   )
 }
 

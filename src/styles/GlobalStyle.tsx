@@ -13,6 +13,10 @@ export const GlobalStyle = createGlobalStyle<Props>`
     --headerTheme:#E9E7E7;
   }
 
+  ul{
+    padding-left: 0px;
+  }
+
   .active {
     color:var(--primary);
   }

@@ -1,9 +1,26 @@
+import SectionTwo from "@/components/Perfil/Components/SectionTwo"
+import SectionThree from "@/components/Perfil/SectionThree"
+import SectionOne from "@Components/Perfil/SectionOne"
+import styled from "styled-components"
+
 const PerfilScreen = () => {
     return (
-        <div>
-            Perfil
-        </div>
+        <WrapperPefilScreen>
+            <SectionOne/>
+            <SectionTwo/>
+            <SectionThree/>
+        </WrapperPefilScreen>
     )
 }
+
+const WrapperPefilScreen = styled.div`
+    display: flex;
+    justify-content: space-around;
+    margin:25px 5px;
+
+    div{
+        width: 90%;
+    }
+`
 
 export default PerfilScreen

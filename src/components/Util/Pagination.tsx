@@ -78,6 +78,7 @@ const Wrapper = styled.div`
         list-style: none;
         display: flex;
         flex-wrap: wrap;
+        padding-left: 0;
 
         li{
             padding: 10px 15px;

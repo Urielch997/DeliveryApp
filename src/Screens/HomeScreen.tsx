@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react"
 import Card from "@Components/Home/Card"
 import CardArticle from "@Components/Home/CardArticle"
 import Detail from "@Components/Home/Detail"
-import Pagination from "@Components/Util/Pagination"
-import { Container } from "@Styles/HomeStyle"
-import { Content } from "@Interface/ProducstListInterface";
 import Loading from "@Components/Util/Loading"
-import SubMenu from "@Utils/SubMenu";
+import Pagination from "@Components/Util/Pagination"
+import { Content } from "@Interface/ProducstListInterface"
 import { getProductosList } from "@Store/actions/ProductosActions"
-import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@Store/store"
-import { isLogin } from "@Store/actions/AuthActions"
+import { Container } from "@Styles/HomeStyle"
+import SubMenu from "@Utils/SubMenu"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
-    const { productos,Auth:{Logged,facebookLogin,typeAuth} } = useSelector((x: RootState) => x)
+    const { productos,Auth:{facebookLogin} } = useSelector((x: RootState) => x)
     const [seeDetail, setSeeDetail] = useState<Boolean>(false)
     const [CardSelected, setCardSelected] = useState<Content>();
 
@@ -32,8 +31,6 @@ const HomeScreen = () => {
         if (!productos?.data.content.length) {
             dispatch(getProductosList());
         }
-
-        dispatch(isLogin());
     }, [])
 
 

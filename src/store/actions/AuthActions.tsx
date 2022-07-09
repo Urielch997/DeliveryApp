@@ -4,6 +4,7 @@ import { Dispatch } from "react"
 declare global {
     interface Window {
         FB: any;
+        fbAsyncInit: any;
     }
 }
 
@@ -12,15 +13,14 @@ declare global {
  * Verificacion de estado de logeo
  */
 export const isLogin = () => (dispatch: Dispatch<any>) => {
-    if (!window.FB) return;
     window.FB.getLoginStatus((response: any) => {
         console.log(response)
         if (response.status === "connected") {
             //leer los datos del usuario
-            dispatch(facebookLogin());
+            dispatch(facebookHandler(response));
         } else {
             //intentar iniciar sesion
-            dispatch({type:"LOGOUT_FACEBOOK",payload:{Logged:false}});
+            dispatch({ type: "LOGOUT_FACEBOOK", payload: { Logged: false } });
         }
     });
 }
@@ -28,10 +28,16 @@ export const isLogin = () => (dispatch: Dispatch<any>) => {
 /**
  *  Iniciar sesion con facebook
  */
-export const facebookLogin = () => (dispatch: Dispatch<any>) => {
-        window.FB.api('/me?fields=id,name,email,picture', (userDate: DataLogin) => {
-            dispatch({type:"LOGIN_FACEBOOK",payload:userDate})
+export const facebookHandler = (response: any) => (dispatch: Dispatch<any>) => {
+    if (response.status === "connected") {
+        window.FB.api('/me?fields=id,name,email,picture.type(large)', (userDate: DataLogin) => {
+            dispatch({ type: "LOGIN_FACEBOOK", payload: userDate })
         });
+    }
+}
+
+export const facebookLogin = () => {
+    window.FB.login(facebookHandler, { scope: "public_profile,email" })
 }
 
 /**

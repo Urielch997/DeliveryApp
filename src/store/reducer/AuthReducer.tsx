@@ -6,6 +6,7 @@ const initialState = {
     facebookLogin:{
         id: "",
         name: "",
+        email:"",
         picture: {
             data: {
                 height: 0,
@@ -15,9 +16,13 @@ const initialState = {
             }
     
         }
+    },
+    googleLogin:{
+
+    },
+    Login:{
+        
     }
-
-
 }
 
 

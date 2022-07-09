@@ -15,6 +15,7 @@ export interface DataLogin {
     id: string;
     name: string;
     picture: Picture;
+    email:string;
 }
 
 export interface ActionLogin {
