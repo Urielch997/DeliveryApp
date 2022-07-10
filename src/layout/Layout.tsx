@@ -26,8 +26,11 @@ const Layout = ({ children }: Props) => {
 
 
     useEffect(()=>{
+        console.log(window.FB)
+        if(window.FB){
         dispatch(isLogin())
-    },[])
+        }
+    },[window.FB])
 
 
     return (
@@ -55,7 +58,7 @@ const Layout = ({ children }: Props) => {
                     <label onClick={() => history.push('/Orden')} className='link'><strong><FontAwesomeIcon icon={iconProps(faShoppingBag as IconDefinition)} className="icon" /><span className='label_footer'>ORDENES</span></strong></label>
                 </div>
                 <div className={`option_footer ${uselocation.pathname === '/perfil' && 'active'}`}>
-                    <label onClick={() => true ? history.push('/perfil') : setOpen(true)} className='link'>{Logged ? <img src={facebookLogin.picture.data.url} alt='photo_profile' className='photo_profile' /> : <strong><FontAwesomeIcon icon={iconProps(faUser as IconDefinition)} className="icon" /> <span className='label_footer'>PERFIL</span></strong>}</label>
+                    <label onClick={() => Logged ? history.push('/perfil') : setOpen(true)} className='link'>{Logged ? <img src={facebookLogin.picture.data.url} alt='photo_profile' className='photo_profile' /> : <strong><FontAwesomeIcon icon={iconProps(faUser as IconDefinition)} className="icon" /> <span className='label_footer'>PERFIL</span></strong>}</label>
                 </div>
             </Footer>
             <Modal seeModal={open} setSeeModal={setOpen} children={<FormLogin />} width={"800px"} height={"550px"} />

@@ -21,6 +21,15 @@ const WrapperPefilScreen = styled.div`
     div{
         width: 90%;
     }
+
+    @media screen and (max-width:600px){
+       flex-direction: column;
+
+       
+    div{
+        width: 100%;
+    }
+    }
 `
 
 export default PerfilScreen
