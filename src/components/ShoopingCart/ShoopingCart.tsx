@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import styled from 'styled-components';
 
-const ShoopingCart = ({counter = 10}) => {
+const ShoopingCart = ({counter = 0}) => {
 
   return (
     <CustomCart>
         <FontAwesomeIcon icon={iconProps(faShoppingCart as IconDefinition)}/>
         { counter ?
-        <div className='counter_item'>{counter}</div>
+        <div className='counter_item'>{counter ? counter : null}</div>
         : 
         null
         }
