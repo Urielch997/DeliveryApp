@@ -1,10 +1,12 @@
-import { RootState } from "@/store/store";
+import { Logout } from "@Store/actions/AuthActions";
+import { RootState } from "@Store/store";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useForm from "../useForm";
 
 const usePerfil = () => {
     const {Auth:{Logged,dataUser}} = useSelector((x:RootState)=>x);
+    const dispatch = useDispatch();
     const {nombre,onChange,state,SaveEach} = useForm({
         nombre:"",
         correo:""
@@ -18,12 +20,17 @@ const usePerfil = () => {
       });
     }
     }, [Logged])
+
+    const logout = () =>{
+      dispatch(Logout())
+    }
     
 
 
   return {
     state,
-    onChange
+    onChange,
+    logout
   } as const
 }
 

@@ -1,8 +1,11 @@
 import Button from "@/components/Util/Button"
+import usePerfil from "@/hooks/Perfil/usePerfil"
 import styled from "styled-components"
 import CardPerfil from "./CardPerfil"
 
 const SectionTwo = () => {
+    const {logout} = usePerfil();
+
     return (
         <WrapperSectionTwo>
             <div className="title">
@@ -24,7 +27,7 @@ const SectionTwo = () => {
                 </div>
             </CardPerfil>
             <div className="content_btn_logout">
-                <Button text="Cerrar sesion" classButton="btn_logout"/>
+                <Button text="Cerrar sesion" classButton="btn_logout" action={logout}/>
             </div>
         </WrapperSectionTwo>
     )

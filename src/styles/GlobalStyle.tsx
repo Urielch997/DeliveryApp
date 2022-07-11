@@ -13,6 +13,14 @@ export const GlobalStyle = createGlobalStyle<Props>`
     --headerTheme:#E9E7E7;
   }
 
+  .d-flex{
+    display: flex;
+  }
+
+  .w-50{
+    width: 100%;
+  }
+
   ul{
     padding-left: 0px;
   }

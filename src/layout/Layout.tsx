@@ -26,11 +26,16 @@ const Layout = ({ children }: Props) => {
 
 
     useEffect(() => {
-        console.log(window.FB)
         if (window.FB) {
             dispatch(isLogin())
         }
     }, [window.FB])
+
+    useEffect(()=>{
+        if(Logged){
+            setOpen(false)
+        }
+    },[Logged])
 
 
     return (
@@ -41,7 +46,7 @@ const Layout = ({ children }: Props) => {
                     <button className='ubicacion br7 pd5'>Seleccionar ubicacion</button>
                 </div>
                 <div className='shopping_cart'>
-                    <ShoopingCart />
+                    <ShoopingCart click={()=>history.push("/shoopingCart")}/>
                 </div>
             </Header>
             <div className='container_button'>

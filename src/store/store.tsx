@@ -3,9 +3,10 @@ import ShoopingCartReducer from './reducer/ShoopingCartReducer';
 import thunk from "redux-thunk";
 import ProductoReducer from './reducer/ProductoReducer';
 import AuthReducer from './reducer/AuthReducer';
+import FavoritoReducer from './reducer/FavoritoReducer';
 
 const Reducers = combineReducers({
-    favoritos: ShoopingCartReducer,
+    favoritos: FavoritoReducer,
     productos:ProductoReducer,
     Auth:AuthReducer
 })

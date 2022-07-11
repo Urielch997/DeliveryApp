@@ -2,7 +2,7 @@ import CardFav from "@Components/Favoritos/CardFav";
 import Detail from "@Components/Home/Detail";
 import Loading from "@Components/Util/Loading";
 import { Content } from "@Interface/ProducstListInterface";
-import { getFavAction } from "@Store/actions/ShoopingCardActions";
+import { getFavAction } from "@Store/actions/FavoritoAction";
 import { RootState } from "@Store/store";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

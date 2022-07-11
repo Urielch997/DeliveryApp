@@ -54,7 +54,9 @@ export const Loggin = () => (dispatch: Dispatch<any>) => {
  * Logut de usuarios
  */
 export const Logout = () => (dispatch: Dispatch<any>) => {
-
+    window.FB.logout((response:any) =>{
+        console.log(response)
+    });
 }
 
 /**
