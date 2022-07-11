@@ -5,11 +5,14 @@ export interface PropsInput {
   placeholder?:string,
   value?:string,
   onChange?:React.ChangeEventHandler<HTMLInputElement>
+  type?:typesInput
 }
 
-const Input = ({clases = "",placeholder = "",value = "",onChange}:PropsInput) => {
+type typesInput = "text" | "password" | "email"
+
+const Input = ({clases = "",placeholder = "",value = "",onChange = ()=>{},type = "text"}:PropsInput) => {
   return (
-    <InputCustom className={clases} placeholder = {placeholder} value={value} onChange={onChange}/>
+    <InputCustom className={clases} placeholder = {placeholder} value={value} onChange={onChange} type={type}/>
   )
 }
 

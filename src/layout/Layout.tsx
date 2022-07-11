@@ -22,15 +22,15 @@ const Layout = ({ children }: Props) => {
     const dispatch = useDispatch();
     const uselocation = useLocation();
     const [open, setOpen] = useState(false);
-    const { Auth: { Logged, facebookLogin } } = useSelector((x: RootState) => x)
+    const { Auth: { Logged,dataUser } } = useSelector((x: RootState) => x)
 
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(window.FB)
-        if(window.FB){
-        dispatch(isLogin())
+        if (window.FB) {
+            dispatch(isLogin())
         }
-    },[window.FB])
+    }, [window.FB])
 
 
     return (
@@ -58,7 +58,7 @@ const Layout = ({ children }: Props) => {
                     <label onClick={() => history.push('/Orden')} className='link'><strong><FontAwesomeIcon icon={iconProps(faShoppingBag as IconDefinition)} className="icon" /><span className='label_footer'>ORDENES</span></strong></label>
                 </div>
                 <div className={`option_footer ${uselocation.pathname === '/perfil' && 'active'}`}>
-                    <label onClick={() => Logged ? history.push('/perfil') : setOpen(true)} className='link'>{Logged ? <img src={facebookLogin.picture.data.url} alt='photo_profile' className='photo_profile' /> : <strong><FontAwesomeIcon icon={iconProps(faUser as IconDefinition)} className="icon" /> <span className='label_footer'>PERFIL</span></strong>}</label>
+                    <label onClick={() => Logged ? history.push('/perfil') : setOpen(true)} className='link'>{Logged ? <img src={dataUser.picture} alt='photo_profile' className='photo_profile' /> : <strong><FontAwesomeIcon icon={iconProps(faUser as IconDefinition)} className="icon" /> <span className='label_footer'>PERFIL</span></strong>}</label>
                 </div>
             </Footer>
             <Modal seeModal={open} setSeeModal={setOpen} children={<FormLogin />} width={"800px"} height={"550px"} />

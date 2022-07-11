@@ -1,8 +1,14 @@
-import { ActionLogin, DataLogin } from "@Interface/AuthInterface";
+import { ActionLogin, DataLogin, initialStateAuth } from "@Interface/AuthInterface";
+import { Reducer } from "redux";
 
 const initialState = {
     Logged:false,
     typeAuth:"",
+    dataUser:{
+        name:"",
+        email:"",
+        picture:""
+    },
     facebookLogin:{
         id: "",
         name: "",
@@ -35,12 +41,18 @@ const AuthReducer = (state = initialState, action: ActionLogin) => {
                 typeAuth:"FACEBOOK",
                 facebookLogin:{
                     ...action.payload
+                },
+                dataUser:{
+                    ...state.dataUser,
+                    name:action.payload.name,
+                    email:action.payload.email,
+                    picture:action.payload.picture.data.url
                 }
             };
         case "LOGOUT_FACEBOOK":
             return{
             ...state,
-            ...action.payload
+            Logged:false
             }
         default:
             return state;

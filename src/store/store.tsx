@@ -11,7 +11,7 @@ const Reducers = combineReducers({
 })
 
   
-  const rootReducer = (state:any, action:never)=>{
+  const rootReducer =(state:any, action:never)=>{
     return Reducers(state, action)
   }
 
