@@ -69,7 +69,10 @@ const AuthReducer = (state = initialState, action: ActionLogin) => {
                     ...action.payload
                 },
                 dataUser: {
-                    ...state.dataUser
+                    ...state.dataUser,
+                    name: action.payload.name,
+                    email: action.payload.email,
+                    picture: action.payload.picture
                 }
             }
         default:
