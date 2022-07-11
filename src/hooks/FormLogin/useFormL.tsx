@@ -1,7 +1,8 @@
-import { facebookLogin, isLogin } from "@Store/actions/AuthActions"
+import { facebookLogin, GoogleLogin, isLogin } from "@Store/actions/AuthActions"
 import { LoginType } from "@Interface/types/LoginTypes"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
+import { GoogleAuthInterface } from "@/interface/AuthInterface"
 
 const useFormL = () => {
     const [checked,setChecked] = useState(false)
@@ -16,12 +17,17 @@ const useFormL = () => {
         dispatch(facebookLogin())
     }
 
+    const LoginGoogle = (response:Object) =>{
+        dispatch(GoogleLogin(response));
+    }
+
     return {
         setChecked,
         checked,
         typeForm,
         changeType,
-        LoginFacebook
+        LoginFacebook,
+        LoginGoogle
     } as const
 }
 

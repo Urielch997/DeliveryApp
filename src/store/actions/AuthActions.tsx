@@ -1,6 +1,9 @@
 
+import { requestApi } from "@Service/Request";
 import { DataLogin } from "@Interface/AuthInterface";
 import { Dispatch } from "react"
+import { urlUserGoogle } from "@/services/Paths";
+import { AuthEnum } from "@/interface/types/AuthTypes";
 declare global {
     interface Window {
         FB: any;
@@ -78,6 +81,12 @@ export const SaveToken = () => (dispatch: Dispatch<any>) => {
 /**
  * Iniciar sesion con Google
  */
-export const GoogleLogin = () => (dispatch: Dispatch<any>) => {
-
+export const GoogleLogin = (response:any) => (dispatch: Dispatch<any>) => {
+    if(response.authuser){
+        requestApi(urlUserGoogle(response.access_token)).then((x)=>{
+            if(x.given_name){
+                dispatch({type:AuthEnum.LOGIN_GOOGLE,payload:x})
+            }
+        })
+    }
 }

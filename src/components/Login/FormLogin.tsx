@@ -9,9 +9,9 @@ import FormRegister from './FormRegister';
 
 
 const FormLogin = () => {
-    const { changeType, typeForm,LoginFacebook } = useFormL();
+    const { changeType, typeForm,LoginFacebook,LoginGoogle } = useFormL();
     const login = useGoogleLogin({
-        onSuccess: tokenResponse => console.log(tokenResponse),
+        onSuccess: tokenResponse => LoginGoogle(tokenResponse),
       });
 
 

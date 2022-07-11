@@ -1,1 +1,16 @@
-export type AuthType = "VERIFY_LOGIN" | "LOGIN" | "LOGIN_FACEBOOK" | "LOGOUT_FACEBOOK"
+export enum AuthEnum {
+    VERIFY_LOGIN = "VERIFY_LOGIN",
+    LOGIN = "LOGIN",
+    LOGIN_FACEBOOK = "LOGIN_FACEBOOK",
+    LOGOUT_FACEBOOK = "LOGOUT_FACEBOOK",
+    LOGIN_GOOGLE = "LOGIN_GOOGLE"
+}
+
+export enum TypesAuthentication {
+    FACEBOOK = "FACEBOOK",
+    GOOGLE = "GOOGLE",
+    LOGIN = "LOCAL_AUTHENTICATION"
+}
+
+
+export type AuthType = AuthEnum.VERIFY_LOGIN | AuthEnum.LOGIN | AuthEnum.LOGIN_FACEBOOK | AuthEnum.LOGOUT_FACEBOOK | AuthEnum.LOGIN_GOOGLE

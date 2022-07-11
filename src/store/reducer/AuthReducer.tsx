@@ -1,18 +1,18 @@
-import { ActionLogin, DataLogin, initialStateAuth } from "@Interface/AuthInterface";
-import { Reducer } from "redux";
+import { AuthEnum, TypesAuthentication } from "@Interface/types/AuthTypes";
+import { ActionLogin } from "@Interface/AuthInterface";
 
 const initialState = {
-    Logged:false,
-    typeAuth:"",
-    dataUser:{
-        name:"",
-        email:"",
-        picture:""
+    Logged: false,
+    typeAuth: "",
+    dataUser: {
+        name: "",
+        email: "",
+        picture: ""
     },
-    facebookLogin:{
+    facebookLogin: {
         id: "",
         name: "",
-        email:"",
+        email: "",
         picture: {
             data: {
                 height: 0,
@@ -20,39 +20,57 @@ const initialState = {
                 url: "",
                 width: 0
             }
-    
+
         }
     },
-    googleLogin:{
-
+    googleLogin: {
+        id: "",
+        email: "",
+        verified_email: false,
+        name: "",
+        given_name: "",
+        family_name: "",
+        picture: "",
+        locale: ""
     },
-    Login:{
-        
+    Login: {
+
     }
 }
 
 
 const AuthReducer = (state = initialState, action: ActionLogin) => {
     switch (action.type) {
-        case "LOGIN_FACEBOOK":
+        case AuthEnum.LOGIN_FACEBOOK:
             return {
                 ...state,
-                Logged:true,
-                typeAuth:"FACEBOOK",
-                facebookLogin:{
+                Logged: true,
+                typeAuth: TypesAuthentication.FACEBOOK,
+                facebookLogin: {
                     ...action.payload
                 },
-                dataUser:{
+                dataUser: {
                     ...state.dataUser,
-                    name:action.payload.name,
-                    email:action.payload.email,
-                    picture:action.payload.picture.data.url
+                    name: action.payload.name,
+                    email: action.payload.email,
+                    picture: action.payload.picture.data.url
                 }
             };
-        case "LOGOUT_FACEBOOK":
-            return{
-            ...state,
-            Logged:false
+        case AuthEnum.LOGOUT_FACEBOOK:
+            return {
+                ...state,
+                Logged: false
+            }
+        case AuthEnum.LOGIN_GOOGLE:
+            return {
+                ...state,
+                Logged: true,
+                googleLogin:{
+                    ...action.payload
+                },
+                dataUser: {
+                    ...state.dataUser
+                }
             }
         default:
             return state;
