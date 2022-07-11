@@ -39,9 +39,9 @@ export const initialStateProduct: RequestPageableGeneric = {
 
 const ProductoReducer = (state = initialStateProduct, action: ProductsAction) => {
     switch (action.type) {
-        case ProductsTypes.getProduct:
+        case ProductsTypes.GET_PRODUCT:
             return action.payload
-        case ProductsTypes.modifyProduct:
+        case ProductsTypes.MODIFY_PRODUCT:
             return action.payload
         default:
             return state;

@@ -37,9 +37,9 @@ export const initialStateFav: RequestPageableGenericFav= {
 
 const ShoopingCartReducer = (state = initialStateFav,action:ActionInterface) =>{
     switch (action.type) {
-        case ShoopingTypes.addProduct:
+        case ShoopingTypes.ADD_PRODUCT:
             return  action.payload
-        case ShoopingTypes.deleteProduct:
+        case ShoopingTypes.DELETE_PRODUCT:
             return action.payload
         default:
             return state

@@ -9,16 +9,16 @@ import { Dispatch } from "react";
 import { getProductosList } from "./ProductosActions";
 
 export const addFavAction = (product: Content) => async (dispatch: Dispatch<any>) => {
-    dispatch({ type: ShoopingTypes.addProduct, payload: { ...initialStateFav, isLoading: true } })
+    dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isLoading: true } })
     let response = await requestApi(SaveFavoritos(), "POST", {
         idProducto: product.idItem,
         idUser: 1
     });
     if (response.code === "00") {
         dispatch(getFavAction())
-        dispatch({ type: ShoopingTypes.addProduct, payload: { ...initialStateFav, isSuccess: true, data: response.result } })
+        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isSuccess: true, data: response.result } })
     } else {
-        dispatch({ type: ShoopingTypes.addProduct, payload: { ...initialStateFav, isError: true, data: null } })
+        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isError: true, data: null } })
     }
 }
 
@@ -37,7 +37,7 @@ export const modifyFavorite = (productList: RequestPageableGeneric, product: Con
             }
         }
 
-        dispatch({ type: ShoopingTypes.modifyProduct, payload: productoModify })
+        dispatch({ type: ShoopingTypes.MODIFY_PRODUCT, payload: productoModify })
     }
 }
 
@@ -58,16 +58,16 @@ export const removeFav = (favorito: ContentFav, productList: RequestPageableGene
     if(response.code === "00"){
         dispatch(getProductosList());
     }
-    dispatch({ type: ShoopingTypes.deleteProduct, payload: productoModify })
+    dispatch({ type: ShoopingTypes.DELETE_PRODUCT, payload: productoModify })
 }
 
 
 export const getFavAction = () => async (dispatch: Dispatch<any>) => {
-    dispatch({ type: ShoopingTypes.addProduct, payload: { ...initialStateFav, isLoading: true } })
+    dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isLoading: true } })
     let response = await requestApi(getFavoritos());
     if (response.code === "00") {
-        dispatch({ type: ShoopingTypes.addProduct, payload: { ...initialStateFav, isSuccess: true, data: response.result } })
+        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isSuccess: true, data: response.result } })
     } else {
-        dispatch({ type: ShoopingTypes.addProduct, payload: { ...initialStateFav, isError: true, data: null } })
+        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isError: true, data: null } })
     }
 }
