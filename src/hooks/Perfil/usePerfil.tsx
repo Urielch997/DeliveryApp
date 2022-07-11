@@ -1,10 +1,10 @@
 import { RootState } from "@/store/store";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import useForm from "../useForm"
+import useForm from "../useForm";
 
 const usePerfil = () => {
-    const {Auth:{facebookLogin,Logged}} = useSelector((x:RootState)=>x);
+    const {Auth:{Logged,dataUser}} = useSelector((x:RootState)=>x);
     const {nombre,onChange,state,SaveEach} = useForm({
         nombre:"",
         correo:""
@@ -13,8 +13,8 @@ const usePerfil = () => {
     useEffect(() => {
       if(Logged){
       SaveEach({
-        nombre:facebookLogin.name,
-        correo:facebookLogin.email
+        nombre:dataUser.name,
+        correo:dataUser.email
       });
     }
     }, [Logged])
