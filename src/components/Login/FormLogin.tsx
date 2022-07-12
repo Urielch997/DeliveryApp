@@ -12,6 +12,7 @@ const FormLogin = () => {
     const { changeType, typeForm,LoginFacebook,LoginGoogle } = useFormL();
     const login = useGoogleLogin({
         onSuccess: tokenResponse => LoginGoogle(tokenResponse),
+        flow:"auth-code"
       });
 
 

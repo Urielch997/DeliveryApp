@@ -18,6 +18,7 @@ const useFormL = () => {
     }
 
     const LoginGoogle = (response:Object) =>{
+        console.log(response)
         dispatch(GoogleLogin(response));
     }
 
