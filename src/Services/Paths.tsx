@@ -1,6 +1,6 @@
 
 const urlApi = process.env.REACT_APP_URL_API;
-export const OAUTH2_REDIRECT_URI = 'http://localhost:3000'
+export const OAUTH2_REDIRECT_URI = process.env.REACT_APP_OAUTH2_REDIRECT_URI
 
 export const getProductos = (page = 0,size=10) =>`${urlApi}products?page=${page}&size=${size}&idUser=1`;
 export const getFavoritos = () => `${urlApi}User/favoritos?idUser=1&page=0&size=10`;
