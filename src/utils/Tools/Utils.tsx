@@ -16,3 +16,12 @@ import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
   export const iconProps = (icon:IconDefinition) =>{
     return icon as IconProp;
   }
+
+export const loadScript = (src:string) => new Promise((resolve, reject):void => {
+    if (document.querySelector(`script[src="${src}"]`)) return resolve({ok:true})
+    const script = document.createElement('script')
+    script.src = src
+    script.onload = () => resolve({ok:true})
+    script.onerror = (err) => reject(err)
+    document.body.appendChild(script)
+  })

@@ -1,20 +1,18 @@
 import Button from '@Components/Util/Button';
 import useFormL from '@Hooks/FormLogin/useFormL';
 import facebookLogo from '@Img/facebooklogo.svg';
-import googleLogo from '@Img/Google.svg';
-import { useGoogleLogin } from '@react-oauth/google';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import FormLog from './FormLog';
 import FormRegister from './FormRegister';
 
 
 const FormLogin = () => {
-    const { changeType, typeForm,LoginFacebook,LoginGoogle } = useFormL();
-    const login = useGoogleLogin({
-        onSuccess: tokenResponse => LoginGoogle(tokenResponse),
-        flow:"auth-code"
-      });
+    const { changeType, typeForm,LoginFacebook,googleButton,googleAuthLoad } = useFormL();
 
+    useEffect(()=>{
+        googleAuthLoad()
+    },[])
 
     return (
         <FormContainer>
@@ -45,9 +43,8 @@ const FormLogin = () => {
                         </div>
                         <Button action={LoginFacebook} text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' />
 
-                        <Button action={login} text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
-
-
+                        {/* <Button text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" /> */}
+                        <div ref={googleButton}></div>
                     </div>
                 </div>
                 <div className='img_example'>

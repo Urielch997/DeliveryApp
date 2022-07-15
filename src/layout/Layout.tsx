@@ -27,6 +27,7 @@ const Layout = ({ children }: Props) => {
 
     useEffect(() => {
         if (window.FB) {
+            console.log(window.FB)
             dispatch(isLogin())
         }
     }, [window.FB])

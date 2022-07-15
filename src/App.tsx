@@ -4,19 +4,19 @@ import Layout from './layout/Layout'
 import { GlobalStyle } from './styles/GlobalStyle'
 import { store } from './store/store';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { useEffect } from 'react';
 const colorApp = process.env.REACT_APP_COLOR;
 
 const App = () => {
+
   return (
     <div>
-      <GoogleOAuthProvider clientId="300939693403-0koo4liitkcnqve45v714ufb4mdqisjt.apps.googleusercontent.com">
-        <Provider store={store}>
-          <GlobalStyle colorApp={colorApp || "#fe3705"} />
+      <Provider store={store}>
+        <GlobalStyle colorApp={colorApp || "#fe3705"} />
           <Layout>
             <Routes />
           </Layout>
-        </Provider>
-      </GoogleOAuthProvider>
+      </Provider>
     </div>
   )
 }

@@ -8,6 +8,9 @@ declare global {
     interface Window {
         FB: any;
         fbAsyncInit: any;
+        google:{
+            accounts:any
+        }
     }
 }
 
@@ -16,8 +19,10 @@ declare global {
  * Verificacion de estado de logeo
  */
 export const isLogin = () => (dispatch: Dispatch<any>) => {
-    window.FB.getLoginStatus((response: any) => {
+    window.FB.getAuthResponse((response:any)=>{
         console.log(response)
+    })
+    window.FB.getLoginStatus((response: any) => {
         if (response.status === "connected") {
             //leer los datos del usuario
             dispatch(facebookHandler(response));
@@ -32,6 +37,7 @@ export const isLogin = () => (dispatch: Dispatch<any>) => {
  *  Iniciar sesion con facebook
  */
 export const facebookHandler = (response: any) => (dispatch: Dispatch<any>) => {
+    console.log(response)
     if (response.status === "connected") {
         window.FB.api('/me?fields=id,name,email,picture.type(large)', (userDate: DataLogin) => {
             dispatch({ type: "LOGIN_FACEBOOK", payload: userDate })
