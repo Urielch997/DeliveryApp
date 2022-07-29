@@ -1,4 +1,4 @@
-import { FACEBOOK_AUTH_URL, GOOGLE_AUTH_URL } from "@/services/Paths"
+import { FACEBOOK_AUTH_URL, GOOGLE_AUTH_URL } from "@Service/Paths"
 import Card from "@Components/Home/Card"
 import CardArticle from "@Components/Home/CardArticle"
 import Detail from "@Components/Home/Detail"
