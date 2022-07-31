@@ -1,6 +1,6 @@
 import { loadScript } from "@/utils/Tools/Utils"
 import { LoginType } from "@Interface/types/LoginTypes"
-import { facebookLogin, GoogleLogin } from "@Store/actions/AuthActions"
+import { facebookLogin } from "@Store/actions/AuthActions"
 import { useEffect, useRef, useState } from "react"
 import { useDispatch } from "react-redux"
 
@@ -19,9 +19,7 @@ const useFormL = () => {
         dispatch(facebookLogin())
     }
 
-    const LoginGoogle = (response: Object) => {
-        dispatch(GoogleLogin(response));
-    }
+
 
     const googleAuthLoad = () => {
         const src = 'https://accounts.google.com/gsi/client'
@@ -58,7 +56,6 @@ const useFormL = () => {
         typeForm,
         changeType,
         LoginFacebook,
-        LoginGoogle,
         googleButton,
         googleAuthLoad
     } as const

@@ -12,37 +12,17 @@ import SubMenu from "@Utils/SubMenu"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation } from "react-router"
+import useHome from "@/hooks/Home/useHome"
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
     const { productos,Auth:{facebookLogin} } = useSelector((x: RootState) => x)
-    const [seeDetail, setSeeDetail] = useState<Boolean>(false)
-    const location = useLocation();
-    const [CardSelected, setCardSelected] = useState<Content>();
-    let token:any = null;
-    let error:any = null;
+    const {CardSelected,SeeDetail,seeDetail,setSeeDetail} = useHome();
     const Options = [
         { id: 1, nombre: "Comida" },
         { id: 2, nombre: "Postres" },
         { id: 3, nombre: "Mariscos" },
     ]
-
-    const getUrlParameter = (name:string) =>{
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
-
-    useEffect(()=>{
-        token = getUrlParameter('token');
-        error = getUrlParameter('error');
-    },[])
-
-    useEffect(()=>{
-        console.log("log",token,error)
-    },[token,error])
 
     const pageChange = (page = 1) => {
         dispatch(getProductosList(page - 1));
@@ -53,13 +33,6 @@ const HomeScreen = () => {
             dispatch(getProductosList());
         }
     }, [])
-
-
-
-    const SeeDetail = (data: Content) => {
-        setCardSelected(data);
-        setSeeDetail(true)
-    }
 
     return (
         <Container>
