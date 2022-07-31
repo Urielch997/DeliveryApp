@@ -11,3 +11,6 @@ export const DeleteFavoritos = (id:number) => `${urlApi}User/favoritos?idFavorit
 //Login con redes sociales
 export const GOOGLE_AUTH_URL = `${urlApi}oauth2/authorize/google?redirect_uri=${OAUTH2_REDIRECT_URI}`;
 export const FACEBOOK_AUTH_URL = `${urlApi}oauth2/authorize/facebook?redirect_uri=${OAUTH2_REDIRECT_URI}`;
+
+//Obtener informacion del usuario
+export const userInfo = `${urlApi}user/me`;

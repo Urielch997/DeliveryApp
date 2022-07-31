@@ -64,3 +64,13 @@ export interface initialStateAuth {
         
     }
 }
+
+export interface DataUser {
+    idUser: number
+    userName: string
+    email: string
+    imageUrl: string
+    provider: string
+    providerid: string
+  }
+  

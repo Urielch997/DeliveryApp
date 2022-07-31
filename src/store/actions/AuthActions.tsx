@@ -1,8 +1,8 @@
 
 import { requestApi } from "@Service/Request";
-import { DataLogin } from "@Interface/AuthInterface";
 import { Dispatch } from "react"
-import { AuthEnum } from "@Interface/types/AuthTypes";
+import { userInfo } from "@Service/Paths";
+import { AuthEnum } from "@/interface/types/AuthTypes";
 declare global {
     interface Window {
         FB: any;
@@ -13,55 +13,9 @@ declare global {
     }
 }
 
-
-/**
- * Verificacion de estado de logeo
- */
-export const isLogin = () => (dispatch: Dispatch<any>) => {
-    window.FB.getAuthResponse((response:any)=>{
-        console.log(response)
-    })
-    window.FB.getLoginStatus((response: any) => {
-        if (response.status === "connected") {
-            //leer los datos del usuario
-            dispatch(facebookHandler(response));
-        } else {
-            //intentar iniciar sesion
-            dispatch({ type: "LOGOUT_FACEBOOK", payload: { Logged: false } });
-        }
-    });
-}
-
-/**
- *  Iniciar sesion con facebook
- */
-export const facebookHandler = (response: any) => (dispatch: Dispatch<any>) => {
-    console.log(response)
-    if (response.status === "connected") {
-        window.FB.api('/me?fields=id,name,email,picture.type(large)', (userDate: DataLogin) => {
-            dispatch({ type: "LOGIN_FACEBOOK", payload: userDate })
-        });
-    }
-}
-
-export const facebookLogin = () => {
-    window.FB.login(facebookHandler, { scope: "public_profile,email" })
-}
-
-/**
- * Loggin de usuarios
- */
-export const Loggin = () => (dispatch: Dispatch<any>) => {
-
-}
-
-/**
- * Logut de usuarios
- */
-export const Logout = () => (dispatch: Dispatch<any>) => {
-    window.FB.logout((response:any) =>{
-        console.log(response)
-    });
+export const GetDataUser = () => async (dispatch:Dispatch<any>)=>{
+    let response = await requestApi(userInfo);
+    dispatch({type:AuthEnum.LOGIN,payload:response})
 }
 
 /**

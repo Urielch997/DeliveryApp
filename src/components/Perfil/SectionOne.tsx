@@ -14,7 +14,7 @@ const SectionOne = () => {
                 <h2>Perfil</h2>
             </div>
             <div className="container_picture">
-                <img src={dataUser.picture || "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=5227662653981769&height=200&width=200&ext=1659908904&hash=AeSK7Y7G4OqmL-0DaFA"} alt="photo_profile" />
+                <img src={dataUser.imageUrl || "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=5227662653981769&height=200&width=200&ext=1659908904&hash=AeSK7Y7G4OqmL-0DaFA"} alt="photo_profile" />
             </div>
             <div className="title_2">
                 <strong><span>Datos personales</span></strong>

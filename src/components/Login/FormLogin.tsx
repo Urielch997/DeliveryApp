@@ -11,7 +11,7 @@ import FormRegister from './FormRegister';
 
 
 const FormLogin = () => {
-    const { changeType, typeForm,LoginFacebook,googleButton,googleAuthLoad } = useFormL();
+    const { changeType, typeForm,googleButton,googleAuthLoad } = useFormL();
 
     useEffect(()=>{
         googleAuthLoad()

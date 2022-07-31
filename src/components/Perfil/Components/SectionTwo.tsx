@@ -4,7 +4,6 @@ import styled from "styled-components"
 import CardPerfil from "./CardPerfil"
 
 const SectionTwo = () => {
-    const {logout} = usePerfil();
 
     return (
         <WrapperSectionTwo>
@@ -27,7 +26,7 @@ const SectionTwo = () => {
                 </div>
             </CardPerfil>
             <div className="content_btn_logout">
-                <Button text="Cerrar sesion" classButton="btn_logout" action={logout}/>
+                <Button text="Cerrar sesion" classButton="btn_logout"/>
             </div>
         </WrapperSectionTwo>
     )

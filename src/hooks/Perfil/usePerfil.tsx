@@ -1,4 +1,3 @@
-import { Logout } from "@Store/actions/AuthActions";
 import { RootState } from "@Store/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,22 +14,18 @@ const usePerfil = () => {
     useEffect(() => {
       if(Logged){
       SaveEach({
-        nombre:dataUser.name,
+        nombre:dataUser.userName,
         correo:dataUser.email
       });
     }
     }, [Logged])
 
-    const logout = () =>{
-      dispatch(Logout())
-    }
     
 
 
   return {
     state,
     onChange,
-    logout
   } as const
 }
 
