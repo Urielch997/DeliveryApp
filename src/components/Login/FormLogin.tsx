@@ -1,9 +1,11 @@
+import { FACEBOOK_AUTH_URL, GOOGLE_AUTH_URL } from '@/Services/Paths';
 import Button from '@Components/Util/Button';
 import useFormL from '@Hooks/FormLogin/useFormL';
 import facebookLogo from '@Img/facebooklogo.svg';
 import googleLogo from '@Img/Google.svg';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import LinkButton from '../Util/LinkButton';
 import FormLog from './FormLog';
 import FormRegister from './FormRegister';
 
@@ -42,9 +44,9 @@ const FormLogin = () => {
                             <div className='text_line'>o si prefieres</div>
                             <div className='line_divider' />
                         </div>
-                        <Button action={LoginFacebook} text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' />
+                        <LinkButton  linked={GOOGLE_AUTH_URL} text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' />
 
-                         <Button text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
+                         <LinkButton linked={FACEBOOK_AUTH_URL} text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
                        
                     </div>
                 </div>
