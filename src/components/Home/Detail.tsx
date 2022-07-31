@@ -27,6 +27,7 @@ const Detail = ({ setSeeDetail, data = {
 } }: CardProps) => {
     const { addFav } = useShooping();
     const fav = useSelector((x: RootState) => x.favoritos);
+    const { Auth: { dataUser } } = useSelector((x: RootState) => x)
 
     return (
         <Wrapper>
@@ -35,7 +36,7 @@ const Detail = ({ setSeeDetail, data = {
                 <img className="imagen" src={data?.imagen || ""} alt="producto"/>
             </div>
             <div className="card_description">
-                <div className="card_header"><FavButton action={(e) => { addFav(e) }} data={data} isFavorite={data.favorito} /></div>
+                <div className="card_header"><FavButton action={(e) => { addFav(e,dataUser.idUser) }} data={data} isFavorite={data.favorito} /></div>
                 <div className="price"><h1>{convertMoney({ text: data?.precio } as MoneyFormat)}</h1></div>
                 <div className="text_descripcion">
                     {data?.description}

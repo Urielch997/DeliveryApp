@@ -13,8 +13,8 @@ const useShooping = () => {
      * Agregar a favoritos
      * @param product producto seleccionado
      */
-    const addFav = (producto:Content) =>{
-        dispatch(addFavAction(producto))
+    const addFav = (producto:Content,idUser:number) =>{
+        dispatch(addFavAction(producto,idUser))
         dispatch(modifyFavorite(productos,producto))
     }
 

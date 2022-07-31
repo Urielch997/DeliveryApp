@@ -13,6 +13,7 @@ const FavoritosScreen = () => {
     const { favoritos } = useSelector((x: RootState) => x)
     const [seeDetail, setSeeDetail] = useState<Boolean>(false)
     const [CardSelected, setCardSelected] = useState<Content>();
+    const { Auth: { dataUser } } = useSelector((x: RootState) => x)
 
     const SeeDetail = (data: Content) => {
         setCardSelected(data);
@@ -21,7 +22,7 @@ const FavoritosScreen = () => {
 
     useEffect(() => {
         if (!favoritos.data.content.length) {
-            dispatch(getFavAction());
+            dispatch(getFavAction(dataUser.idUser));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

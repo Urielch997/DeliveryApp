@@ -8,14 +8,14 @@ import { initialStateFav } from "@Store/reducer/FavoritoReducer";
 import { Dispatch } from "react";
 import { getProductosList } from "./ProductosActions";
 
-export const addFavAction = (product: Content) => async (dispatch: Dispatch<any>) => {
+export const addFavAction = (product: Content,idUser:number) => async (dispatch: Dispatch<any>) => {
     dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isLoading: true } })
     let response = await requestApi(SaveFavoritos(), "POST", {
         idProducto: product.idItem,
-        idUser: 1
+        idUser
     });
     if (response.code === "00") {
-        dispatch(getFavAction())
+        dispatch(getFavAction(idUser))
         dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isSuccess: true, data: response.result } })
     } else {
         dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isError: true, data: null } })
@@ -62,9 +62,9 @@ export const removeFav = (favorito: ContentFav, productList: RequestPageableGene
 }
 
 
-export const getFavAction = () => async (dispatch: Dispatch<any>) => {
+export const getFavAction = (idUser:number) => async (dispatch: Dispatch<any>) => {
     dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isLoading: true } })
-    let response = await requestApi(getFavoritos());
+    let response = await requestApi(getFavoritos(idUser));
     if (response.code === "00") {
         dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isSuccess: true, data: response.result } })
     } else {

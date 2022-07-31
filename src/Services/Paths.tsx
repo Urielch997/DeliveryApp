@@ -4,7 +4,7 @@ export const OAUTH2_REDIRECT_URI = process.env.REACT_APP_OAUTH2_REDIRECT_URI
 
 //Productos 
 export const getProductos = (page = 0,size=10) =>`${urlApi}products?page=${page}&size=${size}&idUser=1`;
-export const getFavoritos = () => `${urlApi}User/favoritos?idUser=1&page=0&size=10`;
+export const getFavoritos = (idUser = 0) => `${urlApi}User/favoritos?idUser=${idUser}&page=0&size=10`;
 export const SaveFavoritos = () => `${urlApi}User/favoritos`;
 export const DeleteFavoritos = (id:number) => `${urlApi}User/favoritos?idFavorito=${id}`;
 

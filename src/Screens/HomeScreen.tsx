@@ -16,7 +16,7 @@ import useHome from "@/hooks/Home/useHome"
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
-    const { productos,Auth}= useSelector((x: RootState) => x)
+    const { productos,Auth:{dataUser}}= useSelector((x: RootState) => x)
     const {CardSelected,SeeDetail,seeDetail,setSeeDetail} = useHome();
     const Options = [
         { id: 1, nombre: "Comida" },
@@ -37,7 +37,7 @@ const HomeScreen = () => {
     return (
         <Container>
             <div className='title_home'>
-                <label>{`Hola `}</label>
+                <label>{`Hola ${dataUser.userName}`}</label>
             </div>
             <div className='container_submenu'>
                 <SubMenu options={Options} />
