@@ -44,9 +44,9 @@ const FormLogin = () => {
                             <div className='text_line'>o si prefieres</div>
                             <div className='line_divider' />
                         </div>
-                        <LinkButton  linked={GOOGLE_AUTH_URL} text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' />
+                        <LinkButton  linked={FACEBOOK_AUTH_URL} text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' />
 
-                         <LinkButton linked={FACEBOOK_AUTH_URL} text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
+                         <LinkButton linked={GOOGLE_AUTH_URL} text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
                        
                     </div>
                 </div>
