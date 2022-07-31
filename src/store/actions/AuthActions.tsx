@@ -2,8 +2,8 @@
 import { requestApi } from "@Service/Request";
 import { DataLogin } from "@Interface/AuthInterface";
 import { Dispatch } from "react"
-import { urlUserGoogle } from "@/services/Paths";
-import { AuthEnum } from "@/interface/types/AuthTypes";
+import { urlUserGoogle } from "@Service/Paths";
+import { AuthEnum } from "@Interface/types/AuthTypes";
 declare global {
     interface Window {
         FB: any;

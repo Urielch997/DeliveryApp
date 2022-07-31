@@ -1,6 +1,7 @@
 import Button from '@Components/Util/Button';
 import useFormL from '@Hooks/FormLogin/useFormL';
 import facebookLogo from '@Img/facebooklogo.svg';
+import googleLogo from '@Img/Google.svg';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import FormLog from './FormLog';
@@ -43,8 +44,8 @@ const FormLogin = () => {
                         </div>
                         <Button action={LoginFacebook} text="" Icon={<img src={facebookLogo} className="facebooklogo" alt='facebooklogo' />} color="#1976D2" classButton='border_social' />
 
-                        {/* <Button text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" /> */}
-                        <div ref={googleButton}></div>
+                         <Button text="" Icon={<img src={googleLogo} className="facebooklogo" alt='googleLogo' />} classButton="button_login_google border_social" />
+                       
                     </div>
                 </div>
                 <div className='img_example'>

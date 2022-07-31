@@ -29,7 +29,7 @@
         "@Screens/*":["src/Screens/*"],
         "@Styles/*":["src/styles/*"],
         "@Interface/*":["src/interface/*"],
-        "@Service/*":["src/services/*"],
+        "@Service/*":["src/Services/*"],
         "@Utils/*":["src/utils/*"],
         "@Img/*":["src/img/*"]
       }
