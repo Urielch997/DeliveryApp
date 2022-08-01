@@ -1,4 +1,6 @@
-export const requestApi = async (url: string, method: string = "GET", body: Object = {}) => {
+type method = "POST" | "GET" | "PUT" | "DELETE"
+
+export const requestApi = async (url: string, method: method = "GET", body: Object = {}) => {
   const token = localStorage.getItem("token")
   let headers = null;
   if (token !== "") {

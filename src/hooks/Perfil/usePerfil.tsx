@@ -1,5 +1,7 @@
+import { UpdateInfo } from "@Service/Paths";
+import { requestApi } from "@Service/Request";
 import { RootState } from "@Store/store";
-import { useEffect } from "react";
+import { FormEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useForm from "../useForm";
 
@@ -8,17 +10,26 @@ const usePerfil = () => {
     const dispatch = useDispatch();
     const {nombre,onChange,state,SaveEach} = useForm({
         nombre:"",
-        correo:""
+        correo:"",
+        telefono:""
     });
 
     useEffect(() => {
       if(Logged){
       SaveEach({
+        ...state,
         nombre:dataUser.userName,
-        correo:dataUser.email
+        correo:dataUser.email,
+        telefono:dataUser.telefono
       });
     }
     }, [Logged])
+
+    const sendData = async (e:FormEvent) =>{
+      e.preventDefault();
+      let result = requestApi(UpdateInfo(),"PUT",{...state,idUser:dataUser.idUser});
+      console.log(result);
+    }
 
     
 
@@ -26,6 +37,7 @@ const usePerfil = () => {
   return {
     state,
     onChange,
+    sendData
   } as const
 }
 

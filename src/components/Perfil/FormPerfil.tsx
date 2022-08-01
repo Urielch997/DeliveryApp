@@ -4,10 +4,10 @@ import Button from "../Util/Button"
 import Input from "../Util/Input"
 
 const FormPerfil = () => {
-    const {state,onChange} = usePerfil();
+    const {state,onChange,sendData} = usePerfil();
 
   return (
-    <WrapperForm>
+    <WrapperForm onSubmit={sendData}>
         <div className="row">
             <span>Nombre:</span>
             <div className="item">
@@ -23,11 +23,11 @@ const FormPerfil = () => {
         <div className="row">
             <span>Telefono:</span>
             <div className="item">
-                <Input clases="input"/>
+                <Input clases="input" value={state.telefono} onChange={(e)=>onChange(e.target.value,"telefono")}/>
             </div>
         </div>
         <div className="container_button_perfil">
-            <Button text="Editar" classButton="btn_class"/>
+            <Button text="Editar" classButton="btn_class" typeButton="submit"/>
         </div>
     </WrapperForm>
   )

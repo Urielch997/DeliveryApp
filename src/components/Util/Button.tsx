@@ -5,12 +5,15 @@ interface ButtonInteface{
   action?:()=>void,
   Icon?:any,
   color?:string,
-  classButton?:string
+  classButton?:string,
+  typeButton?:typesButton
 }
 
-const Button = ({text="",action = ()=>{},Icon,color,classButton = ""}:ButtonInteface) => {
+type typesButton = 'button' | 'submit' | 'reset'
+
+const Button = ({typeButton="button",text="",action = ()=>{},Icon,color,classButton = ""}:ButtonInteface) => {
   return (
-    <ButtonCustom onClick={action} style={{background:color}} className={classButton}>
+    <ButtonCustom type={typeButton} onClick={action} style={{background:color}} className={classButton} >
         {Icon}
         {text}
     </ButtonCustom>

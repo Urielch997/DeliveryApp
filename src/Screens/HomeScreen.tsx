@@ -1,18 +1,15 @@
-import { FACEBOOK_AUTH_URL, GOOGLE_AUTH_URL } from "@Service/Paths"
+import useHome from "@/hooks/Home/useHome"
 import Card from "@Components/Home/Card"
 import CardArticle from "@Components/Home/CardArticle"
 import Detail from "@Components/Home/Detail"
 import Loading from "@Components/Util/Loading"
 import Pagination from "@Components/Util/Pagination"
-import { Content } from "@Interface/ProducstListInterface"
 import { getProductosList } from "@Store/actions/ProductosActions"
 import { RootState } from "@Store/store"
 import { Container } from "@Styles/HomeStyle"
 import SubMenu from "@Utils/SubMenu"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useLocation } from "react-router"
-import useHome from "@/hooks/Home/useHome"
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
