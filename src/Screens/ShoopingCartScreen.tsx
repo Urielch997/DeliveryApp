@@ -6,7 +6,7 @@ import CardShoopingCart from '@Components/ShoopingCart/CardShoopingCart'
 const ShoopingCartScreen = () => {
     return (
         <ContainerShooping>ShoopingCartScreen
-            <div className='content'>
+            <div className='content_shopping'>
                 <div className='items_cart'>
                     <CardShoopingCart />
                     <CardShoopingCart />
