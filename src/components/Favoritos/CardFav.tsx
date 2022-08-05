@@ -11,7 +11,7 @@ const CardFav = ({ data, action }: CardFavInterface) => {
 
     return (
         <CustomCard>
-            <div className="header_product_card"><FavButton data={data.producto} isFavorite={data.producto.favorito} action={() => { deleteFav(data) }} /></div>
+            <div className="header_product_card"><FavButton data={data.producto} isFavorite={data.producto.favorito} action={() => { deleteFav(data.producto.idItem) }} /></div>
             <div className="product_img">
                 <img src={data.producto.imagen} alt="producto" className="image" />
             </div>

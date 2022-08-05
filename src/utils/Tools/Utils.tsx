@@ -17,6 +17,11 @@ import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
     return icon as IconProp;
   }
 
+  /**
+   * 
+   * @param src : carga script en el dom ;
+   * @returns retorna la construccion del script;
+   */
 export const loadScript = (src:string) => new Promise((resolve, reject):void => {
     if (document.querySelector(`script[src="${src}"]`)) return resolve({ok:true})
     const script = document.createElement('script')
@@ -26,7 +31,13 @@ export const loadScript = (src:string) => new Promise((resolve, reject):void => 
     document.body.appendChild(script)
   })
 
-  export  const getUrlParameter = (name:string) =>{
+
+  /**
+   * Obtener valores retornados por query string a traves de la url
+   * @param name nombre del parametro de busqueda
+   * @returns valor que contiene por el query string
+   */
+export  const getUrlParameter = (name:string) =>{
     let location = window.location;
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');

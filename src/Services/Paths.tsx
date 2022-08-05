@@ -7,6 +7,7 @@ export const getProductos = (page = 0,size=10) =>`${urlApi}products?page=${page}
 export const getFavoritos = (idUser = 0) => `${urlApi}User/favoritos?idUser=${idUser}&page=0&size=10`;
 export const SaveFavoritos = () => `${urlApi}User/favoritos`;
 export const DeleteFavoritos = (id:number) => `${urlApi}User/favoritos?idFavorito=${id}`;
+export const deleteFavoritosByIdUserAndIdProducto = (idUsuario:number,idProducto:number) =>`${urlApi}User/favorito?idUsuario=${idUsuario}&idProducto=${idProducto}`;
 
 //Login con redes sociales
 export const GOOGLE_AUTH_URL = `${urlApi}oauth2/authorize/google?redirect_uri=${OAUTH2_REDIRECT_URI}`;

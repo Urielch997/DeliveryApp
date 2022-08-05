@@ -1,3 +1,4 @@
+import { ContentFav } from "@Interface/CardFavInterface";
 import CardFav from "@Components/Favoritos/CardFav";
 import Detail from "@Components/Home/Detail";
 import Loading from "@Components/Util/Loading";
@@ -38,7 +39,7 @@ const FavoritosScreen = () => {
                     ?
                     <Loading />
                     : favoritos.isSuccess ?
-                        favoritos.data.content.map((item) =>
+                        favoritos.data.content.map((item:ContentFav) =>
                             <CardFav data={item} action={SeeDetail} key={item.idFavorito} />
                         )
                         : null

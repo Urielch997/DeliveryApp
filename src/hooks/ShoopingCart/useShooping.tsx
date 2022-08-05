@@ -7,7 +7,7 @@ import { addFavAction, modifyFavorite, removeFav } from "../../store/actions/Fav
 
 const useShooping = () => {
     const dispatch  = useDispatch();
-    const {productos,favoritos} = useSelector((x:RootState) => x )
+    const {productos,favoritos,Auth:{dataUser}} = useSelector((x:RootState) => x )
 
     /**
      * Agregar a favoritos
@@ -22,9 +22,8 @@ const useShooping = () => {
      * Eliminar producto de favoritos
      * @param producto producto a eliminar de favoritos
      */
-    const deleteFav = (favorito:ContentFav) =>{
-        console.log(productos)
-        dispatch(removeFav(favorito,favoritos))
+    const deleteFav = (idProducto:number) =>{
+        dispatch(removeFav(idProducto,favoritos,dataUser.idUser));
     }
 
     return {

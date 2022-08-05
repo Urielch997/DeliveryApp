@@ -4,7 +4,7 @@ import { AddProduct } from "./types/ShoopingCartType";
 
 export interface ActionInterface {
     type:AddProduct,
-    payload:RequestPageableGenericFav
+    payload:any
 }
 
 export interface RequestPageableGenericFav {
