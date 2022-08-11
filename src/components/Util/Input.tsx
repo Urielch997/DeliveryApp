@@ -10,6 +10,12 @@ export interface PropsInput {
 
 type typesInput = "text" | "password" | "email"
 
+export enum enumInput {
+  PASSWORD = "password",
+  EMAIL = "email",
+  TEXT = "text"
+}
+
 const Input = ({clases = "",placeholder = "",value = "",onChange = ()=>{},type = "text"}:PropsInput) => {
   return (
     <InputCustom className={clases} placeholder = {placeholder} value={value} onChange={onChange} type={type}/>

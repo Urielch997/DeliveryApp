@@ -1,36 +1,37 @@
-import Input from '@Components/Util/Input'
+import useRegister from '@/hooks/FormLogin/useRegister'
+import { TypesAuthentication } from '@/interface/types/AuthTypes';
+import Input,{enumInput} from '@Components/Util/Input'
 import styled from 'styled-components'
+import Button from '../Util/Button';
 
 const FormRegister = () => {
+    const {onChange,state,submit,isSamePwd} = useRegister();
+
     return (
-        <Form>
+        <Form onSubmit={submit}>
             <div className='row'>
                 <div className='item'>
-                    <Input clases='input_style' placeholder='nombre'/>
+                    <Input clases='input_style' placeholder='nombre' value={state.nombre} onChange={(e)=>{onChange(e.target.value,"nombre")}}/>
                 </div>
                 <div className='item'>
-                    <Input clases='input_style' placeholder='apellido'/>
+                    <Input clases='input_style' placeholder='apellido' value={state.apellido} onChange={(e)=>{onChange(e.target.value,"apellido")}}/>
                 </div>
             </div>
             <div className='item'>
-                <Input clases='input_style' placeholder='correo'/>
+                <Input clases='input_style' placeholder='correo' value={state.correo} onChange={(e)=>{onChange(e.target.value,"correo")}} type={enumInput.EMAIL}/>
             </div>
             <div className='item'>
-                <Input clases='input_style' placeholder='contraseña'/>
+                <Input clases='input_style' placeholder='contraseña' type={enumInput.PASSWORD} value={state.pwd} onChange={(e)=>{onChange(e.target.value,"pwd")}}/>
             </div>
-            <div className='row'>
-                <div className='item'>
-                    <Input clases='input_style' placeholder='sexo'/>
-                </div>
-                <div className='item'>
-                    <Input clases='input_style' placeholder='fecha de nacimiento'/>
-                </div>
+            <div className='item'>
+                <Input clases={`input_style ${isSamePwd ? "error_input" : ""}`} placeholder='confirmar contraseña' type={enumInput.PASSWORD} value={state.confirmPwd} onChange={(e)=>{onChange(e.target.value,"confirmPwd")}}/>
             </div>
+            <Button text={"Registrarme"} classButton="white border_social" typeButton='submit'/>
         </Form>
     )
 }
 
-const Form = styled.div`
+const Form = styled.form`
     .item{
         width: 100%;
         margin-top:10px;

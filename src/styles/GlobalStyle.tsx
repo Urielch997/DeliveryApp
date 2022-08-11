@@ -21,6 +21,11 @@ export const GlobalStyle = createGlobalStyle<Props>`
     width: 100%;
   }
 
+  .error_input,.error_input:active,.error_input:focus{
+    border:1px solid #F44336;
+    background: #FFCDD2;
+  }
+
   ul{
     padding-left: 0px;
   }

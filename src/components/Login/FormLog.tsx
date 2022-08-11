@@ -1,6 +1,7 @@
 import Checkbox from '@Components/Util/Checkbox'
 import Input from '@Components/Util/Input'
 import useFormL from '@Hooks/FormLogin/useFormL';
+import Button from '../Util/Button';
 
 const FormLog = () => {
     const { checked, setChecked } = useFormL();
@@ -17,6 +18,7 @@ const FormLog = () => {
                 <Checkbox size='15px' checked={checked} setChecked={setChecked} />
                 <span>Recordarme</span>
             </div>
+            <Button text={"Iniciar"} classButton="white border_social" typeButton='submit'/>
         </div>
     )
 }

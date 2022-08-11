@@ -32,13 +32,14 @@ const FormLogin = () => {
                             </div>
                         </div>
                     </div>
+                    
                     {typeForm === "LOGIN" ?
                         <FormLog />
                         :
                         <FormRegister />
                     }
                     <div>
-                        <Button text={typeForm === "LOGIN" ? "Iniciar" : "Registrarme"} classButton="white border_social" />
+                       
                         <div className='line'>
                             <div className='line_divider' />
                             <div className='text_line'>o si prefieres</div>

@@ -70,11 +70,16 @@ export const removeFav = (idProducto: number, productList: RequestPageableGeneri
  * @param idUser id del usuario
  */
 export const getFavAction = (idUser:number) => async (dispatch: Dispatch<any>) => {
+    try{
     dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isLoading: true } })
     let response = await requestApi(getFavoritos(idUser));
+    console.log(response)
     if (response.code === "00") {
-        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isSuccess: true, data: response.result } })
+        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isSuccess: true, data: response.result,isLoading:false } })
     } else {
-        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isError: true, data: null } })
+        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isError: true, data: null,isLoading:false } })
+    }
+    }catch(e){
+         dispatch({type:ShoopingTypes.ADD_PRODUCT, payload:{...initialStateFav,isLoading:false}})
     }
 }
