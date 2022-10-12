@@ -45,3 +45,7 @@ export  const getUrlParameter = (name:string) =>{
     var results = regex.exec(location.search);
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
+
+export const scrollTop = () =>{
+  window.scrollTo({top:0,behavior:"smooth"});
+}

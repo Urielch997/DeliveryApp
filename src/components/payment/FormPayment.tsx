@@ -25,7 +25,10 @@ const FormPayment = () => {
 
                 </div>
 
-
+                <div>
+                    <label>Total a pagar:</label>
+                    <label>$25.00</label>
+                </div>
                 <div className="button_pay">
                     PAGAR
                 </div>

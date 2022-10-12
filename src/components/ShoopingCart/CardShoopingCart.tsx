@@ -46,6 +46,10 @@ const ContentCard = styled.div`
     border-bottom: 1px solid #e7e4e4;
     padding: 10px 5px;
 
+    &:last-child{
+        border:0px;
+    }
+
     .content_img,.description_shoop,.cantidad_shoop,.price_shooping,.action_shooping{
         width: calc(100%/4);
         display: flex;
@@ -99,6 +103,8 @@ const ContentCard = styled.div`
         .content_img{
                 width: 63%;
             }
+
+            
     }
 `
 

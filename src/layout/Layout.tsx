@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { Container, Footer, Header } from '../styles/LayoutStyle';
 import { faHome, faShoppingBag, faUser, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { iconProps } from '@Utils/Tools/Utils';
+import { iconProps, scrollTop } from '@Utils/Tools/Utils';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import ShoopingCart from '@Components/ShoopingCart/ShoopingCart';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,8 +21,14 @@ const Layout = ({ children }: Props) => {
     const dispatch = useDispatch();
     const uselocation = useLocation();
     const [open, setOpen] = useState(false);
+    const location = useLocation();
     const token = localStorage.getItem("token");
     const { Auth: { Logged,dataUser } } = useSelector((x: RootState) => x)
+
+
+    useEffect(()=>{
+        scrollTop();
+    },[location.pathname])
 
     useEffect(()=>{
         if(Logged){
@@ -45,7 +51,7 @@ const Layout = ({ children }: Props) => {
                     <button className='ubicacion br7 pd5'>Seleccionar ubicacion</button>
                 </div>
                 <div className='shopping_cart'>
-                    <ShoopingCart click={()=>history.push("/shoopingCart")}/>
+                    <ShoopingCart click={()=>history.push("/shoopingCart")} counter={2}/>
                 </div>
             </Header>
             <div className='container_button'>
