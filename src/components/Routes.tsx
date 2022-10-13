@@ -4,6 +4,7 @@ import FavoritosScreen from "../Screens/FavoritosScreen";
 import HomeScreen from '../Screens/HomeScreen';
 import OrdenScreen from "../Screens/OrdenScreen";
 import PerfilScreen from "../Screens/PerfilScreen";
+import CheckoutScreen from "@/Screens/CheckoutScreen";
 
 const Routes = () => {
     return (
@@ -13,6 +14,7 @@ const Routes = () => {
             <Route path='/Perfil' component={()=><PerfilScreen/>}/>
             <Route path='/Favoritos' component={()=><FavoritosScreen/>}/>
             <Route path="/shoopingCart" component={()=><ShoopingCartScreen/>}/>
+            <Route path="/checkout" component={()=><CheckoutScreen/>}/>
         </Switch>
     )
 }

@@ -49,6 +49,7 @@ export const ContainerShooping = styled.div`
         .section{
             width: 50%;
             padding: 10px;
+            cursor: pointer;
         }
 
         .section:nth-child(1){
