@@ -4,6 +4,7 @@ import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import "./utils/fonts/Credit/kreditFront.ttf";
 
 ReactDOM.render(
   <BrowserRouter>

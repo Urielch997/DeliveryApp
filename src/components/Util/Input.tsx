@@ -8,12 +8,14 @@ export interface PropsInput {
   type?:typesInput
 }
 
-type typesInput = "text" | "password" | "email"
+type typesInput = "text" | "password" | "email"| "date" | "month"
 
 export enum enumInput {
   PASSWORD = "password",
   EMAIL = "email",
-  TEXT = "text"
+  TEXT = "text",
+  CALENDAR = "date",
+  MONTH = "month"
 }
 
 const Input = ({clases = "",placeholder = "",value = "",onChange = ()=>{},type = "text"}:PropsInput) => {
