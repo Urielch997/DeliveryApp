@@ -35,6 +35,7 @@ const CardCredit = ({cardNumber,cvv,nameOwner}:ICard) => {
 const Card = styled.div`
     width: 400px;
     height: 200px;
+    max-width: 100%;
     color:#fff;
     border-radius: 10px;
     background: rgb(16,180,214);

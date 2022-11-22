@@ -20,14 +20,15 @@ const HomeScreen = () => {
         { id: 2, nombre: "Postres" },
         { id: 3, nombre: "Mariscos" },
     ]
+    const idUser = parseInt(localStorage.getItem("user") || "0");
 
     const pageChange = (page = 1) => {
-        dispatch(getProductosList(page - 1));
+        dispatch(getProductosList(page - 1,idUser));
     }
 
     useEffect(() => {
         if (!productos?.data.content.length) {
-            dispatch(getProductosList());
+            dispatch(getProductosList(1,idUser));
         }
     }, [])
 

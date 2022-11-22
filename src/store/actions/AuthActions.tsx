@@ -16,6 +16,7 @@ declare global {
 export const GetDataUser = () => async (dispatch:Dispatch<any>)=>{
     let response = await requestApi(userInfo);
     dispatch({type:AuthEnum.LOGIN,payload:response})
+    localStorage.setItem("user",response.idUser)
 }
 
 /**

@@ -14,7 +14,8 @@ const FavoritosScreen = () => {
     const { favoritos } = useSelector((x: RootState) => x)
     const [seeDetail, setSeeDetail] = useState<Boolean>(false)
     const [CardSelected, setCardSelected] = useState<Content>();
-    const { Auth: { dataUser } } = useSelector((x: RootState) => x)
+    const { Auth: { dataUser } } = useSelector((x: RootState) => x);
+    const idUser = parseInt(localStorage.getItem("user") || "0");
 
     const SeeDetail = (data: Content) => {
         setCardSelected(data);
@@ -22,8 +23,8 @@ const FavoritosScreen = () => {
     }
 
     useEffect(() => {
-        if (!favoritos.data.content.length) {
-            dispatch(getFavAction(dataUser.idUser));
+        if (!favoritos.data.content?.length) {
+            dispatch(getFavAction(idUser));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -39,7 +40,7 @@ const FavoritosScreen = () => {
                     ?
                     <Loading />
                     : favoritos.isSuccess ?
-                        favoritos.data.content.map((item:ContentFav) =>
+                        favoritos.data.content?.map((item:ContentFav) =>
                             <CardFav data={item} action={SeeDetail} key={item.idFavorito} />
                         )
                         : null

@@ -2,7 +2,7 @@ import { ContentFav } from "@/interface/CardFavInterface";
 import { ActionInterface, RequestPageableGenericFav } from "@Interface/ShoopingCartInteface";
 import { ShoopingTypes } from "@Interface/types/ShoopingCartType";
 
-export const initialStateFav= {
+export const initialStateFav:RequestPageableGenericFav = {
     isLoading: false,
     isSuccess: false,
     isError: false,
@@ -36,7 +36,7 @@ export const initialStateFav= {
     }
 };
 
-const FavoritoReducer = (state = initialStateFav,action:ActionInterface) =>{
+const FavoritoReducer = (state = initialStateFav,action:ActionInterface):RequestPageableGenericFav =>{
     switch (action.type) {
         case ShoopingTypes.ADD_PRODUCT:
             return  action.payload

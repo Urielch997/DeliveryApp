@@ -5,9 +5,9 @@ import { requestApi } from "@Service/Request";
 import { initialStateProduct } from "@Store/reducer/ProductoReducer";
 import { Dispatch } from "react";
 
-export const getProductosList = (page:number = 0) => async (dispatch: Dispatch<any>) => {
+export const getProductosList = (page:number = 0,idUser:number=0) => async (dispatch: Dispatch<any>) => {
     dispatch({ type: ProductsTypes.GET_PRODUCT, payload: { ...initialStateProduct, isLoading: true } })
-    let response = await requestApi(getProductos(page));
+    let response = await requestApi(getProductos(page,10,idUser));
     if (response.code === "00") {
         scrollTop();
         dispatch({ type: ProductsTypes.GET_PRODUCT, payload: { ...initialStateProduct, isSuccess: true, data: response.result } })
