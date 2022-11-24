@@ -23,7 +23,7 @@ const Layout = ({ children }: Props) => {
     const [open, setOpen] = useState(false);
     const location = useLocation();
     const token = localStorage.getItem("token");
-    const { Auth: { Logged,dataUser } } = useSelector((x: RootState) => x)
+    const { Auth: { Logged,dataUser },Cart:{count} } = useSelector((x: RootState) => x)
 
 
     useEffect(()=>{
@@ -51,7 +51,7 @@ const Layout = ({ children }: Props) => {
                     <button className='ubicacion br7 pd5'>Seleccionar ubicacion</button>
                 </div>
                 <div className='shopping_cart'>
-                    <ShoopingCart click={()=>history.push("/shoopingCart")} counter={2}/>
+                    <ShoopingCart click={()=>history.push("/shoopingCart")} counter={count}/>
                 </div>
             </Header>
             <div className='container_button'>

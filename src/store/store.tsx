@@ -8,7 +8,8 @@ import FavoritoReducer from './reducer/FavoritoReducer';
 const Reducers = combineReducers({
     favoritos: FavoritoReducer,
     productos:ProductoReducer,
-    Auth:AuthReducer
+    Auth:AuthReducer,
+    Cart:ShoopingCartReducer
 })
 
   

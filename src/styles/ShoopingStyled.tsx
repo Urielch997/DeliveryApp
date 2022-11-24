@@ -4,6 +4,8 @@ export const ContainerShooping = styled.div`
     
     .content_shopping{
         display: flex;
+        width: 100%;
+        margin-top: 20px;
 
         @media screen and (max-width:600px){
             display: flex;
@@ -20,9 +22,9 @@ export const ContainerShooping = styled.div`
             width: 100%;
         }
 
-        background: var(--components);
+        /* background: var(--components); */
         padding: 10px;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
     }
 
     .payment_card{

@@ -93,6 +93,10 @@ export const Container = styled.div`
         margin:0px auto;
         padding-bottom: 81px;
         min-height: 72vh;
+
+        @media screen and (max-width:600px){
+            width: 100%;
+        }
     }
 `
 

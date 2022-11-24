@@ -72,7 +72,7 @@ const ContentCard = styled.div`
     }
 
     .img_shoop{
-        width: 100%;
+        width: 70%;
         object-fit: contain;
     }
 

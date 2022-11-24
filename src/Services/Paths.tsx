@@ -18,3 +18,8 @@ export const logout = () =>``;
 //Obtener informacion del usuario
 export const userInfo = `${urlApi}user/me`;
 export const UpdateInfo = () =>`${urlApi}usuario`;
+
+//ShoppingCart
+export const getCountCart = (idCart:string) => `${urlApi}shoppingCart/countCart/${idCart}`;
+export const getCart = (idCart:string) => `${urlApi}shoppingCart/getCart/${idCart}`;
+export const addCart = `${urlApi}shoppingCart/addShoppingCart`;

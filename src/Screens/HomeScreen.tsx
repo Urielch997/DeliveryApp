@@ -50,7 +50,7 @@ const HomeScreen = () => {
                                 <Loading />
                                 :
                                 productos?.data.content.map((item, index) =>
-                                    <Card setSeeDetail={SeeDetail} key={index} data={item} />
+                                    <Card setSeeDetail={SeeDetail} key={item.idItem} data={item} />
                                 )
                             }
                         </>
