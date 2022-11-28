@@ -14,13 +14,13 @@ export interface CartShopping {
   }
   
   export interface Product {
-    idItem: string
+    idItem: string | number
     nombre: string
     idCategoria: number
     precio: number
     precioOferta: number
     imagen: string
-    description: string
+    description: string | null
   }
 
   export interface ShoppingAction {

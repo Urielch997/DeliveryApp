@@ -1,4 +1,5 @@
-import { ContentFav } from "@Interface/CardFavInterface";
+import { Product } from '@/interface/CartShooping'
+import { addCart, deleteCartAction } from '@/store/actions/ShoopingCardActions';
 import { Content } from "@Interface/ProducstListInterface";
 import { RootState } from "@Store/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +8,7 @@ import { addFavAction, modifyFavorite, removeFav } from "../../store/actions/Fav
 
 const useShooping = () => {
     const dispatch  = useDispatch();
-    const {productos,favoritos,Auth:{dataUser}} = useSelector((x:RootState) => x )
+    const {productos,favoritos,Auth:{dataUser},Cart:{idCart}} = useSelector((x:RootState) => x )
 
     /**
      * Agregar a favoritos
@@ -26,9 +27,48 @@ const useShooping = () => {
         dispatch(removeFav(idProducto,favoritos,dataUser.idUser));
     }
 
+    /**
+     * Agregar producto
+     * @param producto producto a agregar en carrito compras
+     */
+    const addShoopingCart = (producto:Content) =>{
+        let data:Product = {
+            imagen:producto.imagen,
+            description:producto.description,
+            nombre:producto.nombre,
+            precio:producto.precio,
+            precioOferta:producto.precioOferta,
+            idCategoria:producto.idCategoria,
+            idItem:producto.idItem
+        }
+        dispatch(addCart(data))
+    }
+
+    /**
+     * Suma de productos en carrito de compras
+     * @param product listado de productos
+     * @returns 
+     */
+    const sum = (product:Product[]):number =>{
+        let total = 0;
+        product.forEach(item =>{
+            total += item.precio;
+        })
+
+        return total;
+    }
+
+    const deleteCar = (idItem:string) =>{
+        let idUser = localStorage.getItem("user") || "";
+        dispatch(deleteCartAction(idItem,idUser));
+    }
+
     return {
         addFav,
-        deleteFav
+        deleteFav,
+        addShoopingCart,
+        sum,
+        deleteCar
     } as const
 }
 

@@ -7,23 +7,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { RootState } from '@Store/store'
 import { getShoppingCart } from '@/store/actions/ShoopingCardActions'
+import useShooping from '@/hooks/ShoopingCart/useShooping'
 
 const ShoopingCartScreen = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const { Cart }= useSelector((x: RootState) => x)
+    const { Cart:{products} }= useSelector((x: RootState) => x)
+    let idCart = localStorage.getItem("idCart") || "";
+    const {sum} = useShooping();
 
     useEffect(() => {
-       
-            dispatch(getShoppingCart("d74ab8e0-6b00-4295-9102-87b1554fd18c"));
-        
+            dispatch(getShoppingCart(idCart));
     }, [])
 
     return (
         <ContainerShooping>
             <div className='content_shopping'>
                 <div className='items_cart'>
-                    <CardShoopingCart />
+                    {products.map(item =>
+                    <CardShoopingCart productoCart={item}/>)
+                    }
                 </div>
             </div>
             <div className='total_pay'>
@@ -32,7 +35,7 @@ const ShoopingCartScreen = () => {
                         Total a pagar
                     </div>
                     <div className='quantity'>
-                        $35.00
+                        ${sum(products)}
                     </div>
                 </div>
                 <div className='section' onClick={()=>history.push("/checkout?page=1")}>

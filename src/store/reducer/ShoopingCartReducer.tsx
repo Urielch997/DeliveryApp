@@ -31,8 +31,7 @@ const ShoopingCartReducer = (state = initialStateShopping, action: ShoppingActio
       return action.payload.result
     case ShoopingTypes.GET_CART:
       return {
-        ...action.payload.result,
-        count:state.count
+        ...action.payload.result
       }
     default:
       return state;

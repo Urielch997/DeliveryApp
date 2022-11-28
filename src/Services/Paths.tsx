@@ -22,4 +22,5 @@ export const UpdateInfo = () =>`${urlApi}usuario`;
 //ShoppingCart
 export const getCountCart = (idCart:string) => `${urlApi}shoppingCart/countCart/${idCart}`;
 export const getCart = (idCart:string) => `${urlApi}shoppingCart/getCart/${idCart}`;
-export const addCart = `${urlApi}shoppingCart/addShoppingCart`;
+export const addCartUrl = `${urlApi}shoppingCart/addShoppingCart`;
+export const deleteCart = (idItem:string,idUser:string) =>`${urlApi}shoppingCart/delete/${idUser}?idItem=${idItem}`;

@@ -2,19 +2,28 @@ import styled from 'styled-components'
 import remove from "@Img/remove.svg";
 import plus from "@Img/plus.svg"
 import minimus from '@Img/minimus.svg'
+import { Product } from '@/interface/CartShooping';
+import useShooping from '@/hooks/ShoopingCart/useShooping';
 
-const CardShoopingCart = () => {
+interface CartInterface {
+    productoCart:Product
+}
+
+const CardShoopingCart = ({productoCart}:CartInterface) => {
+    const {deleteCar} = useShooping();
+   
+
     return (
         <ContentCard>
             <div className='content_img'>
-                <img className='img_shoop' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Nintendo-Switch-wJoyCons-BlRd-Standing-FL.png/1280px-Nintendo-Switch-wJoyCons-BlRd-Standing-FL.png" alt='product' />
+                <img className='img_shoop' src={productoCart.imagen} alt='product' />
             </div>
 
         <div className='container_descrip'>
 
             <div className="description_shoop">
                 <div className="product_name_shoop">
-                    nintendo
+                    {productoCart.nombre}
                 </div>
             </div>
             <div className="cantidad_shoop">
@@ -27,10 +36,10 @@ const CardShoopingCart = () => {
                 </div>
             </div>
             <div className="price_shooping">
-                <strong>$200</strong>
+                <strong>{`$${productoCart.precio}`}</strong>
             </div>
             <div className="action_shooping">
-                <img src={remove} className="close" />
+                <img src={remove} className="close" onClick={()=>deleteCar(productoCart.idItem.toString())}/>
             </div>
 
             </div>

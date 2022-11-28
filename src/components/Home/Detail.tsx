@@ -25,8 +25,7 @@ const Detail = ({ setSeeDetail, data = {
     description: "",
     favorito: false
 } }: CardProps) => {
-    const { addFav,deleteFav } = useShooping();
-    const fav = useSelector((x: RootState) => x.favoritos);
+    const { addFav,deleteFav,addShoopingCart } = useShooping();
     const { Auth: { dataUser } } = useSelector((x: RootState) => x)
 
     return (
@@ -42,7 +41,7 @@ const Detail = ({ setSeeDetail, data = {
                     {data?.description}
                 </div>
                 <div className="card_button">
-                    <Button text="AGREGAR AL CARRITO" />
+                    <Button text="AGREGAR AL CARRITO" action={()=>addShoopingCart(data)}/>
                 </div>
             </div>
         </Wrapper>
