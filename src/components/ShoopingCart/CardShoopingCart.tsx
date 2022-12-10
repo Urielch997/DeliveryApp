@@ -4,13 +4,14 @@ import plus from "@Img/plus.svg"
 import minimus from '@Img/minimus.svg'
 import { Product } from '@/interface/CartShooping';
 import useShooping from '@/hooks/ShoopingCart/useShooping';
+import { Operations } from '@/interface/types/ShoopingCartType';
 
 interface CartInterface {
     productoCart:Product
 }
 
 const CardShoopingCart = ({productoCart}:CartInterface) => {
-    const {deleteCar} = useShooping();
+    const {deleteCar,addQuantityHook} = useShooping();
    
 
     return (
@@ -28,11 +29,11 @@ const CardShoopingCart = ({productoCart}:CartInterface) => {
             </div>
             <div className="cantidad_shoop">
                 <div>
-                    <img src={minimus} className="rest" alt='rest' />
+                    <img src={minimus} className="rest" alt='rest' onClick={()=>addQuantityHook(productoCart,Operations.REST)}/>
                 </div>
-                12
+                {productoCart.cantidad}
                 <div>
-                    <img src={plus} className="plus" alt='plus' />
+                    <img src={plus} className="plus" alt='plus' onClick={()=>addQuantityHook(productoCart,Operations.SUM)} />
                 </div>
             </div>
             <div className="price_shooping">

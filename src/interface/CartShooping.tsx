@@ -21,6 +21,7 @@ export interface CartShopping {
     precioOferta: number
     imagen: string
     description: string | null
+    cantidad:number
   }
 
   export interface ShoppingAction {

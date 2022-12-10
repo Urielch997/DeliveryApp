@@ -1,7 +1,7 @@
 import { AuthEnum, TypesAuthentication } from "@Interface/types/AuthTypes";
 import { ActionLogin } from "@Interface/AuthInterface";
 
-const initialState = {
+export const initialStateLogin = {
     Logged: false,
     typeAuth: "",
     dataUser: {
@@ -18,7 +18,7 @@ const initialState = {
 }
 
 
-const AuthReducer = (state = initialState, action: ActionLogin) => {
+const AuthReducer = (state = initialStateLogin, action: ActionLogin) => {
     switch (action.type) {
         case AuthEnum.LOGIN :
             return {
@@ -29,6 +29,8 @@ const AuthReducer = (state = initialState, action: ActionLogin) => {
                 },
                 typeAuth:action.payload.provider
             }
+        case AuthEnum.LOGOUT :
+            return initialStateLogin
         default:
             return state;
     }

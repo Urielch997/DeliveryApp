@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export interface PropsInput {
-  clases?:string,
-  placeholder?:string,
-  value?:string,
-  onChange?:React.ChangeEventHandler<HTMLInputElement>
-  type?:typesInput
+  clases?: string,
+  placeholder?: string,
+  value?: string,
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
+  type?: typesInput,
+  inputLL?: React.RefObject<HTMLInputElement>,
+  name:string
 }
 
-type typesInput = "text" | "password" | "email"| "date" | "month"
+type typesInput = "text" | "password" | "email" | "date" | "month"
 
 export enum enumInput {
   PASSWORD = "password",
@@ -18,9 +20,12 @@ export enum enumInput {
   MONTH = "month"
 }
 
-const Input = ({clases = "",placeholder = "",value = "",onChange = ()=>{},type = "text"}:PropsInput) => {
+const Input = ({ clases = "", placeholder = "", value = "", onChange = () => { }, type = "text",inputLL,name = ""}: PropsInput) => {
+
+
+
   return (
-    <InputCustom className={clases} placeholder = {placeholder} value={value} onChange={onChange} type={type}/>
+    <InputCustom className={clases} placeholder={placeholder} name={name} onChange={onChange} type={type} ref={inputLL} defaultValue={value}/>
   )
 }
 

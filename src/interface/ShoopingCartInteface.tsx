@@ -1,9 +1,10 @@
 
 import { ContentFav, Pageable, Sort } from "./CardFavInterface";
+import { FavAction } from "./types/FavTypes";
 import { AddProduct } from "./types/ShoopingCartType";
 
 export interface ActionInterface {
-    type:AddProduct,
+    type:FavAction,
     payload:any
 }
 

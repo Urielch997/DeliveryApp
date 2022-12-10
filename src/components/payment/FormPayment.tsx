@@ -9,18 +9,18 @@ const FormPayment = () => {
                 <div className='title_detail_payment'>Detalle de pago</div>
                 <div className="row">
                     <div className='item'>
-                        <Input placeholder='Nombre del titular de la tarjeta' clases='input' />
+                        <Input placeholder='Nombre del titular de la tarjeta' clases='input' name='NameOwner'/>
                     </div>
                     <div className="item">
-                        <Input placeholder='Numero de tarjeta' clases='input' />
+                        <Input placeholder='Numero de tarjeta' clases='input' name="numeroTarjeta"/>
                     </div>
                 </div>
                 <div className="row d-flex">
                     <div className="item">
-                        <Input placeholder='Expiracion' clases='w-50 input_smal' />
+                        <Input placeholder='Expiracion' clases='w-50 input_smal' name='expiration'/>
                     </div>
                     <div className='item'>
-                        <Input placeholder='CCV' clases='w-50 input_smal' />
+                        <Input placeholder='CVV' clases='w-50 input_smal' name="cvv"/>
                     </div>
 
                 </div>

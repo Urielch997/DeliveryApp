@@ -28,7 +28,7 @@ const HomeScreen = () => {
 
     useEffect(() => {
         if (!productos?.data.content.length) {
-            dispatch(getProductosList(1,idUser));
+            dispatch(getProductosList(0,idUser));
         }
     }, [])
 
@@ -59,7 +59,7 @@ const HomeScreen = () => {
                         null
                         :
                         <div className='pagination_container'>
-                            <Pagination total={productos?.data.totalElements} page={(productos?.data.number || 0) + 1} onChange={pageChange} />
+                            <Pagination total={productos?.data.totalElements} page={(productos?.data.number || 1)} onChange={pageChange} />
                         </div>
                     }
                 </div>

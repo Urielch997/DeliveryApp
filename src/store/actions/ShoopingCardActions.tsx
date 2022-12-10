@@ -31,7 +31,6 @@ export const addCart = (product: Product) => async (dispatch: Dispatch<any>) => 
     products:product
   });
   if (response.code === "00") {
-      dispatch({type:ShoopingTypes.ADD_PRODUCT,payload:response})
       dispatch(getShoppingCart(idUser));
   }
 }
@@ -41,4 +40,13 @@ export const deleteCartAction = (idItem:string,idUser:string) => async (dispatch
   if(response.code === "00"){
     dispatch(getShoppingCart(idUser));
   }
+}
+
+export const addQuantity = (product:Product[])=> (dispatch: Dispatch<any>)=>{
+  let data = {
+    result:{
+      products:product
+    }
+  }
+  dispatch({type:ShoopingTypes.MODIFY_CART,payload:data})
 }

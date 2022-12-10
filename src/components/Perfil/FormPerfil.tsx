@@ -4,26 +4,26 @@ import Button from "../Util/Button"
 import Input from "../Util/Input"
 
 const FormPerfil = () => {
-    const {state,onChange,sendData} = usePerfil();
+    const {sendData,dataUser} = usePerfil();
 
   return (
     <WrapperForm onSubmit={sendData}>
         <div className="row">
             <span>Nombre:</span>
             <div className="item">
-                <Input clases="input" value={state.nombre} onChange={(e)=>onChange(e.target.value,"nombre")}/>
+                <Input clases="input" name="nombre" value={dataUser.userName}/>
             </div>
         </div>
         <div className="row">
             <span>Correo electronico:</span>
             <div className="item">
-                <Input clases="input" value={state.correo} onChange={(e)=>onChange(e.target.value,"correo")}/>
+                <Input clases="input" name="correo" value={dataUser.email}/>
             </div>
         </div>
         <div className="row">
             <span>Telefono:</span>
             <div className="item">
-                <Input clases="input" value={state.telefono} onChange={(e)=>onChange(e.target.value,"telefono")}/>
+                <Input clases="input" name="telefono" value={dataUser.telefono}/>
             </div>
         </div>
         <div className="container_button_perfil">

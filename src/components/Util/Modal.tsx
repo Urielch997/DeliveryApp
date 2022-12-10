@@ -13,7 +13,7 @@ const Modal = ({ width = "400px", height = "400px", children = <></>, seeModal =
         <>
             <ContainerModal width={width} height={height} seeModal={seeModal} onClick={() => setSeeModal(false)} />
             <ModalBody width={width} height={height} seeModal={seeModal}>
-                <div className="close_tab" onClick={()=>setSeeModal(false)}><span>x</span></div>
+                <div className="close_tab" onClick={()=>setSeeModal(false)}><div>x</div></div>
                 {children}
             </ModalBody>
         </>
@@ -57,6 +57,10 @@ const ModalBody = styled.div<ModalProps>`
         color:#fff;
         background: var(--primary);
         cursor: pointer;
+
+        div{
+            line-height: 27px;
+        }
     }
 
     @media screen and (max-width:600px){

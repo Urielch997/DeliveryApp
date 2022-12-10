@@ -1,3 +1,5 @@
+import { FavAction } from "@/interface/types/FavTypes";
+import { ProductsTypes } from "@/interface/types/ProductsType";
 import { ContentFav } from "@Interface/CardFavInterface";
 import { Content, RequestPageableGeneric } from "@Interface/ProducstListInterface";
 import { RequestPageableGenericFav } from "@Interface/ShoopingCartInteface";
@@ -47,7 +49,7 @@ export const modifyFavorite = (productList: RequestPageableGeneric, product: Con
             }
         }
 
-        dispatch({ type: ShoopingTypes.MODIFY_PRODUCT, payload: productoModify })
+        dispatch({ type: ProductsTypes.MODIFY_PRODUCT, payload: productoModify })
     }
 }
 
@@ -71,15 +73,15 @@ export const removeFav = (idProducto: number, productList: RequestPageableGeneri
  */
 export const getFavAction = (idUser:number) => async (dispatch: Dispatch<any>) => {
     try{
-    dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isLoading: true } })
+    dispatch({ type: FavAction.ADD_FAV, payload: { ...initialStateFav, isLoading: true } })
     let response = await requestApi(getFavoritos(idUser));
     console.log(response)
     if (response.code === "00") {
-        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isSuccess: true, data: response.result,isLoading:false } })
+        dispatch({ type: FavAction.ADD_FAV, payload: { ...initialStateFav, isSuccess: true, data: response.result,isLoading:false } })
     } else {
-        dispatch({ type: ShoopingTypes.ADD_PRODUCT, payload: { ...initialStateFav, isError: true, data: null,isLoading:false } })
+        dispatch({ type: FavAction.ADD_FAV, payload: { ...initialStateFav, isError: true, data: null,isLoading:false } })
     }
     }catch(e){
-         dispatch({type:ShoopingTypes.ADD_PRODUCT, payload:{...initialStateFav,isLoading:false}})
+         dispatch({type:FavAction.ADD_FAV, payload:{...initialStateFav,isLoading:false}})
     }
 }

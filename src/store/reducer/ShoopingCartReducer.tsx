@@ -14,7 +14,8 @@ export const initialStateShopping: ResultCartShopping = {
       precio: 0,
       precioOferta: 0,
       imagen: "",
-      description: ""
+      description: "",
+      cantidad:0
     }
   ]
 }
@@ -27,12 +28,17 @@ const ShoopingCartReducer = (state = initialStateShopping, action: ShoppingActio
         ...state,
         count: action.payload.result.count
       }
-    case ShoopingTypes.ADD_PRODUCT:
-      return action.payload.result
     case ShoopingTypes.GET_CART:
       return {
         ...action.payload.result
       }
+    case ShoopingTypes.MODIFY_CART:
+        return {
+          ...state,
+          products:action.payload.result.products
+        }
+    case ShoopingTypes.RESET_CART: 
+    return initialStateShopping
     default:
       return state;
   }

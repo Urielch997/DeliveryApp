@@ -1,5 +1,6 @@
 import { Product } from '@/interface/CartShooping'
-import { addCart, deleteCartAction } from '@/store/actions/ShoopingCardActions';
+import { Operations } from '@/interface/types/ShoopingCartType';
+import { addCart, addQuantity, deleteCartAction } from '@/store/actions/ShoopingCardActions';
 import { Content } from "@Interface/ProducstListInterface";
 import { RootState } from "@Store/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +9,7 @@ import { addFavAction, modifyFavorite, removeFav } from "../../store/actions/Fav
 
 const useShooping = () => {
     const dispatch  = useDispatch();
-    const {productos,favoritos,Auth:{dataUser},Cart:{idCart}} = useSelector((x:RootState) => x )
+    const {productos,favoritos,Auth:{dataUser},Cart:{idCart,products}} = useSelector((x:RootState) => x )
 
     /**
      * Agregar a favoritos
@@ -39,7 +40,8 @@ const useShooping = () => {
             precio:producto.precio,
             precioOferta:producto.precioOferta,
             idCategoria:producto.idCategoria,
-            idItem:producto.idItem
+            idItem:producto.idItem,
+            cantidad:1
         }
         dispatch(addCart(data))
     }
@@ -52,7 +54,7 @@ const useShooping = () => {
     const sum = (product:Product[]):number =>{
         let total = 0;
         product.forEach(item =>{
-            total += item.precio;
+            total += (item.cantidad * item.precio);
         })
 
         return total;
@@ -63,12 +65,35 @@ const useShooping = () => {
         dispatch(deleteCartAction(idItem,idUser));
     }
 
+    /**
+     * Agrega mas productos del mismo tipo
+     */
+    const addQuantityHook = (product:Product,TypeOperation:Operations) =>{
+
+       let quantity = Operations.SUM === TypeOperation ?  product.cantidad + 1 :  product.cantidad - 1
+       if (quantity === 0) return
+
+        let productosModify = products.map(x=>{
+            if(x.idItem === product.idItem){
+               return   {
+                ...x,
+                cantidad:quantity
+               }
+            }else{
+                return x;
+            }
+        });
+        console.log(productosModify)
+        dispatch(addQuantity(productosModify));
+    }
+
     return {
         addFav,
         deleteFav,
         addShoopingCart,
         sum,
-        deleteCar
+        deleteCar,
+        addQuantityHook
     } as const
 }
 

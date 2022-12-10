@@ -13,8 +13,6 @@ const CheckoutScreen = () => {
   const changePage = (page:string| null) => {
     switch (page) {
       case "1":
-        return <Direccion />
-      case "2":
         return <Payment />
       default:
         history.push("/shoppingCart");

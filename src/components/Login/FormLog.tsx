@@ -9,10 +9,10 @@ const FormLog = () => {
     return (
         <div className='formulario'>
             <div className='item'>
-                <Input clases='width_input' placeholder='usuario' type='text'/>
+                <Input clases='width_input' placeholder='usuario' type='text' name='usuario'/>
             </div>
             <div className='item'>
-                <Input clases='width_input' placeholder='contraseña' type='password'/>
+                <Input clases='width_input' placeholder='contraseña' type='password' name="password"/>
             </div>
             <div className='container_check'>
                 <Checkbox size='15px' checked={checked} setChecked={setChecked} />

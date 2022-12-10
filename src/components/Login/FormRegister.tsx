@@ -5,26 +5,28 @@ import styled from 'styled-components'
 import Button from '../Util/Button';
 
 const FormRegister = () => {
-    const {onChange,state,submit,isSamePwd} = useRegister();
+    const {submit,isSamePwd} = useRegister();
+
+
 
     return (
         <Form onSubmit={submit}>
             <div className='row'>
                 <div className='item'>
-                    <Input clases='input_style' placeholder='nombre' value={state.nombre} onChange={(e)=>{onChange(e.target.value,"nombre")}}/>
+                    <Input clases='input_style' placeholder='nombre' name="nombre"/>
                 </div>
                 <div className='item'>
-                    <Input clases='input_style' placeholder='apellido' value={state.apellido} onChange={(e)=>{onChange(e.target.value,"apellido")}}/>
+                    <Input clases='input_style' placeholder='apellido' name="apellido"/>
                 </div>
             </div>
             <div className='item'>
-                <Input clases='input_style' placeholder='correo' value={state.correo} onChange={(e)=>{onChange(e.target.value,"correo")}} type={enumInput.EMAIL}/>
+                <Input clases='input_style' placeholder='correo' name='correo' type={enumInput.EMAIL}/>
             </div>
             <div className='item'>
-                <Input clases='input_style' placeholder='contraseña' type={enumInput.PASSWORD} value={state.pwd} onChange={(e)=>{onChange(e.target.value,"pwd")}}/>
+                <Input clases='input_style' placeholder='contraseña' type={enumInput.PASSWORD} name="password"/>
             </div>
             <div className='item'>
-                <Input clases={`input_style ${isSamePwd ? "error_input" : ""}`} placeholder='confirmar contraseña' type={enumInput.PASSWORD} value={state.confirmPwd} onChange={(e)=>{onChange(e.target.value,"confirmPwd")}}/>
+                <Input clases={`input_style ${isSamePwd ? "error_input" : ""}`} placeholder='confirmar contraseña' type={enumInput.PASSWORD} name="validPassword"/>
             </div>
             <Button text={"Registrarme"} classButton="white border_social" typeButton='submit'/>
         </Form>

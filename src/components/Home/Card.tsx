@@ -18,11 +18,10 @@ const Card = ({setSeeDetail,data}:CardProps) => {
                     <img src={data.imagen || ""} alt="foto de producto"/>
             </div>
             <div className='state_card'>
-                <div className='background'>
-                    
+                <div className='background'>    
                 </div>
                 <label><strong>{data.nombre}</strong></label>
-                <label className='active'><strong>Abierto</strong></label>
+                <label className='active'><strong>{`$${data.precio}`}</strong></label>
             </div>
         </CardWrapper>
     )

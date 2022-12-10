@@ -3,14 +3,15 @@ export enum AuthEnum {
     LOGIN = "LOGIN",
     LOGIN_FACEBOOK = "LOGIN_FACEBOOK",
     LOGOUT_FACEBOOK = "LOGOUT_FACEBOOK",
-    LOGIN_GOOGLE = "LOGIN_GOOGLE"
+    LOGIN_GOOGLE = "LOGIN_GOOGLE",
+    LOGOUT = "LOGOUT"
 }
 
 export enum TypesAuthentication {
     FACEBOOK = "FACEBOOK",
     GOOGLE = "GOOGLE",
-    LOGIN = "LOCAL_AUTHENTICATION"
+    LOGIN = "LOCAL_AUTHENTICATION",
 }
 
 
-export type AuthType = AuthEnum.VERIFY_LOGIN | AuthEnum.LOGIN | AuthEnum.LOGIN_FACEBOOK | AuthEnum.LOGOUT_FACEBOOK | AuthEnum.LOGIN_GOOGLE
+export type AuthType = AuthEnum.VERIFY_LOGIN | AuthEnum.LOGIN | AuthEnum.LOGIN_FACEBOOK | AuthEnum.LOGOUT_FACEBOOK | AuthEnum.LOGIN_GOOGLE | AuthEnum.LOGOUT

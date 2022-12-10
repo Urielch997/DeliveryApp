@@ -14,7 +14,12 @@ const SectionOne = () => {
                 <h2>Perfil</h2>
             </div>
             <div className="container_picture">
-                <img src={dataUser.imageUrl || "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=5227662653981769&height=200&width=200&ext=1659908904&hash=AeSK7Y7G4OqmL-0DaFA"} alt="photo_profile" />
+                {dataUser.imageUrl ?
+                    <img src={dataUser.imageUrl} alt="photo_profile" /> :
+                    <div className="temp_avatar">
+                        <div className="letter_avatar">{dataUser.userName.split("")[0]}</div>
+                    </div>
+                }
             </div>
             <div className="title_2">
                 <strong><span>Datos personales</span></strong>
@@ -56,6 +61,23 @@ const Wrapper = styled.div`
 
     .photo_profile{
         width: 100px;
+    }
+
+    .temp_avatar{
+        border-radius: 50%;
+        height: 200px;
+        width: 200px;
+        background-color: #343434;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .letter_avatar{
+        color:#fff;
+        font-size: 150px;
+        width: fit-content;
+        height: inherit;
     }
 `
 

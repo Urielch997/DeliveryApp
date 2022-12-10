@@ -13,7 +13,7 @@ export const deleteFavoritosByIdUserAndIdProducto = (idUsuario:number,idProducto
 export const GOOGLE_AUTH_URL = `${urlApi}oauth2/authorize/google?redirect_uri=${OAUTH2_REDIRECT_URI}`;
 export const FACEBOOK_AUTH_URL = `${urlApi}oauth2/authorize/facebook?redirect_uri=${OAUTH2_REDIRECT_URI}`;
 export const register = `${urlApi}auth/signup`;
-export const logout = () =>``;
+export const LOGIN = `${urlApi}auth/login`;
 
 //Obtener informacion del usuario
 export const userInfo = `${urlApi}user/me`;
