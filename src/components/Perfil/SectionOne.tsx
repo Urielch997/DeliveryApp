@@ -1,6 +1,7 @@
 import { RootState } from "@/store/store"
 import { useSelector } from "react-redux"
 import styled from "styled-components"
+import Avatar from "./Components/Avatar"
 import CardPerfil from "./Components/CardPerfil"
 import FormPerfil from "./FormPerfil"
 
@@ -16,9 +17,7 @@ const SectionOne = () => {
             <div className="container_picture">
                 {dataUser.imageUrl ?
                     <img src={dataUser.imageUrl} alt="photo_profile" /> :
-                    <div className="temp_avatar">
-                        <div className="letter_avatar">{dataUser.userName.split("")[0]}</div>
-                    </div>
+                    <Avatar/>
                 }
             </div>
             <div className="title_2">
@@ -37,6 +36,7 @@ const Wrapper = styled.div`
         height: 200px;
         display: flex;
     justify-content: center;
+    align-items: center;
     }
 
     h2{
@@ -55,29 +55,12 @@ const Wrapper = styled.div`
     img{
         background: #000;
         object-fit: contain;
+        width: 200px;
         border-radius: 100%;
-        
     }
 
     .photo_profile{
         width: 100px;
-    }
-
-    .temp_avatar{
-        border-radius: 50%;
-        height: 200px;
-        width: 200px;
-        background-color: #343434;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .letter_avatar{
-        color:#fff;
-        font-size: 150px;
-        width: fit-content;
-        height: inherit;
     }
 `
 

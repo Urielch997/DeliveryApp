@@ -11,6 +11,7 @@ import ShoopingCart from '@Components/ShoopingCart/ShoopingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@Store/store';
 import { GetDataUser } from '@Store/actions/AuthActions';
+import Avatar from '@/components/Perfil/Components/Avatar';
 
 interface Props {
     children: React.ReactFragment;
@@ -68,7 +69,7 @@ const Layout = ({ children }: Props) => {
                     <label onClick={() => history.push('/Orden')} className='link'><strong><FontAwesomeIcon icon={iconProps(faShoppingBag as IconDefinition)} className="icon" /><span className='label_footer'>ORDENES</span></strong></label>
                 </div>
                 <div className={`option_footer ${uselocation.pathname === '/perfil' && 'active'}`}>
-                    <label onClick={() => Logged ? history.push('/perfil') : setOpen(true)} className='link'>{Logged ? <img src={dataUser.imageUrl} alt='photo_profile' className='photo_profile' /> : <strong><FontAwesomeIcon icon={iconProps(faUser as IconDefinition)} className="icon" /> <span className='label_footer'>PERFIL</span></strong>}</label>
+                    <label onClick={() => Logged ? history.push('/perfil') : setOpen(true)} className='link'>{Logged ? dataUser.imageUrl ? <img src={dataUser.imageUrl} alt='photo_profile' className='photo_profile' /> : <Avatar width='40px' height='40px' fontSize='30px'/> : <strong><FontAwesomeIcon icon={iconProps(faUser as IconDefinition)} className="icon" /> <span className='label_footer'>PERFIL</span></strong>}</label>
                 </div>
             </Footer>
             <Modal seeModal={open} setSeeModal={setOpen} children={<FormLogin />} width={"800px"} height={"550px"} />

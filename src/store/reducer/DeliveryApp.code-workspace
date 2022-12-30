@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../spring-boot-react-oauth2-social-login-demo/react-social"
+		}
+	],
+	"settings": {}
+}
