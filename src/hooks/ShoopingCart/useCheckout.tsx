@@ -1,6 +1,8 @@
 import Direccion from '@/components/ShoopingCart/Checkout/Direccion';
 import Payment from '@/components/ShoopingCart/Checkout/Payment';
 import { typesCards } from '@/interface/types/TypeCards';
+import { payurl } from '@/Services/Paths';
+import { requestApi } from '@/Services/Request';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useHistory, useLocation } from 'react-router';
 import useForm from '../useForm';
@@ -16,7 +18,8 @@ export const initialPaymentForm = {
 const useCheckout = () => {
     const { state, onChange } = useForm(initialPaymentForm);
     const inputLL = useRef<HTMLInputElement>(null);
-    const [typeC,setTypeC] = useState<typesCards>(typesCards.VISA);
+    const ref = useRef<HTMLInputElement>(null);
+    const [typeC, setTypeC] = useState<typesCards>(typesCards.VISA);
 
 
     const chunk = (string: string, n = 4) => {
@@ -49,23 +52,85 @@ const useCheckout = () => {
         return numero;
     }
 
-    const typeCard = (valor:string) =>{
-      const type =  valor.startsWith("4") ? typesCards.VISA : typesCards.MASTERCARD;
-      console.log(type)
-      setTypeC(type)
+    const typeCard = (valor: string) => {
+        const type = valor.startsWith("4") ? typesCards.VISA : typesCards.MASTERCARD;
+        console.log(type)
+        setTypeC(type)
     }
 
-    inputLL.current?.addEventListener('keyup', function (event) {
-        const value = validar(this.value);
-        typeCard(value);
-        this.value = chunk(value);
-    })
+    useEffect(() => {
+        inputLL.current?.addEventListener('keyup', function (event) {
+            const value = validar(this.value);
+            typeCard(value);
+            this.value = chunk(value);
+        })
+    }, [inputLL.current])
+
+    useEffect(() => {
+        ref.current?.addEventListener('keydown', function (e) {
+            
+            var code = (e.which) ? e.which : e.keyCode;
+            console.log(code)
+            if(code==8) { // backspace.
+              return true;
+            } else if(code>=48 && code<=57) { // is a number.
+              return true;
+            }else if(code  === 191 || code === 37  ||  code === 39){
+                return true;
+            } else{ // other keys.
+              e.stopPropagation();
+              e.preventDefault();
+            }
+         
+        });
+
+        ref.current?.addEventListener('keyup', function (e) {
+            let val = this.value;
+            console.log(val.includes("/"), e.key)
+            if(val.length === 2){
+                if(!val.includes("/") && e.key !== 'Backspace' ){
+                    this.value +="/"
+                }else{
+                    this.value = val;
+                }
+            } else if(val.length === 3){
+                if(!val.includes("/") && e.key !== 'Backspace' ){
+                    this.value = val.slice(0,val.length -  1) + "/" + e.key;
+                }
+            }     
+        });
+
+        ref.current?.addEventListener('focusout', function (e) {
+            if(!this.value.includes("/")){
+            let  parser = this.value.split("").map((item,index)=>index === 1 ? item + "/" : item).join("");
+            this.value  = parser;
+            }
+              
+        });
+    }, [ref.current])
+
+
+    const payment = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        let info = Object.fromEntries(new FormData(e.currentTarget));
+        let idUser = localStorage.getItem("user");
+        let result = requestApi(payurl, "POST", {
+            numeroTarjeta: info.cardNumber,
+            cvv: info.cvv,
+            mesVencimiento: info.fechaVencimiento.toString().split("/")[0],
+            anioVencimiento: info.fechaVencimiento.toString().split("/")[1],
+            monto: 200,
+            idUsuario: idUser
+        });
+    }
 
     return {
         state,
         onChange,
         inputLL,
-        typeC
+        typeC,
+        payment,
+        ref
     }
 
 }

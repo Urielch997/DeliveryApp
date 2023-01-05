@@ -91,8 +91,7 @@ export const Container = styled.div`
     .container_button{
         width: 90%;
         margin:0px auto;
-        padding-bottom: 81px;
-        min-height: 72vh;
+        min-height: 100vh;
 
         @media screen and (max-width:600px){
             width: 100%;
@@ -127,7 +126,7 @@ export const Footer = styled.div`
     }
 
     @media screen and (max-width:600px){
-        position: sticky;
+        position: fixed;
         bottom: 0;
     }
 `

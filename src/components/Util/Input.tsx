@@ -7,7 +7,8 @@ export interface PropsInput {
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   type?: typesInput,
   inputLL?: React.RefObject<HTMLInputElement>,
-  name:string
+  name:string,
+  maxLength?:number | undefined
 }
 
 type typesInput = "text" | "password" | "email" | "date" | "month"
@@ -20,12 +21,12 @@ export enum enumInput {
   MONTH = "month"
 }
 
-const Input = ({ clases = "", placeholder = "", value = "", onChange = () => { }, type = "text",inputLL,name = ""}: PropsInput) => {
+const Input = ({ clases = "", placeholder = "", value = "", onChange = () => { }, type = "text",inputLL,name = "",maxLength= undefined}: PropsInput) => {
 
 
 
   return (
-    <InputCustom className={clases} placeholder={placeholder} name={name} onChange={onChange} type={type} ref={inputLL} defaultValue={value}/>
+    <InputCustom className={clases} placeholder={placeholder} name={name} onChange={onChange} type={type} ref={inputLL} defaultValue={value} maxLength={maxLength}/>
   )
 }
 

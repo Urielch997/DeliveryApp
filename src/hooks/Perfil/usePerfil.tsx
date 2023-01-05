@@ -35,7 +35,7 @@ const usePerfil = () => {
         correo:info.correo,
         telefono:info.telefono
         ,idUser:dataUser.idUser});
-      console.log(result);
+
     }
 
 

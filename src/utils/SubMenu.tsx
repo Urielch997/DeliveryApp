@@ -1,18 +1,14 @@
+import { dataCategoria } from '@/interface/CategoriaInterface';
 import styled from 'styled-components';
 
 interface Parametros {
-    options:Options[]
+    options:dataCategoria[]
 }
 
-interface Options{
-    nombre:string,
-    id:number
-}
-
-const SubMenu = ({options}:Parametros) => {
+const SubMenu = ({options = []}:Parametros) => {
   return (<Submenu>
   {options.map(items =>(
-      <div key={items.id} className="active"><span className='name'>{items.nombre}</span></div>
+      <div key={items.idCategoria} className="active"><span className='name'>{items.nombreCategoria}</span></div>
   ))}
 </Submenu>)
 };

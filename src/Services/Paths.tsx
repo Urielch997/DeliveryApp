@@ -8,6 +8,7 @@ export const getFavoritos = (idUser = 0) => `${urlApi}User/favoritos?idUser=${id
 export const SaveFavoritos = () => `${urlApi}User/favoritos`;
 export const DeleteFavoritos = (id:number) => `${urlApi}User/favoritos?idFavorito=${id}`;
 export const deleteFavoritosByIdUserAndIdProducto = (idUsuario:number,idProducto:number) =>`${urlApi}User/favorito?idUsuario=${idUsuario}&idProducto=${idProducto}`;
+export const getAllCategoriaUrl = () =>`${urlApi}products/categorias`;
 
 //Login con redes sociales
 export const GOOGLE_AUTH_URL = `${urlApi}oauth2/authorize/google?redirect_uri=${OAUTH2_REDIRECT_URI}`;
@@ -24,3 +25,6 @@ export const getCountCart = (idCart:string) => `${urlApi}shoppingCart/countCart/
 export const getCart = (idCart:string) => `${urlApi}shoppingCart/getCart/${idCart}`;
 export const addCartUrl = `${urlApi}shoppingCart/addShoppingCart`;
 export const deleteCart = (idItem:string,idUser:string) =>`${urlApi}shoppingCart/delete/${idUser}?idItem=${idItem}`;
+
+//payment
+export const payurl = `${urlApi}pay`;

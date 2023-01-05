@@ -40,8 +40,8 @@ const FavoritosScreen = () => {
                     ?
                     <Loading />
                     : favoritos.isSuccess ?
-                        favoritos.data.content?.map((item:ContentFav) =>
-                            <CardFav data={item} action={SeeDetail} key={item.idFavorito} />
+                        favoritos.data.content?.map((item:ContentFav,index:number) =>
+                            <CardFav data={item} action={SeeDetail} key={index} />
                         )
                         : null
             }
@@ -51,7 +51,6 @@ const FavoritosScreen = () => {
 }
 
 const Wrapper = styled.div`
-
     height: 100%;
     display: flex;
     flex-wrap: wrap;

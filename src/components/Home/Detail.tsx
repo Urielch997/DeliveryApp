@@ -37,25 +37,28 @@ const Detail = ({ setSeeDetail, data = {
             <div className="card_description">
                 <div className="card_header"><FavButton action={(e) => {data.favorito ? deleteFav(data.idItem) : addFav(e,dataUser.idUser) }} data={data} isFavorite={data.favorito} /></div>
                 <div className="price"><h1>{convertMoney({ text: data?.precio } as MoneyFormat)}</h1></div>
-                <div className="text_descripcion">
-                    {data?.description}
-                </div>
                 <div className="card_button">
                     <Button text="AGREGAR AL CARRITO" action={()=>addShoopingCart(data)}/>
                 </div>
+            </div>
+            <div className="text_descripcion">
+                    {data?.description}
             </div>
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div`
-position: relative;
+    position: relative;
     min-height: 600px;
     width: 100%;
     margin: 10px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+
 
     .card_header{
         display: flex;
@@ -75,14 +78,14 @@ position: relative;
 
     .card_product{
         width: 400px;
-        height: 80%;
+        height: 100%;
         background: transparent;
         display: flex;
         justify-content: center;
 
         .imagen{
             object-fit: contain;
-            width: 100%;
+            width: 90%;
         }
     }
 
@@ -100,7 +103,9 @@ position: relative;
     .text_descripcion{
         padding: 5px;
         margin:10px 5px;
-        text-align: center;
+        width: 100%;
+        text-align: justify;
+        box-sizing: border-box;
     }
 
     .first_container, .second_container,.third_container{
@@ -167,6 +172,7 @@ position: relative;
         display: flex;
         flex-direction: column;
         margin: 0;
+        flex-wrap: nowrap;
         .card_product, .card_description{
             width: 100%;
         }

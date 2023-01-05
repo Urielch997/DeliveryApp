@@ -23,7 +23,6 @@ export interface Usuario {
 }
 
 export interface ContentFav {
-    idFavorito: number;
     producto: Producto;
     usuario: Usuario;
 }

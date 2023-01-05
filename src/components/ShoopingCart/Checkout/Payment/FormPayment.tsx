@@ -2,9 +2,10 @@ import Button from '@/components/Util/Button'
 import useCheckout, { initialPaymentForm } from '@/hooks/ShoopingCart/useCheckout'
 import Input, { enumInput } from '@Components/Util/Input'
 import styled from 'styled-components'
-import visa from '@Img/Visa.png';
+import visa from '@Img/visa.png';
 import mastercard from '@Img/mastercard.png';
 import { typesCards } from '@/interface/types/TypeCards';
+import { useRef } from 'react';
 
 interface IFrom {
   onChange: (value: string, campo: any) => void,
@@ -15,10 +16,13 @@ interface IFrom {
 
 
 const FormPayment = ({ onChange, state,inputLL,typeC }: IFrom) => {
+  const {payment,ref} = useCheckout();
+
+
 
 
   return (
-    <FormWrapper>
+    <FormWrapper onSubmit={payment}>
       <div className="row">
         <div className='container_img'>
           <img src={typeC === typesCards.VISA ? visa :  mastercard} className='img_container'/>
@@ -29,11 +33,11 @@ const FormPayment = ({ onChange, state,inputLL,typeC }: IFrom) => {
         <Input placeholder='Nombre del titular' clases='w100' name="nombre" />
       </div>
       <div className="row d-flex justify-content-between">
-      <Input placeholder='Fecha de vencimiento' clases='w45' name='fechaNacimiento' />
-        <Input placeholder='CVV' clases='w45' name="cvv" />
+      <Input placeholder='Fecha de vencimiento' clases='w45' name='fechaVencimiento' inputLL={ref} maxLength={7}/>
+        <Input placeholder='CVV' clases='w45' name="cvv" maxLength={3}/>
       </div>
       <div className='row'>
-        <Button text='PAGAR' classButton='botton_pay' />
+        <Button text='PAGAR' classButton='botton_pay' typeButton='submit'/>
       </div>
     </FormWrapper>
   )
@@ -71,7 +75,7 @@ const FormWrapper = styled.form`
   .img_container{
     position: absolute;
     right: 0;
-    top: 0;
+    top: -2px;
     width: 40px;
   }
 

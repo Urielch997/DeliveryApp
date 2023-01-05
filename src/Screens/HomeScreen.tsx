@@ -1,4 +1,5 @@
 import useHome from "@/hooks/Home/useHome"
+import { getAllCategoria } from "@/store/actions/MenuCategoriaActions"
 import Card from "@Components/Home/Card"
 import CardArticle from "@Components/Home/CardArticle"
 import Detail from "@Components/Home/Detail"
@@ -10,11 +11,12 @@ import { Container } from "@Styles/HomeStyle"
 import SubMenu from "@Utils/SubMenu"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useLocation } from "react-router"
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
-    const { productos,Auth:{dataUser}}= useSelector((x: RootState) => x)
-    const {CardSelected,SeeDetail,seeDetail,setSeeDetail} = useHome();
+    const { productos, Auth: { dataUser }, categoria } = useSelector((x: RootState) => x)
+    const { CardSelected, SeeDetail, seeDetail, setSeeDetail } = useHome();
     const Options = [
         { id: 1, nombre: "Comida" },
         { id: 2, nombre: "Postres" },
@@ -23,14 +25,20 @@ const HomeScreen = () => {
     const idUser = parseInt(localStorage.getItem("user") || "0");
 
     const pageChange = (page = 1) => {
-        dispatch(getProductosList(page - 1,idUser));
+        dispatch(getProductosList(page - 1, idUser));
     }
 
     useEffect(() => {
         if (!productos?.data.content.length) {
-            dispatch(getProductosList(0,idUser));
+            dispatch(getProductosList(0, idUser));
+        }
+
+        if (!categoria.data.length) {
+            dispatch(getAllCategoria());
         }
     }, [])
+
+
 
     return (
         <Container>
@@ -38,7 +46,8 @@ const HomeScreen = () => {
                 <label>{`Hola ${dataUser.userName}`}</label>
             </div>
             <div className='container_submenu'>
-                <SubMenu options={Options} />
+                    <SubMenu options={categoria.data} />
+
             </div>
             <div className='container_content'>
                 <div className='container_card'>

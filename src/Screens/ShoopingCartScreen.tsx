@@ -1,5 +1,4 @@
 
-import FormPayment from '@Components/payment/FormPayment'
 import { ContainerShooping } from '@Styles/ShoopingStyled'
 import CardShoopingCart from '@Components/ShoopingCart/CardShoopingCart'
 import { useHistory } from 'react-router'
@@ -25,7 +24,7 @@ const ShoopingCartScreen = () => {
             <div className='content_shopping'>
                 <div className='items_cart'>
                     {products.map(item =>
-                    <CardShoopingCart productoCart={item}/>)
+                    <CardShoopingCart productoCart={item} key={item.idItem}/>)
                     }
                 </div>
             </div>
