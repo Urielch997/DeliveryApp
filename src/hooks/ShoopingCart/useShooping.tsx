@@ -54,7 +54,7 @@ const useShooping = () => {
     const sum = (product:Product[]):number =>{
         let total = 0;
         product.forEach(item =>{
-            total += (item.cantidad * item.precio);
+            total += (item.cantidad * 0);
         })
 
         return total;

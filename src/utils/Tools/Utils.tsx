@@ -4,12 +4,14 @@ import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
 /**
  * Convertir entero a decimales de money
  */
- export const convertMoney = ({text,currency = "USD", format = "en-US"} :MoneyFormat):string => {
+ export const convertMoney = ({text = "0",currency = "USD", format = "en-US"} :MoneyFormat):string => {
     const formatterDolar = new Intl.NumberFormat(format, {
       style: "currency",
       currency: currency,
     });
-    let numero = text || 0
+    console.log(text.substring(1,text.length).replace(",",""))
+    let numero = Number(text.substring(1,text.length).replace(",",""));
+    console.log(numero)
     return formatterDolar.format(numero);
   };
 

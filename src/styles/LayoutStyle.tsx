@@ -88,15 +88,6 @@ export const Container = styled.div`
         margin-right: 10px;
     }
 
-    .container_button{
-        width: 90%;
-        margin:0px auto;
-        min-height: 100vh;
-
-        @media screen and (max-width:600px){
-            width: 100%;
-        }
-    }
 `
 
 export const Footer = styled.div`

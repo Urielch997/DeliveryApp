@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  
     .pagination_container{
         width: 100%;
         display: flex;
@@ -60,6 +61,7 @@ export const Container = styled.div`
 
             .container_card{
             width: 100%;
+            margin-bottom: 104px;
         }
 
             .container_section{

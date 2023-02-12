@@ -37,7 +37,7 @@ const CardShoopingCart = ({productoCart}:CartInterface) => {
                 </div>
             </div>
             <div className="price_shooping">
-                <strong>{`$${productoCart.precio}`}</strong>
+                <strong>{`${productoCart.precio}`}</strong>
             </div>
             <div className="action_shooping">
                 <img src={remove} className="close" onClick={()=>deleteCar(productoCart.idItem.toString())}/>

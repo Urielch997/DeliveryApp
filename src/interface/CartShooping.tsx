@@ -17,8 +17,8 @@ export interface CartShopping {
     idItem: string | number
     nombre: string
     idCategoria: number
-    precio: number
-    precioOferta: number
+    precio: number  |  string
+    precioOferta: number | string
     imagen: string
     description: string | null
     cantidad:number

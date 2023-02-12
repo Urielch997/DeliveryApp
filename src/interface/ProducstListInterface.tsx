@@ -26,8 +26,8 @@ export interface Content {
     idItem:       number;
     nombre:       string;
     idCategoria:  number;
-    precio:       number;
-    precioOferta: number;
+    precio:       number | string;
+    precioOferta: number | string;
     imagen:      string;
     description: string | null;
     favorito:boolean

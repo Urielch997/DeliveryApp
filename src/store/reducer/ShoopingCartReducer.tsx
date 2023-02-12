@@ -6,18 +6,7 @@ export const initialStateShopping: ResultCartShopping = {
   idCart: "",
   idUser: "0",
   count: 0,
-  products: [
-    {
-      idItem: "0",
-      nombre: "",
-      idCategoria: 0,
-      precio: 0,
-      precioOferta: 0,
-      imagen: "",
-      description: "",
-      cantidad:0
-    }
-  ]
+  products: []
 }
 
 

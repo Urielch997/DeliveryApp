@@ -21,7 +21,7 @@ const Card = ({setSeeDetail,data}:CardProps) => {
                 <div className='background'>    
                 </div>
                 <label><strong>{data.nombre}</strong></label>
-                <label className='active'><strong>{`$${data.precio}`}</strong></label>
+                <label className='active'><strong>{`${data.precio}`}</strong></label>
             </div>
         </CardWrapper>
     )
@@ -32,7 +32,6 @@ const CardWrapper = styled.div<propsCard>`
     height: 200px;
     background: #ECECEC;
     margin: 30px;
-    margin-bottom: 10px;
     margin-top:10px;
     border-radius: 10px;
 
